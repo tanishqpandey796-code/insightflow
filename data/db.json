@@ -1,0 +1,4873 @@
+{
+  "import_jobs": [
+    {
+      "filename": "sample-feedback.csv",
+      "row_count": 201,
+      "adaption_dataset_id": "ds_adaption_prod_sample_90d",
+      "adaption_status": "done",
+      "quality_score": 94.8,
+      "quality_report": {
+        "clean_rate": 0.985,
+        "rows_cleaned": 188,
+        "rows_dropped": 0,
+        "noise_reduced_percent": 24.3,
+        "duplicates_removed": 0,
+        "pii_masked": 14,
+        "summary": "Adaption pipeline successfully normalized Unicode characters, removed trailing artifact symbols, standardizes contractions, and masked 14 sensitive email/name PII mentions prior to semantic classification."
+      },
+      "id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "created_at": "2026-10-11T05:54:25.473Z"
+    }
+  ],
+  "feedback": [
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "The sound clarity and noise cancellation are top-tier. Best headphones I have owned.",
+      "cleaned_text": "The sound clarity and noise cancellation are top-tier. Best headphones I have owned.",
+      "source": "support",
+      "rating": 5,
+      "customer": "Sofia Rossi",
+      "created_at": "2026-10-09T02:47:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.71,
+      "category": "Product Quality",
+      "topics": [
+        "noise cancellation",
+        "sound quality",
+        "audio"
+      ],
+      "severity": 1,
+      "summary": "Product Quality feedback: noise cancellation",
+      "analyzed_at": "2026-10-11T05:54:25.507Z",
+      "id": "52ed7e5b-c9bd-4414-a762-ced382779d55"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "International shipping was surprisingly smooth with customs cleared automatically.",
+      "cleaned_text": "International shipping was surprisingly smooth with customs cleared automatically.",
+      "source": "social",
+      "rating": 5,
+      "customer": "Aaliyah Washington",
+      "created_at": "2026-10-08T02:30:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.65,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "international shipping",
+        "customs",
+        "smooth delivery"
+      ],
+      "severity": 1,
+      "summary": "Delivery & Shipping feedback: international shipping",
+      "analyzed_at": "2026-10-11T05:54:25.507Z",
+      "id": "b08e0b67-aabd-4801-9b3b-e7261f1efb8b"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "App force closes whenever I try to apply a promo code on the latest release.",
+      "cleaned_text": "App force closes whenever I try to apply a promo code on the latest release.",
+      "source": "review",
+      "rating": 2,
+      "customer": "Marcus Vance",
+      "created_at": "2026-10-08T01:35:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.75,
+      "category": "App/Website Bugs",
+      "topics": [
+        "force close",
+        "promo code",
+        "crash"
+      ],
+      "severity": 4,
+      "summary": "User experienced app crash/freeze related to update: force close",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "8a20eea2-ca22-4522-a10d-d351ea625ea1"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Buggy latest version. The screen goes completely black then exits to home screen. Happening on iPhone 15 Pro.",
+      "cleaned_text": "Buggy latest version. The screen goes completely black then exits to home screen. Happening on iPhone 15 Pro.",
+      "source": "review",
+      "rating": 1,
+      "customer": "Jason Miller",
+      "created_at": "2026-10-07T08:57:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.94,
+      "category": "App/Website Bugs",
+      "topics": [
+        "black screen",
+        "crash",
+        "latest version"
+      ],
+      "severity": 4,
+      "summary": "User experienced app crash/freeze related to update: black screen",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "806b4824-7010-4e03-b293-4a8270d46eb0"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "The app keeps crashing immediately after opening on iOS since the v2.4 update. Cannot access my cart!",
+      "cleaned_text": "The app keeps crashing immediately after opening on iOS since the v2.4 update. Cannot access my cart!",
+      "source": "review",
+      "rating": 1,
+      "customer": "Chloe Dubois",
+      "created_at": "2026-10-07T04:11:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.91,
+      "category": "App/Website Bugs",
+      "topics": [
+        "crash on launch",
+        "v2.4 update",
+        "cart inaccessible"
+      ],
+      "severity": 5,
+      "summary": "User experienced app crash/freeze related to update: crash on launch",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "64c11650-ac1f-4469-a7fc-fe7a3b79606e"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Filter options on the dashboard are confusing. It is not clear if filters are AND or OR.",
+      "cleaned_text": "Filter options on the dashboard are confusing. It is not clear if filters are AND or OR.",
+      "source": "support",
+      "rating": 3,
+      "customer": "Priya Sharma",
+      "created_at": "2026-10-06T11:38:00",
+      "sentiment": "neutral",
+      "sentiment_score": -0.15,
+      "category": "Usability/UX",
+      "topics": [
+        "filter confusion",
+        "dashboard UX",
+        "usability"
+      ],
+      "severity": 2,
+      "summary": "Usability/UX feedback: filter confusion",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "a39b4db4-c868-4424-b24b-a4b4f257a7dd"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Ever since updating yesterday, app crashes every time I tap on my profile or order history.",
+      "cleaned_text": "Ever since updating yesterday, app crashes every time I tap on my profile or order history.",
+      "source": "social",
+      "rating": 1,
+      "customer": "Olivia Zhang",
+      "created_at": "2026-10-06T06:10:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.85,
+      "category": "App/Website Bugs",
+      "topics": [
+        "profile crash",
+        "order history",
+        "app bug"
+      ],
+      "severity": 4,
+      "summary": "User experienced app crash/freeze related to update: profile crash",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "80644873-329c-4f58-8585-eff7879db863"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Crash on splash screen. Reinstalling did not fix it. Please issue a hotfix! Hope this gets patched soon.",
+      "cleaned_text": "Crash on splash screen. Reinstalling did not fix it. Please issue a hotfix! Hope this gets patched soon.",
+      "source": "review",
+      "rating": 1,
+      "customer": "Brandon Cole",
+      "created_at": "2026-10-05T22:34:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.87,
+      "category": "App/Website Bugs",
+      "topics": [
+        "splash screen crash",
+        "hotfix needed",
+        "v2.4"
+      ],
+      "severity": 5,
+      "summary": "User experienced app crash/freeze related to update: splash screen crash",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "ec2c2058-efbd-43c6-9f6f-0a4e7cd311b2"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Crash on splash screen. Reinstalling did not fix it. Please issue a hotfix! Hope this gets patched soon.",
+      "cleaned_text": "Crash on splash screen. Reinstalling did not fix it. Please issue a hotfix! Hope this gets patched soon.",
+      "source": "survey",
+      "rating": 1,
+      "customer": "Rachel Green",
+      "created_at": "2026-10-05T21:20:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.79,
+      "category": "App/Website Bugs",
+      "topics": [
+        "splash screen crash",
+        "hotfix needed",
+        "v2.4"
+      ],
+      "severity": 5,
+      "summary": "User experienced app crash/freeze related to update: splash screen crash",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "f75f5bb0-fba2-4f8e-b2d0-0409ee4e79fe"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "The new navigation menu is so intuitive! Finding settings and analytics takes one click.",
+      "cleaned_text": "The new navigation menu is so intuitive! Finding settings and analytics takes one click.",
+      "source": "social",
+      "rating": 5,
+      "customer": "Devon Patel",
+      "created_at": "2026-10-05T20:06:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.81,
+      "category": "Usability/UX",
+      "topics": [
+        "intuitive navigation",
+        "clean menu",
+        "UX overhaul"
+      ],
+      "severity": 1,
+      "summary": "Usability/UX feedback: intuitive navigation",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "5460d463-c40d-48e1-8c37-2693fdf35ac9"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Constantly crashing after update v2.4. Literally unusable right now.",
+      "cleaned_text": "Constantly crashing after update v2.4. Literally unusable right now.",
+      "source": "survey",
+      "rating": 1,
+      "customer": "Liam O'Connor",
+      "created_at": "2026-10-05T19:22:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.79,
+      "category": "App/Website Bugs",
+      "topics": [
+        "v2.4 update",
+        "unusable crash",
+        "mobile app"
+      ],
+      "severity": 5,
+      "summary": "User experienced app crash/freeze related to update: v2.4 update",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "f0054a1d-21f6-4727-9b50-42d61c980a18"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Huge regression in the new update. App crashes whenever Bluetooth sync is attempted.",
+      "cleaned_text": "Huge regression in the new update. App crashes whenever Bluetooth sync is attempted.",
+      "source": "review",
+      "rating": 2,
+      "customer": "Alex Rivera",
+      "created_at": "2026-10-05T17:33:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.72,
+      "category": "App/Website Bugs",
+      "topics": [
+        "bluetooth crash",
+        "sync failed",
+        "regression"
+      ],
+      "severity": 4,
+      "summary": "User experienced app crash/freeze related to update: bluetooth crash",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "f781c698-b479-478a-b6ef-ba0ae0d83700"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Huge regression in the new update. App crashes whenever Bluetooth sync is attempted. Hope this gets patched soon.",
+      "cleaned_text": "Huge regression in the new update. App crashes whenever Bluetooth sync is attempted. Hope this gets patched soon.",
+      "source": "support",
+      "rating": 2,
+      "customer": "Emma Watson",
+      "created_at": "2026-10-05T15:39:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.81,
+      "category": "App/Website Bugs",
+      "topics": [
+        "bluetooth crash",
+        "sync failed",
+        "regression"
+      ],
+      "severity": 4,
+      "summary": "User experienced app crash/freeze related to update: bluetooth crash",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "7e9b9758-a816-4f34-a4c7-eb7f7ee19d5f"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Took over a week to get a response to my support ticket regarding a warranty claim.",
+      "cleaned_text": "Took over a week to get a response to my support ticket regarding a warranty claim.",
+      "source": "support",
+      "rating": 2,
+      "customer": "Jason Miller",
+      "created_at": "2026-10-05T09:45:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.9,
+      "category": "Customer Support",
+      "topics": [
+        "slow ticket response",
+        "warranty claim",
+        "delayed reply"
+      ],
+      "severity": 3,
+      "summary": "Customer Support feedback: slow ticket response",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "7d95b360-1382-404b-bbc0-2a31ef3f7a34"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Hinge feels a bit stiff initially, but loosens up nicely after a few days.",
+      "cleaned_text": "Hinge feels a bit stiff initially, but loosens up nicely after a few days.",
+      "source": "support",
+      "rating": 4,
+      "customer": "Brandon Cole",
+      "created_at": "2026-10-05T04:48:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.64,
+      "category": "Product Quality",
+      "topics": [
+        "hinge stiffness",
+        "hardware feel",
+        "ergonomics"
+      ],
+      "severity": 1,
+      "summary": "Product Quality feedback: hinge stiffness",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "e8ab658e-1e2a-42fd-a5c4-3b42196f7400"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Difficult to cancel subscription. Had to navigate 4 confirmation pages and call support.",
+      "cleaned_text": "Difficult to cancel subscription. Had to navigate 4 confirmation pages and call support.",
+      "source": "survey",
+      "rating": 1,
+      "customer": "Emma Watson",
+      "created_at": "2026-10-04T20:53:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.85,
+      "category": "Pricing & Billing",
+      "topics": [
+        "difficult cancellation",
+        "dark pattern",
+        "subscription friction"
+      ],
+      "severity": 4,
+      "summary": "Pricing & Billing feedback: difficult cancellation",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "23c5d254-335f-4007-a5f5-efa7129db3d0"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "App force closes whenever I try to apply a promo code on the latest release.",
+      "cleaned_text": "App force closes whenever I try to apply a promo code on the latest release.",
+      "source": "social",
+      "rating": 2,
+      "customer": "Marcus Vance",
+      "created_at": "2026-10-04T18:26:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.92,
+      "category": "App/Website Bugs",
+      "topics": [
+        "force close",
+        "promo code",
+        "crash"
+      ],
+      "severity": 4,
+      "summary": "User experienced app crash/freeze related to update: force close",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "77022e8f-805d-436f-8ec8-7a8b844031ee"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Huge regression in the new update. App crashes whenever Bluetooth sync is attempted. Happening on iPhone 15 Pro.",
+      "cleaned_text": "Huge regression in the new update. App crashes whenever Bluetooth sync is attempted. Happening on iPhone 15 Pro.",
+      "source": "social",
+      "rating": 2,
+      "customer": "Daniel Martinez",
+      "created_at": "2026-10-04T11:22:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.7,
+      "category": "App/Website Bugs",
+      "topics": [
+        "bluetooth crash",
+        "sync failed",
+        "regression"
+      ],
+      "severity": 4,
+      "summary": "User experienced app crash/freeze related to update: bluetooth crash",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "f8747431-cd4f-430d-800b-7acd0d846bdc"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Password reset link threw a 500 internal server error the first time I clicked it.",
+      "cleaned_text": "Password reset link threw a 500 internal server error the first time I clicked it.",
+      "source": "review",
+      "rating": 2,
+      "customer": "Priya Sharma",
+      "created_at": "2026-10-04T05:17:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.64,
+      "category": "App/Website Bugs",
+      "topics": [
+        "password reset",
+        "500 error",
+        "auth"
+      ],
+      "severity": 3,
+      "summary": "App/Website Bugs feedback: password reset",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "b685bb20-82ad-4e57-817e-50ac70353cff"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Crash on splash screen. Reinstalling did not fix it. Please issue a hotfix!",
+      "cleaned_text": "Crash on splash screen. Reinstalling did not fix it. Please issue a hotfix!",
+      "source": "support",
+      "rating": 1,
+      "customer": "Brandon Cole",
+      "created_at": "2026-10-03T23:44:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.81,
+      "category": "App/Website Bugs",
+      "topics": [
+        "splash screen crash",
+        "hotfix needed",
+        "v2.4"
+      ],
+      "severity": 5,
+      "summary": "User experienced app crash/freeze related to update: splash screen crash",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "c11f934a-1318-4414-b25a-6beb68a6be57"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Search auto-complete occasionally hangs for 5 seconds before showing suggestions.",
+      "cleaned_text": "Search auto-complete occasionally hangs for 5 seconds before showing suggestions.",
+      "source": "support",
+      "rating": 3,
+      "customer": "Carlos Gomez",
+      "created_at": "2026-10-03T22:18:00",
+      "sentiment": "neutral",
+      "sentiment_score": 0.13,
+      "category": "App/Website Bugs",
+      "topics": [
+        "search delay",
+        "autocomplete lag",
+        "website"
+      ],
+      "severity": 2,
+      "summary": "App/Website Bugs feedback: search delay",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "717c9c16-78a6-4966-a463-dbf463b2824a"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Constantly crashing after update v2.4. Literally unusable right now. Happening on iPhone 15 Pro.",
+      "cleaned_text": "Constantly crashing after update v2.4. Literally unusable right now. Happening on iPhone 15 Pro.",
+      "source": "survey",
+      "rating": 1,
+      "customer": "Liam O'Connor",
+      "created_at": "2026-10-03T16:33:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.88,
+      "category": "App/Website Bugs",
+      "topics": [
+        "v2.4 update",
+        "unusable crash",
+        "mobile app"
+      ],
+      "severity": 5,
+      "summary": "User experienced app crash/freeze related to update: v2.4 update",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "1869e12e-7759-468f-98ef-94e34ffa4041"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Cannot complete my transaction. App crashes during Apple Pay authorization.",
+      "cleaned_text": "Cannot complete my transaction. App crashes during Apple Pay authorization.",
+      "source": "support",
+      "rating": 1,
+      "customer": "Emma Watson",
+      "created_at": "2026-10-03T09:36:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.91,
+      "category": "App/Website Bugs",
+      "topics": [
+        "Apple Pay crash",
+        "transaction failed",
+        "checkout bug"
+      ],
+      "severity": 5,
+      "summary": "User experienced app crash/freeze related to update: Apple Pay crash",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "4bf8f9d7-a233-4eed-80d3-f0d9f83178a5"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Huge regression in the new update. App crashes whenever Bluetooth sync is attempted. Fix please!",
+      "cleaned_text": "Huge regression in the new update. App crashes whenever Bluetooth sync is attempted. Fix please!",
+      "source": "support",
+      "rating": 2,
+      "customer": "Jessica Taylor",
+      "created_at": "2026-10-03T07:33:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.82,
+      "category": "App/Website Bugs",
+      "topics": [
+        "bluetooth crash",
+        "sync failed",
+        "regression"
+      ],
+      "severity": 4,
+      "summary": "User experienced app crash/freeze related to update: bluetooth crash",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "d84117d0-9c11-4ea5-95f0-a41f37f8581c"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Waited 45 minutes on live chat only to be transferred and disconnected.",
+      "cleaned_text": "Waited 45 minutes on live chat only to be transferred and disconnected.",
+      "source": "support",
+      "rating": 1,
+      "customer": "Michael Chang",
+      "created_at": "2026-10-03T03:25:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.68,
+      "category": "Customer Support",
+      "topics": [
+        "long wait time",
+        "live chat disconnect",
+        "poor service"
+      ],
+      "severity": 4,
+      "summary": "Customer Support feedback: long wait time",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "35a9371d-2c39-4991-bbbe-e74a3c1d86ba"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "International shipping was surprisingly smooth with customs cleared automatically.",
+      "cleaned_text": "International shipping was surprisingly smooth with customs cleared automatically.",
+      "source": "social",
+      "rating": 5,
+      "customer": "Michael Chang",
+      "created_at": "2026-10-03T02:16:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.55,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "international shipping",
+        "customs",
+        "smooth delivery"
+      ],
+      "severity": 1,
+      "summary": "Delivery & Shipping feedback: international shipping",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "2df0d065-2e67-4ada-8e90-4a4809c41e6f"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Box was crushed on one side, but luckily the inner bubble wrap protected the item.",
+      "cleaned_text": "Box was crushed on one side, but luckily the inner bubble wrap protected the item.",
+      "source": "social",
+      "rating": 3,
+      "customer": "David Kim",
+      "created_at": "2026-10-02T20:53:00",
+      "sentiment": "neutral",
+      "sentiment_score": 0,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "damaged box",
+        "packaging",
+        "carrier issue"
+      ],
+      "severity": 2,
+      "summary": "Delivery & Shipping feedback: damaged box",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "eae7f440-3188-4842-a975-70c5631982cd"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Constantly crashing after update v2.4. Literally unusable right now.",
+      "cleaned_text": "Constantly crashing after update v2.4. Literally unusable right now.",
+      "source": "survey",
+      "rating": 1,
+      "customer": "David Kim",
+      "created_at": "2026-10-02T14:19:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.83,
+      "category": "App/Website Bugs",
+      "topics": [
+        "v2.4 update",
+        "unusable crash",
+        "mobile app"
+      ],
+      "severity": 5,
+      "summary": "User experienced app crash/freeze related to update: v2.4 update",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "878cdad7-ba09-4418-a1c7-1a41cc6a26d4"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Huge regression in the new update. App crashes whenever Bluetooth sync is attempted. Happening on iPhone 15 Pro.",
+      "cleaned_text": "Huge regression in the new update. App crashes whenever Bluetooth sync is attempted. Happening on iPhone 15 Pro.",
+      "source": "social",
+      "rating": 2,
+      "customer": "Liam O'Connor",
+      "created_at": "2026-10-02T11:25:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.76,
+      "category": "App/Website Bugs",
+      "topics": [
+        "bluetooth crash",
+        "sync failed",
+        "regression"
+      ],
+      "severity": 4,
+      "summary": "User experienced app crash/freeze related to update: bluetooth crash",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "3ad8221b-0bbc-4fe6-89f0-4b0f4d4567c6"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Ever since updating yesterday, app crashes every time I tap on my profile or order history. Fix please!",
+      "cleaned_text": "Ever since updating yesterday, app crashes every time I tap on my profile or order history. Fix please!",
+      "source": "survey",
+      "rating": 1,
+      "customer": "Jason Miller",
+      "created_at": "2026-10-01T23:43:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.87,
+      "category": "App/Website Bugs",
+      "topics": [
+        "profile crash",
+        "order history",
+        "app bug"
+      ],
+      "severity": 4,
+      "summary": "User experienced app crash/freeze related to update: profile crash",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "61ad6a04-e65d-4895-84d1-ec3bb6715bc6"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Constantly crashing after update v2.4. Literally unusable right now.",
+      "cleaned_text": "Constantly crashing after update v2.4. Literally unusable right now.",
+      "source": "survey",
+      "rating": 1,
+      "customer": "Emily Clark",
+      "created_at": "2026-10-01T20:47:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.88,
+      "category": "App/Website Bugs",
+      "topics": [
+        "v2.4 update",
+        "unusable crash",
+        "mobile app"
+      ],
+      "severity": 5,
+      "summary": "User experienced app crash/freeze related to update: v2.4 update",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "f6e09386-ac49-4bcb-8a29-e35c855daef4"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Ever since updating yesterday, app crashes every time I tap on my profile or order history. Fix please!",
+      "cleaned_text": "Ever since updating yesterday, app crashes every time I tap on my profile or order history. Fix please!",
+      "source": "social",
+      "rating": 1,
+      "customer": "Liam O'Connor",
+      "created_at": "2026-10-01T20:30:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.93,
+      "category": "App/Website Bugs",
+      "topics": [
+        "profile crash",
+        "order history",
+        "app bug"
+      ],
+      "severity": 4,
+      "summary": "User experienced app crash/freeze related to update: profile crash",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "3ca1cb57-438c-4877-b172-9aba2ac52c21"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Filter options on the dashboard are confusing. It is not clear if filters are AND or OR.",
+      "cleaned_text": "Filter options on the dashboard are confusing. It is not clear if filters are AND or OR.",
+      "source": "support",
+      "rating": 3,
+      "customer": "Jason Miller",
+      "created_at": "2026-10-01T03:21:00",
+      "sentiment": "neutral",
+      "sentiment_score": -0.04,
+      "category": "Usability/UX",
+      "topics": [
+        "filter confusion",
+        "dashboard UX",
+        "usability"
+      ],
+      "severity": 2,
+      "summary": "Usability/UX feedback: filter confusion",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "f0dc29ee-7469-4bfd-b4fc-da81b429bb9f"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "The sound clarity and noise cancellation are top-tier. Best headphones I have owned.",
+      "cleaned_text": "The sound clarity and noise cancellation are top-tier. Best headphones I have owned.",
+      "source": "social",
+      "rating": 5,
+      "customer": "Kenji Sato",
+      "created_at": "2026-10-01T00:19:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.81,
+      "category": "Product Quality",
+      "topics": [
+        "noise cancellation",
+        "sound quality",
+        "audio"
+      ],
+      "severity": 1,
+      "summary": "Product Quality feedback: noise cancellation",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "d4e33f02-2ed3-405e-8d07-1ac9599a8c60"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Image thumbnails fail to load on slow cellular connections.",
+      "cleaned_text": "Image thumbnails fail to load on slow cellular connections.",
+      "source": "survey",
+      "rating": 3,
+      "customer": "Carlos Gomez",
+      "created_at": "2026-09-30T23:53:00",
+      "sentiment": "neutral",
+      "sentiment_score": 0.02,
+      "category": "App/Website Bugs",
+      "topics": [
+        "image loading",
+        "thumbnails",
+        "network"
+      ],
+      "severity": 2,
+      "summary": "App/Website Bugs feedback: image loading",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "d4bb48a5-0f93-409d-bd50-67dd7635a210"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Screen resolution is sharp and vivid. Great for outdoor readability.",
+      "cleaned_text": "Screen resolution is sharp and vivid. Great for outdoor readability.",
+      "source": "social",
+      "rating": 5,
+      "customer": "Emily Clark",
+      "created_at": "2026-09-30T22:39:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.69,
+      "category": "Product Quality",
+      "topics": [
+        "display quality",
+        "brightness",
+        "screen"
+      ],
+      "severity": 1,
+      "summary": "Product Quality feedback: display quality",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "92d6adf5-4a4d-4cd1-8150-a3a189df2e15"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "The sound clarity and noise cancellation are top-tier. Best headphones I have owned.",
+      "cleaned_text": "The sound clarity and noise cancellation are top-tier. Best headphones I have owned.",
+      "source": "support",
+      "rating": 5,
+      "customer": "Daniel Martinez",
+      "created_at": "2026-09-30T04:43:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.9,
+      "category": "Product Quality",
+      "topics": [
+        "noise cancellation",
+        "sound quality",
+        "audio"
+      ],
+      "severity": 1,
+      "summary": "Product Quality feedback: noise cancellation",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "a9162911-e9cc-4fe2-a224-2116532912ee"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Very reasonable pricing for the feature set provided. Great ROI for small teams.",
+      "cleaned_text": "Very reasonable pricing for the feature set provided. Great ROI for small teams.",
+      "source": "social",
+      "rating": 5,
+      "customer": "Olivia Zhang",
+      "created_at": "2026-09-30T04:05:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.94,
+      "category": "Pricing & Billing",
+      "topics": [
+        "fair pricing",
+        "great ROI",
+        "value for money"
+      ],
+      "severity": 1,
+      "summary": "Pricing & Billing feedback: fair pricing",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "345f2cd1-8599-449b-9bf9-6815d43c737f"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Battery life exceeded my expectations, lasting full 2 days of heavy usage.",
+      "cleaned_text": "Battery life exceeded my expectations, lasting full 2 days of heavy usage.",
+      "source": "survey",
+      "rating": 5,
+      "customer": "Devon Patel",
+      "created_at": "2026-09-29T07:46:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.82,
+      "category": "Product Quality",
+      "topics": [
+        "battery life",
+        "performance",
+        "long lasting"
+      ],
+      "severity": 1,
+      "summary": "Product Quality feedback: battery life",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "e7b27328-1cbf-4d1c-b73d-8b2df6bd7169"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "The app keeps crashing immediately after opening on iOS since the v2.4 update. Cannot access my cart! Happening on iPhone 15 Pro.",
+      "cleaned_text": "The app keeps crashing immediately after opening on iOS since the v2.4 update. Cannot access my cart! Happening on iPhone 15 Pro.",
+      "source": "survey",
+      "rating": 1,
+      "customer": "Carlos Gomez",
+      "created_at": "2026-09-28T18:46:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.7,
+      "category": "App/Website Bugs",
+      "topics": [
+        "crash on launch",
+        "v2.4 update",
+        "cart inaccessible"
+      ],
+      "severity": 5,
+      "summary": "User experienced app crash/freeze related to update: crash on launch",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "5d228972-b131-4f95-83bc-63d89e0d53a7"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Constantly crashing after update v2.4. Literally unusable right now. Truly frustrating.",
+      "cleaned_text": "Constantly crashing after update v2.4. Literally unusable right now. Truly frustrating.",
+      "source": "review",
+      "rating": 1,
+      "customer": "Carlos Gomez",
+      "created_at": "2026-09-28T10:45:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.72,
+      "category": "App/Website Bugs",
+      "topics": [
+        "v2.4 update",
+        "unusable crash",
+        "mobile app"
+      ],
+      "severity": 5,
+      "summary": "User experienced app crash/freeze related to update: v2.4 update",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "249dda8f-7997-4a7c-934e-fda2cce80e74"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Help desk team followed up proactively after resolving my issue. Very impressed.",
+      "cleaned_text": "Help desk team followed up proactively after resolving my issue. Very impressed.",
+      "source": "review",
+      "rating": 5,
+      "customer": "Jason Miller",
+      "created_at": "2026-09-28T08:12:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.7,
+      "category": "Customer Support",
+      "topics": [
+        "proactive follow up",
+        "helpful team",
+        "great service"
+      ],
+      "severity": 1,
+      "summary": "Customer Support feedback: proactive follow up",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "c9adfaf5-c6d8-4857-851e-fb810d3bbc60"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Cannot complete my transaction. App crashes during Apple Pay authorization. Truly frustrating.",
+      "cleaned_text": "Cannot complete my transaction. App crashes during Apple Pay authorization. Truly frustrating.",
+      "source": "review",
+      "rating": 1,
+      "customer": "Aaliyah Washington",
+      "created_at": "2026-09-27T07:28:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.89,
+      "category": "App/Website Bugs",
+      "topics": [
+        "Apple Pay crash",
+        "transaction failed",
+        "checkout bug"
+      ],
+      "severity": 5,
+      "summary": "User experienced app crash/freeze related to update: Apple Pay crash",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "c8c384e7-ceca-4b2c-b7b9-8b53537d1e54"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Latest update completely broke checkout. It freezes on payment screen and restarts the app. Happening on iPhone 15 Pro.",
+      "cleaned_text": "Latest update completely broke checkout. It freezes on payment screen and restarts the app. Happening on iPhone 15 Pro.",
+      "source": "support",
+      "rating": 1,
+      "customer": "Jason Miller",
+      "created_at": "2026-09-27T02:07:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.84,
+      "category": "App/Website Bugs",
+      "topics": [
+        "checkout freeze",
+        "payment crash",
+        "v2.4 update"
+      ],
+      "severity": 5,
+      "summary": "User experienced app crash/freeze related to update: checkout freeze",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "fbc6a8d9-bc0a-46d3-9e30-dd69227f5b7b"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Export to CSV button is buried under advanced settings instead of on the main table.",
+      "cleaned_text": "Export to CSV button is buried under advanced settings instead of on the main table.",
+      "source": "support",
+      "rating": 3,
+      "customer": "Olivia Zhang",
+      "created_at": "2026-09-26T22:40:00",
+      "sentiment": "neutral",
+      "sentiment_score": -0.04,
+      "category": "Usability/UX",
+      "topics": [
+        "buried export button",
+        "data export",
+        "UI placement"
+      ],
+      "severity": 2,
+      "summary": "Usability/UX feedback: buried export button",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "e995f6b7-31e5-4b88-8f52-b9c4867b7a65"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Crash on splash screen. Reinstalling did not fix it. Please issue a hotfix! Happening on iPhone 15 Pro.",
+      "cleaned_text": "Crash on splash screen. Reinstalling did not fix it. Please issue a hotfix! Happening on iPhone 15 Pro.",
+      "source": "review",
+      "rating": 1,
+      "customer": "Marcus Vance",
+      "created_at": "2026-09-26T21:27:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.87,
+      "category": "App/Website Bugs",
+      "topics": [
+        "splash screen crash",
+        "hotfix needed",
+        "v2.4"
+      ],
+      "severity": 5,
+      "summary": "User experienced app crash/freeze related to update: splash screen crash",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "e462cf75-fe17-4334-a5a5-d812431e327d"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Cannot complete my transaction. App crashes during Apple Pay authorization. Fix please!",
+      "cleaned_text": "Cannot complete my transaction. App crashes during Apple Pay authorization. Fix please!",
+      "source": "survey",
+      "rating": 1,
+      "customer": "Emma Watson",
+      "created_at": "2026-09-26T19:32:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.76,
+      "category": "App/Website Bugs",
+      "topics": [
+        "Apple Pay crash",
+        "transaction failed",
+        "checkout bug"
+      ],
+      "severity": 5,
+      "summary": "User experienced app crash/freeze related to update: Apple Pay crash",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "8af27ab0-d4fe-4c7c-a182-ca38eac7161b"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Super fast delivery! Arrived in under 24 hours in secure, eco-friendly packaging.",
+      "cleaned_text": "Super fast delivery! Arrived in under 24 hours in secure, eco-friendly packaging.",
+      "source": "review",
+      "rating": 5,
+      "customer": "Marcus Vance",
+      "created_at": "2026-09-26T15:47:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.57,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "fast delivery",
+        "eco packaging",
+        "quick shipping"
+      ],
+      "severity": 1,
+      "summary": "Delivery & Shipping feedback: fast delivery",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "841e4d44-4a26-4fe9-b678-01d99fc922c0"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Screen resolution is sharp and vivid. Great for outdoor readability.",
+      "cleaned_text": "Screen resolution is sharp and vivid. Great for outdoor readability.",
+      "source": "social",
+      "rating": 5,
+      "customer": "Benjamin Scott",
+      "created_at": "2026-09-26T04:49:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.52,
+      "category": "Product Quality",
+      "topics": [
+        "display quality",
+        "brightness",
+        "screen"
+      ],
+      "severity": 1,
+      "summary": "Product Quality feedback: display quality",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "677d42fa-a360-476d-bfaa-49374c5060ae"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Image thumbnails fail to load on slow cellular connections.",
+      "cleaned_text": "Image thumbnails fail to load on slow cellular connections.",
+      "source": "survey",
+      "rating": 3,
+      "customer": "Hannah Becker",
+      "created_at": "2026-09-26T03:42:00",
+      "sentiment": "neutral",
+      "sentiment_score": 0.07,
+      "category": "App/Website Bugs",
+      "topics": [
+        "image loading",
+        "thumbnails",
+        "network"
+      ],
+      "severity": 2,
+      "summary": "App/Website Bugs feedback: image loading",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "379d0f0c-c164-404f-84b2-caa0738e4814"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Waited 45 minutes on live chat only to be transferred and disconnected.",
+      "cleaned_text": "Waited 45 minutes on live chat only to be transferred and disconnected.",
+      "source": "social",
+      "rating": 1,
+      "customer": "Benjamin Scott",
+      "created_at": "2026-09-26T01:34:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.62,
+      "category": "Customer Support",
+      "topics": [
+        "long wait time",
+        "live chat disconnect",
+        "poor service"
+      ],
+      "severity": 4,
+      "summary": "Customer Support feedback: long wait time",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "456013b7-15f9-4147-bca9-09b54460f3c9"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Help desk team followed up proactively after resolving my issue. Very impressed.",
+      "cleaned_text": "Help desk team followed up proactively after resolving my issue. Very impressed.",
+      "source": "social",
+      "rating": 5,
+      "customer": "Michael Chang",
+      "created_at": "2026-09-25T08:19:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.92,
+      "category": "Customer Support",
+      "topics": [
+        "proactive follow up",
+        "helpful team",
+        "great service"
+      ],
+      "severity": 1,
+      "summary": "Customer Support feedback: proactive follow up",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "a9076849-dad8-48bf-ba48-d2fc4c87b53d"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Help desk team followed up proactively after resolving my issue. Very impressed.",
+      "cleaned_text": "Help desk team followed up proactively after resolving my issue. Very impressed.",
+      "source": "social",
+      "rating": 5,
+      "customer": "Sarah Jenkins",
+      "created_at": "2026-09-24T19:08:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.69,
+      "category": "Customer Support",
+      "topics": [
+        "proactive follow up",
+        "helpful team",
+        "great service"
+      ],
+      "severity": 1,
+      "summary": "Customer Support feedback: proactive follow up",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "1443b84a-861d-4302-a02c-be800a40a225"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Search auto-complete occasionally hangs for 5 seconds before showing suggestions.",
+      "cleaned_text": "Search auto-complete occasionally hangs for 5 seconds before showing suggestions.",
+      "source": "review",
+      "rating": 3,
+      "customer": "Michael Chang",
+      "created_at": "2026-09-24T13:03:00",
+      "sentiment": "neutral",
+      "sentiment_score": 0.1,
+      "category": "App/Website Bugs",
+      "topics": [
+        "search delay",
+        "autocomplete lag",
+        "website"
+      ],
+      "severity": 2,
+      "summary": "App/Website Bugs feedback: search delay",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "f63aa159-dc90-4c3c-b02f-719592637efe"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "The app keeps crashing immediately after opening on iOS since the v2.4 update. Cannot access my cart!",
+      "cleaned_text": "The app keeps crashing immediately after opening on iOS since the v2.4 update. Cannot access my cart!",
+      "source": "survey",
+      "rating": 1,
+      "customer": "Kenji Sato",
+      "created_at": "2026-09-24T12:44:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.83,
+      "category": "App/Website Bugs",
+      "topics": [
+        "crash on launch",
+        "v2.4 update",
+        "cart inaccessible"
+      ],
+      "severity": 5,
+      "summary": "User experienced app crash/freeze related to update: crash on launch",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "f9c16333-d13f-4f11-9b34-7634d9fe5fa4"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Font size on mobile is slightly too small for comfortable reading in bright sunlight.",
+      "cleaned_text": "Font size on mobile is slightly too small for comfortable reading in bright sunlight.",
+      "source": "social",
+      "rating": 3,
+      "customer": "Liam O'Connor",
+      "created_at": "2026-09-24T12:05:00",
+      "sentiment": "neutral",
+      "sentiment_score": -0.01,
+      "category": "Usability/UX",
+      "topics": [
+        "small font",
+        "mobile readability",
+        "contrast"
+      ],
+      "severity": 2,
+      "summary": "Usability/UX feedback: small font",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "f0d19b23-deb8-4e51-a625-84401bd7c583"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Latest update completely broke checkout. It freezes on payment screen and restarts the app. Happening on iPhone 15 Pro.",
+      "cleaned_text": "Latest update completely broke checkout. It freezes on payment screen and restarts the app. Happening on iPhone 15 Pro.",
+      "source": "social",
+      "rating": 1,
+      "customer": "Olivia Zhang",
+      "created_at": "2026-09-24T07:52:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.94,
+      "category": "App/Website Bugs",
+      "topics": [
+        "checkout freeze",
+        "payment crash",
+        "v2.4 update"
+      ],
+      "severity": 5,
+      "summary": "User experienced app crash/freeze related to update: checkout freeze",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "3039eb76-8dd3-44d2-9819-256a83018c11"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Invoice lacked proper VAT breakdown required for business accounting.",
+      "cleaned_text": "Invoice lacked proper VAT breakdown required for business accounting.",
+      "source": "support",
+      "rating": 2,
+      "customer": "Tara Murphy",
+      "created_at": "2026-09-24T00:17:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.73,
+      "category": "Pricing & Billing",
+      "topics": [
+        "missing VAT",
+        "invoice error",
+        "business billing"
+      ],
+      "severity": 3,
+      "summary": "Pricing & Billing feedback: missing VAT",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "8fe692ea-2fc3-4d40-a2d7-c94e32272da0"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Unexpected annual auto-renewal charge occurred without any reminder email beforehand.",
+      "cleaned_text": "Unexpected annual auto-renewal charge occurred without any reminder email beforehand.",
+      "source": "social",
+      "rating": 1,
+      "customer": "Tara Murphy",
+      "created_at": "2026-09-23T02:40:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.57,
+      "category": "Pricing & Billing",
+      "topics": [
+        "surprise auto renewal",
+        "no reminder",
+        "billing issue"
+      ],
+      "severity": 4,
+      "summary": "Pricing & Billing feedback: surprise auto renewal",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "836acf3c-80ba-4909-944f-3da23fa19842"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Clear, transparent tier pricing with no hidden charges. Exactly what was quoted.",
+      "cleaned_text": "Clear, transparent tier pricing with no hidden charges. Exactly what was quoted.",
+      "source": "support",
+      "rating": 5,
+      "customer": "Kenji Sato",
+      "created_at": "2026-09-23T00:27:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.87,
+      "category": "Pricing & Billing",
+      "topics": [
+        "transparent pricing",
+        "no hidden fees",
+        "billing accuracy"
+      ],
+      "severity": 1,
+      "summary": "Pricing & Billing feedback: transparent pricing",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "e3ec6cfd-fbd0-4d1d-a79a-ef752028a59d"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "The build quality is exceptional! Premium aluminum finish and feels extremely solid.",
+      "cleaned_text": "The build quality is exceptional! Premium aluminum finish and feels extremely solid.",
+      "source": "review",
+      "rating": 5,
+      "customer": "Carlos Gomez",
+      "created_at": "2026-09-22T23:23:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.54,
+      "category": "Product Quality",
+      "topics": [
+        "build quality",
+        "finish",
+        "hardware"
+      ],
+      "severity": 1,
+      "summary": "Product Quality feedback: build quality",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "633a99ad-bc1c-4990-82b5-887d98d4d7f7"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Invoice lacked proper VAT breakdown required for business accounting.",
+      "cleaned_text": "Invoice lacked proper VAT breakdown required for business accounting.",
+      "source": "social",
+      "rating": 2,
+      "customer": "Olivia Zhang",
+      "created_at": "2026-09-21T21:37:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.73,
+      "category": "Pricing & Billing",
+      "topics": [
+        "missing VAT",
+        "invoice error",
+        "business billing"
+      ],
+      "severity": 3,
+      "summary": "Pricing & Billing feedback: missing VAT",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "b36735b9-e576-420f-bb83-0599eddb5c0b"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Constantly crashing after update v2.4. Literally unusable right now.",
+      "cleaned_text": "Constantly crashing after update v2.4. Literally unusable right now.",
+      "source": "support",
+      "rating": 1,
+      "customer": "Sofia Rossi",
+      "created_at": "2026-09-21T06:16:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.77,
+      "category": "App/Website Bugs",
+      "topics": [
+        "v2.4 update",
+        "unusable crash",
+        "mobile app"
+      ],
+      "severity": 5,
+      "summary": "User experienced app crash/freeze related to update: v2.4 update",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "ad1b782f-a7b6-470f-b5fa-2e7f7f01fdf3"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Crash report sent. Keeps quitting spontaneously when scrolling the catalog. Fix please!",
+      "cleaned_text": "Crash report sent. Keeps quitting spontaneously when scrolling the catalog. Fix please!",
+      "source": "social",
+      "rating": 2,
+      "customer": "Aaliyah Washington",
+      "created_at": "2026-09-21T04:10:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.75,
+      "category": "App/Website Bugs",
+      "topics": [
+        "catalog scroll crash",
+        "spontaneous quit",
+        "app crash"
+      ],
+      "severity": 4,
+      "summary": "User experienced app crash/freeze related to update: catalog scroll crash",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "de388c70-bb0a-414c-9329-0988a3c3a9f7"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Very reasonable pricing for the feature set provided. Great ROI for small teams.",
+      "cleaned_text": "Very reasonable pricing for the feature set provided. Great ROI for small teams.",
+      "source": "review",
+      "rating": 5,
+      "customer": "Jessica Taylor",
+      "created_at": "2026-09-20T18:44:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.8,
+      "category": "Pricing & Billing",
+      "topics": [
+        "fair pricing",
+        "great ROI",
+        "value for money"
+      ],
+      "severity": 1,
+      "summary": "Pricing & Billing feedback: fair pricing",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "869fc710-4182-4746-8d89-73b31109ceb3"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Cannot complete my transaction. App crashes during Apple Pay authorization. Truly frustrating.",
+      "cleaned_text": "Cannot complete my transaction. App crashes during Apple Pay authorization. Truly frustrating.",
+      "source": "social",
+      "rating": 1,
+      "customer": "Devon Patel",
+      "created_at": "2026-09-20T15:29:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.74,
+      "category": "App/Website Bugs",
+      "topics": [
+        "Apple Pay crash",
+        "transaction failed",
+        "checkout bug"
+      ],
+      "severity": 5,
+      "summary": "User experienced app crash/freeze related to update: Apple Pay crash",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "6233cad3-26c7-40cb-85c7-8dbb0841045e"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Clean, minimalist interface that reduces cognitive overload. Love the dark theme.",
+      "cleaned_text": "Clean, minimalist interface that reduces cognitive overload. Love the dark theme.",
+      "source": "review",
+      "rating": 5,
+      "customer": "David Kim",
+      "created_at": "2026-09-20T09:55:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.69,
+      "category": "Usability/UX",
+      "topics": [
+        "clean interface",
+        "dark theme",
+        "aesthetics"
+      ],
+      "severity": 1,
+      "summary": "Usability/UX feedback: clean interface",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "113c4cff-5233-4d97-a96a-9eeccfe141b8"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Invoice lacked proper VAT breakdown required for business accounting.",
+      "cleaned_text": "Invoice lacked proper VAT breakdown required for business accounting.",
+      "source": "social",
+      "rating": 2,
+      "customer": "Aaliyah Washington",
+      "created_at": "2026-09-19T15:54:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.88,
+      "category": "Pricing & Billing",
+      "topics": [
+        "missing VAT",
+        "invoice error",
+        "business billing"
+      ],
+      "severity": 3,
+      "summary": "Pricing & Billing feedback: missing VAT",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "1da10bc1-13dc-4be4-b15d-5cb39d389303"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Constantly crashing after update v2.4. Literally unusable right now.",
+      "cleaned_text": "Constantly crashing after update v2.4. Literally unusable right now.",
+      "source": "review",
+      "rating": 1,
+      "customer": "Emily Clark",
+      "created_at": "2026-09-19T12:31:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.94,
+      "category": "App/Website Bugs",
+      "topics": [
+        "v2.4 update",
+        "unusable crash",
+        "mobile app"
+      ],
+      "severity": 5,
+      "summary": "User experienced app crash/freeze related to update: v2.4 update",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "762c2f37-f1c8-410a-b690-5b2cd48dc6df"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "The app keeps crashing immediately after opening on iOS since the v2.4 update. Cannot access my cart! Truly frustrating.",
+      "cleaned_text": "The app keeps crashing immediately after opening on iOS since the v2.4 update. Cannot access my cart! Truly frustrating.",
+      "source": "support",
+      "rating": 1,
+      "customer": "Alex Rivera",
+      "created_at": "2026-09-19T09:03:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.72,
+      "category": "App/Website Bugs",
+      "topics": [
+        "crash on launch",
+        "v2.4 update",
+        "cart inaccessible"
+      ],
+      "severity": 5,
+      "summary": "User experienced app crash/freeze related to update: crash on launch",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "480d52a0-fc82-43d4-9618-91cc9e2b95f0"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Latest update completely broke checkout. It freezes on payment screen and restarts the app.",
+      "cleaned_text": "Latest update completely broke checkout. It freezes on payment screen and restarts the app.",
+      "source": "review",
+      "rating": 1,
+      "customer": "Daniel Martinez",
+      "created_at": "2026-09-18T23:14:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.76,
+      "category": "App/Website Bugs",
+      "topics": [
+        "checkout freeze",
+        "payment crash",
+        "v2.4 update"
+      ],
+      "severity": 5,
+      "summary": "User experienced app crash/freeze related to update: checkout freeze",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "3a8053eb-73de-4f89-8def-df8680fb45f7"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Support representative Maya resolved my replacement request in under 5 minutes. Outstanding service!",
+      "cleaned_text": "Support representative Maya resolved my replacement request in under 5 minutes. Outstanding service!",
+      "source": "support",
+      "rating": 5,
+      "customer": "Carlos Gomez",
+      "created_at": "2026-09-18T21:38:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.79,
+      "category": "Customer Support",
+      "topics": [
+        "quick resolution",
+        "representative Maya",
+        "excellent support"
+      ],
+      "severity": 1,
+      "summary": "Customer Support feedback: quick resolution",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "a9ec1d7c-0c26-4815-87c9-1624863652f8"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Latest update completely broke checkout. It freezes on payment screen and restarts the app.",
+      "cleaned_text": "Latest update completely broke checkout. It freezes on payment screen and restarts the app.",
+      "source": "survey",
+      "rating": 1,
+      "customer": "Priya Sharma",
+      "created_at": "2026-09-18T12:43:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.73,
+      "category": "App/Website Bugs",
+      "topics": [
+        "checkout freeze",
+        "payment crash",
+        "v2.4 update"
+      ],
+      "severity": 5,
+      "summary": "User experienced app crash/freeze related to update: checkout freeze",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "a00d4991-9737-468f-9fe6-1e96b8d95e75"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Color was noticeably darker in person compared to product images on the website.",
+      "cleaned_text": "Color was noticeably darker in person compared to product images on the website.",
+      "source": "review",
+      "rating": 3,
+      "customer": "Emma Watson",
+      "created_at": "2026-09-18T06:41:00",
+      "sentiment": "neutral",
+      "sentiment_score": 0.13,
+      "category": "Product Quality",
+      "topics": [
+        "color mismatch",
+        "product photos",
+        "accuracy"
+      ],
+      "severity": 2,
+      "summary": "Product Quality feedback: color mismatch",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "d5567773-abc3-4e67-804c-043142ae0c14"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Box was crushed on one side, but luckily the inner bubble wrap protected the item.",
+      "cleaned_text": "Box was crushed on one side, but luckily the inner bubble wrap protected the item.",
+      "source": "support",
+      "rating": 3,
+      "customer": "Carlos Gomez",
+      "created_at": "2026-09-17T16:13:00",
+      "sentiment": "neutral",
+      "sentiment_score": -0.02,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "damaged box",
+        "packaging",
+        "carrier issue"
+      ],
+      "severity": 2,
+      "summary": "Delivery & Shipping feedback: damaged box",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "86d01cd8-06af-42b4-91a2-c242a7c801a2"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Dark mode toggle does not persist across browser sessions.",
+      "cleaned_text": "Dark mode toggle does not persist across browser sessions.",
+      "source": "support",
+      "rating": 3,
+      "customer": "Tara Murphy",
+      "created_at": "2026-09-17T11:49:00",
+      "sentiment": "neutral",
+      "sentiment_score": 0.08,
+      "category": "App/Website Bugs",
+      "topics": [
+        "dark mode",
+        "session persistence",
+        "UI bug"
+      ],
+      "severity": 1,
+      "summary": "App/Website Bugs feedback: dark mode",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "dde84977-2925-4cac-b7b5-297a0267dbc3"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "International shipping was surprisingly smooth with customs cleared automatically.",
+      "cleaned_text": "International shipping was surprisingly smooth with customs cleared automatically.",
+      "source": "social",
+      "rating": 5,
+      "customer": "Sarah Jenkins",
+      "created_at": "2026-09-17T09:50:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.7,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "international shipping",
+        "customs",
+        "smooth delivery"
+      ],
+      "severity": 1,
+      "summary": "Delivery & Shipping feedback: international shipping",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "56330ce8-61eb-4934-a57f-bd4005509791"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Waited 45 minutes on live chat only to be transferred and disconnected.",
+      "cleaned_text": "Waited 45 minutes on live chat only to be transferred and disconnected.",
+      "source": "social",
+      "rating": 1,
+      "customer": "Hannah Becker",
+      "created_at": "2026-09-16T06:55:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.75,
+      "category": "Customer Support",
+      "topics": [
+        "long wait time",
+        "live chat disconnect",
+        "poor service"
+      ],
+      "severity": 4,
+      "summary": "Customer Support feedback: long wait time",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "b4c58785-4ded-43bc-85e5-ed6a2238a982"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "The sound clarity and noise cancellation are top-tier. Best headphones I have owned.",
+      "cleaned_text": "The sound clarity and noise cancellation are top-tier. Best headphones I have owned.",
+      "source": "review",
+      "rating": 5,
+      "customer": "Sofia Rossi",
+      "created_at": "2026-09-15T10:15:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.73,
+      "category": "Product Quality",
+      "topics": [
+        "noise cancellation",
+        "sound quality",
+        "audio"
+      ],
+      "severity": 1,
+      "summary": "Product Quality feedback: noise cancellation",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "653f5667-ec00-4fe6-a1b3-68cb9f4e7992"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Took over a week to get a response to my support ticket regarding a warranty claim.",
+      "cleaned_text": "Took over a week to get a response to my support ticket regarding a warranty claim.",
+      "source": "social",
+      "rating": 2,
+      "customer": "Lucas Wright",
+      "created_at": "2026-09-15T00:21:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.75,
+      "category": "Customer Support",
+      "topics": [
+        "slow ticket response",
+        "warranty claim",
+        "delayed reply"
+      ],
+      "severity": 3,
+      "summary": "Customer Support feedback: slow ticket response",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "43ec076c-3970-4648-9740-f5c06944a426"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Password reset link threw a 500 internal server error the first time I clicked it.",
+      "cleaned_text": "Password reset link threw a 500 internal server error the first time I clicked it.",
+      "source": "survey",
+      "rating": 2,
+      "customer": "Devon Patel",
+      "created_at": "2026-09-13T04:44:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.77,
+      "category": "App/Website Bugs",
+      "topics": [
+        "password reset",
+        "500 error",
+        "auth"
+      ],
+      "severity": 3,
+      "summary": "App/Website Bugs feedback: password reset",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "335e661b-d9e0-4194-9fac-257a9f0740df"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Screen resolution is sharp and vivid. Great for outdoor readability.",
+      "cleaned_text": "Screen resolution is sharp and vivid. Great for outdoor readability.",
+      "source": "review",
+      "rating": 5,
+      "customer": "Lucas Wright",
+      "created_at": "2026-09-12T23:03:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.89,
+      "category": "Product Quality",
+      "topics": [
+        "display quality",
+        "brightness",
+        "screen"
+      ],
+      "severity": 1,
+      "summary": "Product Quality feedback: display quality",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "2e1c0515-c037-4d0c-91a8-78185285dcb8"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Password reset link threw a 500 internal server error the first time I clicked it.",
+      "cleaned_text": "Password reset link threw a 500 internal server error the first time I clicked it.",
+      "source": "review",
+      "rating": 2,
+      "customer": "Marcus Vance",
+      "created_at": "2026-09-12T19:29:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.54,
+      "category": "App/Website Bugs",
+      "topics": [
+        "password reset",
+        "500 error",
+        "auth"
+      ],
+      "severity": 3,
+      "summary": "App/Website Bugs feedback: password reset",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "83c0bba1-c8e9-44be-93dd-d24b5c2f64fd"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Hinge feels a bit stiff initially, but loosens up nicely after a few days.",
+      "cleaned_text": "Hinge feels a bit stiff initially, but loosens up nicely after a few days.",
+      "source": "social",
+      "rating": 4,
+      "customer": "Lucas Wright",
+      "created_at": "2026-09-12T01:39:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.63,
+      "category": "Product Quality",
+      "topics": [
+        "hinge stiffness",
+        "hardware feel",
+        "ergonomics"
+      ],
+      "severity": 1,
+      "summary": "Product Quality feedback: hinge stiffness",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "9fffcec8-34ed-4e8a-bacd-ab4ff47c2532"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Font size on mobile is slightly too small for comfortable reading in bright sunlight.",
+      "cleaned_text": "Font size on mobile is slightly too small for comfortable reading in bright sunlight.",
+      "source": "support",
+      "rating": 3,
+      "customer": "Olivia Zhang",
+      "created_at": "2026-09-11T10:14:00",
+      "sentiment": "neutral",
+      "sentiment_score": -0.01,
+      "category": "Usability/UX",
+      "topics": [
+        "small font",
+        "mobile readability",
+        "contrast"
+      ],
+      "severity": 2,
+      "summary": "Usability/UX feedback: small font",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "2e7ae36d-e30b-48f4-9e60-ea7f07f3f6f0"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Seams on the carrying case began fraying after just two weeks of gentle use.",
+      "cleaned_text": "Seams on the carrying case began fraying after just two weeks of gentle use.",
+      "source": "survey",
+      "rating": 2,
+      "customer": "Alex Rivera",
+      "created_at": "2026-09-11T07:59:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.89,
+      "category": "Product Quality",
+      "topics": [
+        "fraying seams",
+        "case durability",
+        "wear and tear"
+      ],
+      "severity": 3,
+      "summary": "Product Quality feedback: fraying seams",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "561679db-5e86-4a36-b377-b8943a4ebf05"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Seams on the carrying case began fraying after just two weeks of gentle use.",
+      "cleaned_text": "Seams on the carrying case began fraying after just two weeks of gentle use.",
+      "source": "social",
+      "rating": 2,
+      "customer": "Liam O'Connor",
+      "created_at": "2026-09-10T11:18:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.63,
+      "category": "Product Quality",
+      "topics": [
+        "fraying seams",
+        "case durability",
+        "wear and tear"
+      ],
+      "severity": 3,
+      "summary": "Product Quality feedback: fraying seams",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "2d7190fa-959f-41a6-9efe-0f89aa87048b"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Difficult to cancel subscription. Had to navigate 4 confirmation pages and call support.",
+      "cleaned_text": "Difficult to cancel subscription. Had to navigate 4 confirmation pages and call support.",
+      "source": "review",
+      "rating": 1,
+      "customer": "Hannah Becker",
+      "created_at": "2026-09-10T07:10:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.61,
+      "category": "Pricing & Billing",
+      "topics": [
+        "difficult cancellation",
+        "dark pattern",
+        "subscription friction"
+      ],
+      "severity": 4,
+      "summary": "Pricing & Billing feedback: difficult cancellation",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "b89f5724-9641-4aa9-9d9c-d60b7795eca7"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Clean, minimalist interface that reduces cognitive overload. Love the dark theme.",
+      "cleaned_text": "Clean, minimalist interface that reduces cognitive overload. Love the dark theme.",
+      "source": "social",
+      "rating": 5,
+      "customer": "Brandon Cole",
+      "created_at": "2026-09-10T01:08:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.69,
+      "category": "Usability/UX",
+      "topics": [
+        "clean interface",
+        "dark theme",
+        "aesthetics"
+      ],
+      "severity": 1,
+      "summary": "Usability/UX feedback: clean interface",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "7faa5d03-5046-45bd-a533-02c7d5570e4c"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Difficult to cancel subscription. Had to navigate 4 confirmation pages and call support.",
+      "cleaned_text": "Difficult to cancel subscription. Had to navigate 4 confirmation pages and call support.",
+      "source": "support",
+      "rating": 1,
+      "customer": "Rachel Green",
+      "created_at": "2026-09-09T08:17:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.52,
+      "category": "Pricing & Billing",
+      "topics": [
+        "difficult cancellation",
+        "dark pattern",
+        "subscription friction"
+      ],
+      "severity": 4,
+      "summary": "Pricing & Billing feedback: difficult cancellation",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "1cf6786e-eacb-409f-ba76-90b784e94cfd"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Help desk team followed up proactively after resolving my issue. Very impressed.",
+      "cleaned_text": "Help desk team followed up proactively after resolving my issue. Very impressed.",
+      "source": "social",
+      "rating": 5,
+      "customer": "Priya Sharma",
+      "created_at": "2026-09-08T17:51:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.79,
+      "category": "Customer Support",
+      "topics": [
+        "proactive follow up",
+        "helpful team",
+        "great service"
+      ],
+      "severity": 1,
+      "summary": "Customer Support feedback: proactive follow up",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "9174c4d0-22c3-40e5-a63d-fcf713c62a28"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Seams on the carrying case began fraying after just two weeks of gentle use.",
+      "cleaned_text": "Seams on the carrying case began fraying after just two weeks of gentle use.",
+      "source": "survey",
+      "rating": 2,
+      "customer": "Michael Chang",
+      "created_at": "2026-09-08T11:21:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.55,
+      "category": "Product Quality",
+      "topics": [
+        "fraying seams",
+        "case durability",
+        "wear and tear"
+      ],
+      "severity": 3,
+      "summary": "Product Quality feedback: fraying seams",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "b738e6e1-e533-4a6d-940b-43ffc4d0a22e"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Package arrived 4 days later than promised with zero tracking updates in between.",
+      "cleaned_text": "Package arrived 4 days later than promised with zero tracking updates in between.",
+      "source": "survey",
+      "rating": 1,
+      "customer": "Brandon Cole",
+      "created_at": "2026-09-08T03:04:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.8,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "delayed delivery",
+        "no tracking",
+        "shipping lag"
+      ],
+      "severity": 4,
+      "summary": "Delivery & Shipping feedback: delayed delivery",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "fbfaa73b-9008-449c-81e5-0eb46fd6b1a8"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Color was noticeably darker in person compared to product images on the website.",
+      "cleaned_text": "Color was noticeably darker in person compared to product images on the website.",
+      "source": "support",
+      "rating": 3,
+      "customer": "Brandon Cole",
+      "created_at": "2026-09-07T21:52:00",
+      "sentiment": "neutral",
+      "sentiment_score": 0.14,
+      "category": "Product Quality",
+      "topics": [
+        "color mismatch",
+        "product photos",
+        "accuracy"
+      ],
+      "severity": 2,
+      "summary": "Product Quality feedback: color mismatch",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "fd75e5e7-677b-4f3f-b50f-569668df349d"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "The sound clarity and noise cancellation are top-tier. Best headphones I have owned.",
+      "cleaned_text": "The sound clarity and noise cancellation are top-tier. Best headphones I have owned.",
+      "source": "survey",
+      "rating": 5,
+      "customer": "Jason Miller",
+      "created_at": "2026-09-07T19:29:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.62,
+      "category": "Product Quality",
+      "topics": [
+        "noise cancellation",
+        "sound quality",
+        "audio"
+      ],
+      "severity": 1,
+      "summary": "Product Quality feedback: noise cancellation",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "0141f05e-e10c-4532-ba57-a87314d11a53"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Help desk team followed up proactively after resolving my issue. Very impressed.",
+      "cleaned_text": "Help desk team followed up proactively after resolving my issue. Very impressed.",
+      "source": "survey",
+      "rating": 5,
+      "customer": "Devon Patel",
+      "created_at": "2026-09-07T18:51:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.91,
+      "category": "Customer Support",
+      "topics": [
+        "proactive follow up",
+        "helpful team",
+        "great service"
+      ],
+      "severity": 1,
+      "summary": "Customer Support feedback: proactive follow up",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "a3d96467-43ef-41bc-b2e4-b112ea2e9448"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Box was crushed on one side, but luckily the inner bubble wrap protected the item.",
+      "cleaned_text": "Box was crushed on one side, but luckily the inner bubble wrap protected the item.",
+      "source": "social",
+      "rating": 3,
+      "customer": "Rachel Green",
+      "created_at": "2026-09-07T14:23:00",
+      "sentiment": "neutral",
+      "sentiment_score": 0.02,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "damaged box",
+        "packaging",
+        "carrier issue"
+      ],
+      "severity": 2,
+      "summary": "Delivery & Shipping feedback: damaged box",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "263672e2-277a-416f-ba70-b703860600df"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Invoice lacked proper VAT breakdown required for business accounting.",
+      "cleaned_text": "Invoice lacked proper VAT breakdown required for business accounting.",
+      "source": "review",
+      "rating": 2,
+      "customer": "Daniel Martinez",
+      "created_at": "2026-09-07T02:13:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.69,
+      "category": "Pricing & Billing",
+      "topics": [
+        "missing VAT",
+        "invoice error",
+        "business billing"
+      ],
+      "severity": 3,
+      "summary": "Pricing & Billing feedback: missing VAT",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "cea1ea0f-fc1b-41e0-9819-46541f45d9a0"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "The build quality is exceptional! Premium aluminum finish and feels extremely solid.",
+      "cleaned_text": "The build quality is exceptional! Premium aluminum finish and feels extremely solid.",
+      "source": "support",
+      "rating": 5,
+      "customer": "Sofia Rossi",
+      "created_at": "2026-09-06T08:22:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.83,
+      "category": "Product Quality",
+      "topics": [
+        "build quality",
+        "finish",
+        "hardware"
+      ],
+      "severity": 1,
+      "summary": "Product Quality feedback: build quality",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "a5d85b91-fdea-4252-b274-8ac22fd6d317"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "The new navigation menu is so intuitive! Finding settings and analytics takes one click.",
+      "cleaned_text": "The new navigation menu is so intuitive! Finding settings and analytics takes one click.",
+      "source": "review",
+      "rating": 5,
+      "customer": "Sofia Rossi",
+      "created_at": "2026-09-06T07:13:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.84,
+      "category": "Usability/UX",
+      "topics": [
+        "intuitive navigation",
+        "clean menu",
+        "UX overhaul"
+      ],
+      "severity": 1,
+      "summary": "Usability/UX feedback: intuitive navigation",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "e1095de3-d91c-4e66-8da6-94027c5de0ed"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "The chatbot could not understand basic refund questions and kept looping.",
+      "cleaned_text": "The chatbot could not understand basic refund questions and kept looping.",
+      "source": "review",
+      "rating": 2,
+      "customer": "Devon Patel",
+      "created_at": "2026-09-05T16:16:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.84,
+      "category": "Customer Support",
+      "topics": [
+        "bot loop",
+        "refund inquiry",
+        "automated support"
+      ],
+      "severity": 3,
+      "summary": "Customer Support feedback: bot loop",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "478617e0-ef8b-497e-b1d2-acc14eb5d433"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Image thumbnails fail to load on slow cellular connections.",
+      "cleaned_text": "Image thumbnails fail to load on slow cellular connections.",
+      "source": "social",
+      "rating": 3,
+      "customer": "Emily Clark",
+      "created_at": "2026-09-05T12:32:00",
+      "sentiment": "neutral",
+      "sentiment_score": 0.02,
+      "category": "App/Website Bugs",
+      "topics": [
+        "image loading",
+        "thumbnails",
+        "network"
+      ],
+      "severity": 2,
+      "summary": "App/Website Bugs feedback: image loading",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "aae999ea-00c3-4d33-87c7-112947cf144c"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Box was crushed on one side, but luckily the inner bubble wrap protected the item.",
+      "cleaned_text": "Box was crushed on one side, but luckily the inner bubble wrap protected the item.",
+      "source": "survey",
+      "rating": 3,
+      "customer": "Emma Watson",
+      "created_at": "2026-09-05T03:46:00",
+      "sentiment": "neutral",
+      "sentiment_score": -0.06,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "damaged box",
+        "packaging",
+        "carrier issue"
+      ],
+      "severity": 2,
+      "summary": "Delivery & Shipping feedback: damaged box",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "4194ce42-8f84-4bd6-9959-11c08ebdb6cc"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Very reasonable pricing for the feature set provided. Great ROI for small teams.",
+      "cleaned_text": "Very reasonable pricing for the feature set provided. Great ROI for small teams.",
+      "source": "review",
+      "rating": 5,
+      "customer": "Brandon Cole",
+      "created_at": "2026-09-04T08:06:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.8,
+      "category": "Pricing & Billing",
+      "topics": [
+        "fair pricing",
+        "great ROI",
+        "value for money"
+      ],
+      "severity": 1,
+      "summary": "Pricing & Billing feedback: fair pricing",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "5f82ce2b-086f-4bc3-8502-89e6ff98459d"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Unexpected annual auto-renewal charge occurred without any reminder email beforehand.",
+      "cleaned_text": "Unexpected annual auto-renewal charge occurred without any reminder email beforehand.",
+      "source": "social",
+      "rating": 1,
+      "customer": "Liam O'Connor",
+      "created_at": "2026-09-03T13:37:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.68,
+      "category": "Pricing & Billing",
+      "topics": [
+        "surprise auto renewal",
+        "no reminder",
+        "billing issue"
+      ],
+      "severity": 4,
+      "summary": "Pricing & Billing feedback: surprise auto renewal",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "45d5cedc-7355-4959-a39e-3061d4b93b2d"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Materials feel cheap and plasticky given the premium price point.",
+      "cleaned_text": "Materials feel cheap and plasticky given the premium price point.",
+      "source": "survey",
+      "rating": 2,
+      "customer": "Lucas Wright",
+      "created_at": "2026-09-03T09:08:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.77,
+      "category": "Product Quality",
+      "topics": [
+        "cheap material",
+        "plastic feel",
+        "overpriced"
+      ],
+      "severity": 3,
+      "summary": "Product Quality feedback: cheap material",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "0209d35b-b251-4651-8682-5f751c354521"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Waited 45 minutes on live chat only to be transferred and disconnected.",
+      "cleaned_text": "Waited 45 minutes on live chat only to be transferred and disconnected.",
+      "source": "survey",
+      "rating": 1,
+      "customer": "Rachel Green",
+      "created_at": "2026-09-02T16:09:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.75,
+      "category": "Customer Support",
+      "topics": [
+        "long wait time",
+        "live chat disconnect",
+        "poor service"
+      ],
+      "severity": 4,
+      "summary": "Customer Support feedback: long wait time",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "7873f46f-6486-4ed1-b7d4-9717313888cc"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Support representative Maya resolved my replacement request in under 5 minutes. Outstanding service!",
+      "cleaned_text": "Support representative Maya resolved my replacement request in under 5 minutes. Outstanding service!",
+      "source": "review",
+      "rating": 5,
+      "customer": "Marcus Vance",
+      "created_at": "2026-09-01T14:35:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.75,
+      "category": "Customer Support",
+      "topics": [
+        "quick resolution",
+        "representative Maya",
+        "excellent support"
+      ],
+      "severity": 1,
+      "summary": "Customer Support feedback: quick resolution",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "a4857ac6-7847-4096-bef8-7f181c8a172f"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Took over a week to get a response to my support ticket regarding a warranty claim.",
+      "cleaned_text": "Took over a week to get a response to my support ticket regarding a warranty claim.",
+      "source": "social",
+      "rating": 2,
+      "customer": "Sofia Rossi",
+      "created_at": "2026-09-01T13:43:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.89,
+      "category": "Customer Support",
+      "topics": [
+        "slow ticket response",
+        "warranty claim",
+        "delayed reply"
+      ],
+      "severity": 3,
+      "summary": "Customer Support feedback: slow ticket response",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "881890c3-c5f6-4e85-8577-93f185690c37"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Package arrived 4 days later than promised with zero tracking updates in between.",
+      "cleaned_text": "Package arrived 4 days later than promised with zero tracking updates in between.",
+      "source": "social",
+      "rating": 1,
+      "customer": "Emily Clark",
+      "created_at": "2026-09-01T04:53:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.74,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "delayed delivery",
+        "no tracking",
+        "shipping lag"
+      ],
+      "severity": 4,
+      "summary": "Delivery & Shipping feedback: delayed delivery",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "655d9252-2d65-4183-8a29-f3b704f25096"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Dark mode toggle does not persist across browser sessions.",
+      "cleaned_text": "Dark mode toggle does not persist across browser sessions.",
+      "source": "review",
+      "rating": 3,
+      "customer": "Lucas Wright",
+      "created_at": "2026-09-01T01:01:00",
+      "sentiment": "neutral",
+      "sentiment_score": -0.15,
+      "category": "App/Website Bugs",
+      "topics": [
+        "dark mode",
+        "session persistence",
+        "UI bug"
+      ],
+      "severity": 1,
+      "summary": "App/Website Bugs feedback: dark mode",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "c743da81-b49f-4c31-b8ae-2aed75fb6d98"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Took over a week to get a response to my support ticket regarding a warranty claim.",
+      "cleaned_text": "Took over a week to get a response to my support ticket regarding a warranty claim.",
+      "source": "review",
+      "rating": 2,
+      "customer": "Sofia Rossi",
+      "created_at": "2026-08-31T11:25:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.59,
+      "category": "Customer Support",
+      "topics": [
+        "slow ticket response",
+        "warranty claim",
+        "delayed reply"
+      ],
+      "severity": 3,
+      "summary": "Customer Support feedback: slow ticket response",
+      "analyzed_at": "2026-10-11T05:54:25.508Z",
+      "id": "12aa082f-177c-4ef1-a4a7-fa9b4078ffd3"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Screen resolution is sharp and vivid. Great for outdoor readability.",
+      "cleaned_text": "Screen resolution is sharp and vivid. Great for outdoor readability.",
+      "source": "social",
+      "rating": 5,
+      "customer": "Emma Watson",
+      "created_at": "2026-08-29T16:28:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.9,
+      "category": "Product Quality",
+      "topics": [
+        "display quality",
+        "brightness",
+        "screen"
+      ],
+      "severity": 1,
+      "summary": "Product Quality feedback: display quality",
+      "analyzed_at": "2026-10-11T05:54:25.553Z",
+      "id": "257969c3-0b23-4bf6-8085-e2d9b45f6169"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Super fast delivery! Arrived in under 24 hours in secure, eco-friendly packaging.",
+      "cleaned_text": "Super fast delivery! Arrived in under 24 hours in secure, eco-friendly packaging.",
+      "source": "support",
+      "rating": 5,
+      "customer": "Rachel Green",
+      "created_at": "2026-08-28T20:47:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.65,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "fast delivery",
+        "eco packaging",
+        "quick shipping"
+      ],
+      "severity": 1,
+      "summary": "Delivery & Shipping feedback: fast delivery",
+      "analyzed_at": "2026-10-11T05:54:25.553Z",
+      "id": "462bce77-a6b9-4570-8efc-b105f59cf5d8"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Waited 45 minutes on live chat only to be transferred and disconnected.",
+      "cleaned_text": "Waited 45 minutes on live chat only to be transferred and disconnected.",
+      "source": "social",
+      "rating": 1,
+      "customer": "Carlos Gomez",
+      "created_at": "2026-08-28T13:45:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.59,
+      "category": "Customer Support",
+      "topics": [
+        "long wait time",
+        "live chat disconnect",
+        "poor service"
+      ],
+      "severity": 4,
+      "summary": "Customer Support feedback: long wait time",
+      "analyzed_at": "2026-10-11T05:54:25.553Z",
+      "id": "880e319f-5788-468e-b608-51950806a1ed"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Screen resolution is sharp and vivid. Great for outdoor readability.",
+      "cleaned_text": "Screen resolution is sharp and vivid. Great for outdoor readability.",
+      "source": "survey",
+      "rating": 5,
+      "customer": "Emily Clark",
+      "created_at": "2026-08-28T13:42:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.59,
+      "category": "Product Quality",
+      "topics": [
+        "display quality",
+        "brightness",
+        "screen"
+      ],
+      "severity": 1,
+      "summary": "Product Quality feedback: display quality",
+      "analyzed_at": "2026-10-11T05:54:25.553Z",
+      "id": "da4358e5-6a4a-4146-8639-ebf49b21ef2f"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Search auto-complete occasionally hangs for 5 seconds before showing suggestions.",
+      "cleaned_text": "Search auto-complete occasionally hangs for 5 seconds before showing suggestions.",
+      "source": "survey",
+      "rating": 3,
+      "customer": "Chloe Dubois",
+      "created_at": "2026-08-26T04:37:00",
+      "sentiment": "neutral",
+      "sentiment_score": -0.02,
+      "category": "App/Website Bugs",
+      "topics": [
+        "search delay",
+        "autocomplete lag",
+        "website"
+      ],
+      "severity": 2,
+      "summary": "App/Website Bugs feedback: search delay",
+      "analyzed_at": "2026-10-11T05:54:25.553Z",
+      "id": "643aca03-f7ad-4b47-8b20-5805b11fd70d"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "The chatbot could not understand basic refund questions and kept looping.",
+      "cleaned_text": "The chatbot could not understand basic refund questions and kept looping.",
+      "source": "social",
+      "rating": 2,
+      "customer": "Emily Clark",
+      "created_at": "2026-08-25T18:12:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.68,
+      "category": "Customer Support",
+      "topics": [
+        "bot loop",
+        "refund inquiry",
+        "automated support"
+      ],
+      "severity": 3,
+      "summary": "Customer Support feedback: bot loop",
+      "analyzed_at": "2026-10-11T05:54:25.553Z",
+      "id": "eab423ec-7bee-4340-b3a6-cb01354e5bd1"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Seams on the carrying case began fraying after just two weeks of gentle use.",
+      "cleaned_text": "Seams on the carrying case began fraying after just two weeks of gentle use.",
+      "source": "review",
+      "rating": 2,
+      "customer": "Lucas Wright",
+      "created_at": "2026-08-25T15:56:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.8,
+      "category": "Product Quality",
+      "topics": [
+        "fraying seams",
+        "case durability",
+        "wear and tear"
+      ],
+      "severity": 3,
+      "summary": "Product Quality feedback: fraying seams",
+      "analyzed_at": "2026-10-11T05:54:25.553Z",
+      "id": "ca84c1ac-6c08-47de-b61f-33c0640c6edb"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Courier left the parcel on the driveway in the rain instead of on the covered porch.",
+      "cleaned_text": "Courier left the parcel on the driveway in the rain instead of on the covered porch.",
+      "source": "support",
+      "rating": 2,
+      "customer": "Daniel Martinez",
+      "created_at": "2026-08-25T12:25:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.78,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "courier mishandling",
+        "rain damage",
+        "delivery instruction"
+      ],
+      "severity": 3,
+      "summary": "Delivery & Shipping feedback: courier mishandling",
+      "analyzed_at": "2026-10-11T05:54:25.553Z",
+      "id": "40a603ea-39da-4700-9b31-62347bd7e87e"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Super fast delivery! Arrived in under 24 hours in secure, eco-friendly packaging.",
+      "cleaned_text": "Super fast delivery! Arrived in under 24 hours in secure, eco-friendly packaging.",
+      "source": "survey",
+      "rating": 5,
+      "customer": "Benjamin Scott",
+      "created_at": "2026-08-24T03:00:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.62,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "fast delivery",
+        "eco packaging",
+        "quick shipping"
+      ],
+      "severity": 1,
+      "summary": "Delivery & Shipping feedback: fast delivery",
+      "analyzed_at": "2026-10-11T05:54:25.553Z",
+      "id": "bd020fea-5a2f-48a0-be97-1aa4d7768a5c"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Help desk team followed up proactively after resolving my issue. Very impressed.",
+      "cleaned_text": "Help desk team followed up proactively after resolving my issue. Very impressed.",
+      "source": "social",
+      "rating": 5,
+      "customer": "Kenji Sato",
+      "created_at": "2026-08-23T07:45:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.75,
+      "category": "Customer Support",
+      "topics": [
+        "proactive follow up",
+        "helpful team",
+        "great service"
+      ],
+      "severity": 1,
+      "summary": "Customer Support feedback: proactive follow up",
+      "analyzed_at": "2026-10-11T05:54:25.553Z",
+      "id": "36b7bea6-5cd2-4be1-b11b-e7fa6859a442"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Filter options on the dashboard are confusing. It is not clear if filters are AND or OR.",
+      "cleaned_text": "Filter options on the dashboard are confusing. It is not clear if filters are AND or OR.",
+      "source": "support",
+      "rating": 3,
+      "customer": "Carlos Gomez",
+      "created_at": "2026-08-22T18:57:00",
+      "sentiment": "neutral",
+      "sentiment_score": 0.05,
+      "category": "Usability/UX",
+      "topics": [
+        "filter confusion",
+        "dashboard UX",
+        "usability"
+      ],
+      "severity": 2,
+      "summary": "Usability/UX feedback: filter confusion",
+      "analyzed_at": "2026-10-11T05:54:25.553Z",
+      "id": "f054a01a-935b-4a36-b231-8714b224f4f3"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Hinge feels a bit stiff initially, but loosens up nicely after a few days.",
+      "cleaned_text": "Hinge feels a bit stiff initially, but loosens up nicely after a few days.",
+      "source": "review",
+      "rating": 4,
+      "customer": "Michael Chang",
+      "created_at": "2026-08-20T23:45:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.9,
+      "category": "Product Quality",
+      "topics": [
+        "hinge stiffness",
+        "hardware feel",
+        "ergonomics"
+      ],
+      "severity": 1,
+      "summary": "Product Quality feedback: hinge stiffness",
+      "analyzed_at": "2026-10-11T05:54:25.553Z",
+      "id": "2a2a1a76-63af-48fb-a2ba-b76fea5461a7"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Materials feel cheap and plasticky given the premium price point.",
+      "cleaned_text": "Materials feel cheap and plasticky given the premium price point.",
+      "source": "survey",
+      "rating": 2,
+      "customer": "Devon Patel",
+      "created_at": "2026-08-20T14:17:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.84,
+      "category": "Product Quality",
+      "topics": [
+        "cheap material",
+        "plastic feel",
+        "overpriced"
+      ],
+      "severity": 3,
+      "summary": "Product Quality feedback: cheap material",
+      "analyzed_at": "2026-10-11T05:54:25.553Z",
+      "id": "e74efcd0-d324-4fc7-a55a-4d7ede8b749b"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Took over a week to get a response to my support ticket regarding a warranty claim.",
+      "cleaned_text": "Took over a week to get a response to my support ticket regarding a warranty claim.",
+      "source": "support",
+      "rating": 2,
+      "customer": "David Kim",
+      "created_at": "2026-08-19T10:31:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.6,
+      "category": "Customer Support",
+      "topics": [
+        "slow ticket response",
+        "warranty claim",
+        "delayed reply"
+      ],
+      "severity": 3,
+      "summary": "Customer Support feedback: slow ticket response",
+      "analyzed_at": "2026-10-11T05:54:25.553Z",
+      "id": "6fe275f9-d93c-4639-bacb-24da5fad8ef2"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Seams on the carrying case began fraying after just two weeks of gentle use.",
+      "cleaned_text": "Seams on the carrying case began fraying after just two weeks of gentle use.",
+      "source": "review",
+      "rating": 2,
+      "customer": "Benjamin Scott",
+      "created_at": "2026-08-18T03:50:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.65,
+      "category": "Product Quality",
+      "topics": [
+        "fraying seams",
+        "case durability",
+        "wear and tear"
+      ],
+      "severity": 3,
+      "summary": "Product Quality feedback: fraying seams",
+      "analyzed_at": "2026-10-11T05:54:25.553Z",
+      "id": "a6029573-10f8-46af-936f-02a776d85e3b"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Support representative Maya resolved my replacement request in under 5 minutes. Outstanding service!",
+      "cleaned_text": "Support representative Maya resolved my replacement request in under 5 minutes. Outstanding service!",
+      "source": "social",
+      "rating": 5,
+      "customer": "Aaliyah Washington",
+      "created_at": "2026-08-18T01:13:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.67,
+      "category": "Customer Support",
+      "topics": [
+        "quick resolution",
+        "representative Maya",
+        "excellent support"
+      ],
+      "severity": 1,
+      "summary": "Customer Support feedback: quick resolution",
+      "analyzed_at": "2026-10-11T05:54:25.553Z",
+      "id": "da5d5008-a794-458f-adbc-a96653d5e589"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Courier left the parcel on the driveway in the rain instead of on the covered porch.",
+      "cleaned_text": "Courier left the parcel on the driveway in the rain instead of on the covered porch.",
+      "source": "social",
+      "rating": 2,
+      "customer": "Priya Sharma",
+      "created_at": "2026-08-17T18:12:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.76,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "courier mishandling",
+        "rain damage",
+        "delivery instruction"
+      ],
+      "severity": 3,
+      "summary": "Delivery & Shipping feedback: courier mishandling",
+      "analyzed_at": "2026-10-11T05:54:25.553Z",
+      "id": "45809b45-8d6d-4cd0-b358-1c8b45aa21f8"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Export to CSV button is buried under advanced settings instead of on the main table.",
+      "cleaned_text": "Export to CSV button is buried under advanced settings instead of on the main table.",
+      "source": "review",
+      "rating": 3,
+      "customer": "Sofia Rossi",
+      "created_at": "2026-08-17T14:12:00",
+      "sentiment": "neutral",
+      "sentiment_score": 0.14,
+      "category": "Usability/UX",
+      "topics": [
+        "buried export button",
+        "data export",
+        "UI placement"
+      ],
+      "severity": 2,
+      "summary": "Usability/UX feedback: buried export button",
+      "analyzed_at": "2026-10-11T05:54:25.553Z",
+      "id": "6ba64277-6482-42ae-82aa-865938ed77e3"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "The sound clarity and noise cancellation are top-tier. Best headphones I have owned.",
+      "cleaned_text": "The sound clarity and noise cancellation are top-tier. Best headphones I have owned.",
+      "source": "review",
+      "rating": 5,
+      "customer": "Sarah Jenkins",
+      "created_at": "2026-08-17T09:30:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.95,
+      "category": "Product Quality",
+      "topics": [
+        "noise cancellation",
+        "sound quality",
+        "audio"
+      ],
+      "severity": 1,
+      "summary": "Product Quality feedback: noise cancellation",
+      "analyzed_at": "2026-10-11T05:54:25.553Z",
+      "id": "f9545c93-4f60-4885-825e-a61077fe58ed"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Courier left the parcel on the driveway in the rain instead of on the covered porch.",
+      "cleaned_text": "Courier left the parcel on the driveway in the rain instead of on the covered porch.",
+      "source": "social",
+      "rating": 2,
+      "customer": "Rachel Green",
+      "created_at": "2026-08-17T08:33:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.78,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "courier mishandling",
+        "rain damage",
+        "delivery instruction"
+      ],
+      "severity": 3,
+      "summary": "Delivery & Shipping feedback: courier mishandling",
+      "analyzed_at": "2026-10-11T05:54:25.553Z",
+      "id": "2449b05b-5241-458b-905a-952b67dbe6c2"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Seams on the carrying case began fraying after just two weeks of gentle use.",
+      "cleaned_text": "Seams on the carrying case began fraying after just two weeks of gentle use.",
+      "source": "social",
+      "rating": 2,
+      "customer": "Marcus Vance",
+      "created_at": "2026-08-16T20:46:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.69,
+      "category": "Product Quality",
+      "topics": [
+        "fraying seams",
+        "case durability",
+        "wear and tear"
+      ],
+      "severity": 3,
+      "summary": "Product Quality feedback: fraying seams",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "07ed5939-7ff0-49f3-b470-9489c33aa74c"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "The chatbot could not understand basic refund questions and kept looping.",
+      "cleaned_text": "The chatbot could not understand basic refund questions and kept looping.",
+      "source": "support",
+      "rating": 2,
+      "customer": "Sarah Jenkins",
+      "created_at": "2026-08-16T19:43:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.79,
+      "category": "Customer Support",
+      "topics": [
+        "bot loop",
+        "refund inquiry",
+        "automated support"
+      ],
+      "severity": 3,
+      "summary": "Customer Support feedback: bot loop",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "64bdecad-8738-4647-b014-5462ba637430"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Password reset link threw a 500 internal server error the first time I clicked it.",
+      "cleaned_text": "Password reset link threw a 500 internal server error the first time I clicked it.",
+      "source": "survey",
+      "rating": 2,
+      "customer": "Daniel Martinez",
+      "created_at": "2026-08-16T11:00:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.75,
+      "category": "App/Website Bugs",
+      "topics": [
+        "password reset",
+        "500 error",
+        "auth"
+      ],
+      "severity": 3,
+      "summary": "App/Website Bugs feedback: password reset",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "66f6dbaf-8f3d-4304-bcf8-2bd0a87e48e5"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Friendly phone agent walked me through the setup step by step with patience.",
+      "cleaned_text": "Friendly phone agent walked me through the setup step by step with patience.",
+      "source": "survey",
+      "rating": 5,
+      "customer": "Chloe Dubois",
+      "created_at": "2026-08-16T03:31:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.95,
+      "category": "Customer Support",
+      "topics": [
+        "patient phone agent",
+        "guided setup",
+        "friendly support"
+      ],
+      "severity": 1,
+      "summary": "Customer Support feedback: patient phone agent",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "d00cab67-f3f0-4700-9620-f570bf33102f"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Battery life exceeded my expectations, lasting full 2 days of heavy usage.",
+      "cleaned_text": "Battery life exceeded my expectations, lasting full 2 days of heavy usage.",
+      "source": "support",
+      "rating": 5,
+      "customer": "Alex Rivera",
+      "created_at": "2026-08-15T21:49:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.67,
+      "category": "Product Quality",
+      "topics": [
+        "battery life",
+        "performance",
+        "long lasting"
+      ],
+      "severity": 1,
+      "summary": "Product Quality feedback: battery life",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "6f4c2d0c-1c23-45b1-9520-f362a246364c"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Super fast delivery! Arrived in under 24 hours in secure, eco-friendly packaging.",
+      "cleaned_text": "Super fast delivery! Arrived in under 24 hours in secure, eco-friendly packaging.",
+      "source": "support",
+      "rating": 5,
+      "customer": "Jason Miller",
+      "created_at": "2026-08-14T12:27:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.78,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "fast delivery",
+        "eco packaging",
+        "quick shipping"
+      ],
+      "severity": 1,
+      "summary": "Delivery & Shipping feedback: fast delivery",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "aeee54ed-08e0-4e42-af76-0dfdd5597105"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Seams on the carrying case began fraying after just two weeks of gentle use.",
+      "cleaned_text": "Seams on the carrying case began fraying after just two weeks of gentle use.",
+      "source": "survey",
+      "rating": 2,
+      "customer": "Tara Murphy",
+      "created_at": "2026-08-13T19:30:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.76,
+      "category": "Product Quality",
+      "topics": [
+        "fraying seams",
+        "case durability",
+        "wear and tear"
+      ],
+      "severity": 3,
+      "summary": "Product Quality feedback: fraying seams",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "a6f47cc0-f085-4fc8-89fd-7893d69e9e1a"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Screen resolution is sharp and vivid. Great for outdoor readability.",
+      "cleaned_text": "Screen resolution is sharp and vivid. Great for outdoor readability.",
+      "source": "social",
+      "rating": 5,
+      "customer": "Jessica Taylor",
+      "created_at": "2026-08-13T18:32:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.7,
+      "category": "Product Quality",
+      "topics": [
+        "display quality",
+        "brightness",
+        "screen"
+      ],
+      "severity": 1,
+      "summary": "Product Quality feedback: display quality",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "6fe15161-53fa-4b62-b499-12e753d4eb93"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "The chatbot could not understand basic refund questions and kept looping.",
+      "cleaned_text": "The chatbot could not understand basic refund questions and kept looping.",
+      "source": "support",
+      "rating": 2,
+      "customer": "Brandon Cole",
+      "created_at": "2026-08-11T15:00:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.77,
+      "category": "Customer Support",
+      "topics": [
+        "bot loop",
+        "refund inquiry",
+        "automated support"
+      ],
+      "severity": 3,
+      "summary": "Customer Support feedback: bot loop",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "f420ced1-9bc4-4df1-b73d-885509cc3bd3"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Package arrived 4 days later than promised with zero tracking updates in between.",
+      "cleaned_text": "Package arrived 4 days later than promised with zero tracking updates in between.",
+      "source": "survey",
+      "rating": 1,
+      "customer": "Marcus Vance",
+      "created_at": "2026-08-11T14:46:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.67,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "delayed delivery",
+        "no tracking",
+        "shipping lag"
+      ],
+      "severity": 4,
+      "summary": "Delivery & Shipping feedback: delayed delivery",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "27509f66-0112-4f7b-a9ef-18c7e5f5b85e"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Support representative Maya resolved my replacement request in under 5 minutes. Outstanding service!",
+      "cleaned_text": "Support representative Maya resolved my replacement request in under 5 minutes. Outstanding service!",
+      "source": "survey",
+      "rating": 5,
+      "customer": "Sofia Rossi",
+      "created_at": "2026-08-11T12:51:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.53,
+      "category": "Customer Support",
+      "topics": [
+        "quick resolution",
+        "representative Maya",
+        "excellent support"
+      ],
+      "severity": 1,
+      "summary": "Customer Support feedback: quick resolution",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "5391e0b1-769b-4560-829d-7c95bb5343e3"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Tracking number provided by email was invalid for 48 hours before working.",
+      "cleaned_text": "Tracking number provided by email was invalid for 48 hours before working.",
+      "source": "support",
+      "rating": 2,
+      "customer": "Devon Patel",
+      "created_at": "2026-08-11T02:16:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.7,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "invalid tracking",
+        "email notification",
+        "shipping status"
+      ],
+      "severity": 3,
+      "summary": "Delivery & Shipping feedback: invalid tracking",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "7b8d522e-561f-4ca1-a2f9-7ca0fd003255"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Difficult to cancel subscription. Had to navigate 4 confirmation pages and call support.",
+      "cleaned_text": "Difficult to cancel subscription. Had to navigate 4 confirmation pages and call support.",
+      "source": "survey",
+      "rating": 1,
+      "customer": "Emma Watson",
+      "created_at": "2026-08-10T15:34:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.52,
+      "category": "Pricing & Billing",
+      "topics": [
+        "difficult cancellation",
+        "dark pattern",
+        "subscription friction"
+      ],
+      "severity": 4,
+      "summary": "Pricing & Billing feedback: difficult cancellation",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "d3cb7656-d410-452c-a52e-048420536afd"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Clean, minimalist interface that reduces cognitive overload. Love the dark theme.",
+      "cleaned_text": "Clean, minimalist interface that reduces cognitive overload. Love the dark theme.",
+      "source": "review",
+      "rating": 5,
+      "customer": "Carlos Gomez",
+      "created_at": "2026-08-10T00:28:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.7,
+      "category": "Usability/UX",
+      "topics": [
+        "clean interface",
+        "dark theme",
+        "aesthetics"
+      ],
+      "severity": 1,
+      "summary": "Usability/UX feedback: clean interface",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "3d1889c0-7828-4a23-9aad-f01f6907b3f7"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Support representative Maya resolved my replacement request in under 5 minutes. Outstanding service!",
+      "cleaned_text": "Support representative Maya resolved my replacement request in under 5 minutes. Outstanding service!",
+      "source": "support",
+      "rating": 5,
+      "customer": "Carlos Gomez",
+      "created_at": "2026-08-09T04:36:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.76,
+      "category": "Customer Support",
+      "topics": [
+        "quick resolution",
+        "representative Maya",
+        "excellent support"
+      ],
+      "severity": 1,
+      "summary": "Customer Support feedback: quick resolution",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "ddc6aab8-e1dc-4236-9e8e-76ea11120794"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Courier left the parcel on the driveway in the rain instead of on the covered porch.",
+      "cleaned_text": "Courier left the parcel on the driveway in the rain instead of on the covered porch.",
+      "source": "survey",
+      "rating": 2,
+      "customer": "Chloe Dubois",
+      "created_at": "2026-08-08T11:55:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.66,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "courier mishandling",
+        "rain damage",
+        "delivery instruction"
+      ],
+      "severity": 3,
+      "summary": "Delivery & Shipping feedback: courier mishandling",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "b7aee098-b014-495e-ba58-b6af926165d1"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Support representative Maya resolved my replacement request in under 5 minutes. Outstanding service!",
+      "cleaned_text": "Support representative Maya resolved my replacement request in under 5 minutes. Outstanding service!",
+      "source": "survey",
+      "rating": 5,
+      "customer": "Hannah Becker",
+      "created_at": "2026-08-08T11:20:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.82,
+      "category": "Customer Support",
+      "topics": [
+        "quick resolution",
+        "representative Maya",
+        "excellent support"
+      ],
+      "severity": 1,
+      "summary": "Customer Support feedback: quick resolution",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "4cb010e1-1a88-40b3-9b94-a3ae3469b156"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Clean, minimalist interface that reduces cognitive overload. Love the dark theme.",
+      "cleaned_text": "Clean, minimalist interface that reduces cognitive overload. Love the dark theme.",
+      "source": "support",
+      "rating": 5,
+      "customer": "David Kim",
+      "created_at": "2026-08-08T09:03:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.77,
+      "category": "Usability/UX",
+      "topics": [
+        "clean interface",
+        "dark theme",
+        "aesthetics"
+      ],
+      "severity": 1,
+      "summary": "Usability/UX feedback: clean interface",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "434a4d66-fc31-448a-90ec-8b7c18401720"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Package arrived 4 days later than promised with zero tracking updates in between.",
+      "cleaned_text": "Package arrived 4 days later than promised with zero tracking updates in between.",
+      "source": "support",
+      "rating": 1,
+      "customer": "Sofia Rossi",
+      "created_at": "2026-08-07T20:38:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.63,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "delayed delivery",
+        "no tracking",
+        "shipping lag"
+      ],
+      "severity": 4,
+      "summary": "Delivery & Shipping feedback: delayed delivery",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "f9e5fbd2-dc78-426f-98c1-57eacd749a60"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Courier left the parcel on the driveway in the rain instead of on the covered porch.",
+      "cleaned_text": "Courier left the parcel on the driveway in the rain instead of on the covered porch.",
+      "source": "social",
+      "rating": 2,
+      "customer": "Alex Rivera",
+      "created_at": "2026-08-07T09:22:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.79,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "courier mishandling",
+        "rain damage",
+        "delivery instruction"
+      ],
+      "severity": 3,
+      "summary": "Delivery & Shipping feedback: courier mishandling",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "38f138b6-78a8-4b24-bc9e-037ef5024e89"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Image thumbnails fail to load on slow cellular connections.",
+      "cleaned_text": "Image thumbnails fail to load on slow cellular connections.",
+      "source": "survey",
+      "rating": 3,
+      "customer": "David Kim",
+      "created_at": "2026-08-06T10:28:00",
+      "sentiment": "neutral",
+      "sentiment_score": -0.13,
+      "category": "App/Website Bugs",
+      "topics": [
+        "image loading",
+        "thumbnails",
+        "network"
+      ],
+      "severity": 2,
+      "summary": "App/Website Bugs feedback: image loading",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "e047c0bc-b594-4622-832f-fa15c9b5d283"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Friendly phone agent walked me through the setup step by step with patience.",
+      "cleaned_text": "Friendly phone agent walked me through the setup step by step with patience.",
+      "source": "support",
+      "rating": 5,
+      "customer": "David Kim",
+      "created_at": "2026-08-05T07:05:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.85,
+      "category": "Customer Support",
+      "topics": [
+        "patient phone agent",
+        "guided setup",
+        "friendly support"
+      ],
+      "severity": 1,
+      "summary": "Customer Support feedback: patient phone agent",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "4497c132-bd9f-481a-bb0a-9159bbb0215a"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Materials feel cheap and plasticky given the premium price point.",
+      "cleaned_text": "Materials feel cheap and plasticky given the premium price point.",
+      "source": "survey",
+      "rating": 2,
+      "customer": "Marcus Vance",
+      "created_at": "2026-08-02T11:53:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.73,
+      "category": "Product Quality",
+      "topics": [
+        "cheap material",
+        "plastic feel",
+        "overpriced"
+      ],
+      "severity": 3,
+      "summary": "Product Quality feedback: cheap material",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "85b1cf56-1041-4584-84d0-7b8eefd74056"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Tracking number provided by email was invalid for 48 hours before working.",
+      "cleaned_text": "Tracking number provided by email was invalid for 48 hours before working.",
+      "source": "social",
+      "rating": 2,
+      "customer": "Liam O'Connor",
+      "created_at": "2026-08-02T06:48:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.61,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "invalid tracking",
+        "email notification",
+        "shipping status"
+      ],
+      "severity": 3,
+      "summary": "Delivery & Shipping feedback: invalid tracking",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "bf4f2a72-c6a0-4b95-b24d-35bd9d5f209c"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Seams on the carrying case began fraying after just two weeks of gentle use.",
+      "cleaned_text": "Seams on the carrying case began fraying after just two weeks of gentle use.",
+      "source": "support",
+      "rating": 2,
+      "customer": "David Kim",
+      "created_at": "2026-08-02T00:33:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.75,
+      "category": "Product Quality",
+      "topics": [
+        "fraying seams",
+        "case durability",
+        "wear and tear"
+      ],
+      "severity": 3,
+      "summary": "Product Quality feedback: fraying seams",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "2c850345-4dbd-4710-96f7-87bca181d97f"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Courier left the parcel on the driveway in the rain instead of on the covered porch.",
+      "cleaned_text": "Courier left the parcel on the driveway in the rain instead of on the covered porch.",
+      "source": "support",
+      "rating": 2,
+      "customer": "Tara Murphy",
+      "created_at": "2026-08-01T21:33:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.63,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "courier mishandling",
+        "rain damage",
+        "delivery instruction"
+      ],
+      "severity": 3,
+      "summary": "Delivery & Shipping feedback: courier mishandling",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "e19a6cb4-7ad1-48fe-9cb2-7060f2b55dd8"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Password reset link threw a 500 internal server error the first time I clicked it.",
+      "cleaned_text": "Password reset link threw a 500 internal server error the first time I clicked it.",
+      "source": "review",
+      "rating": 2,
+      "customer": "Jason Miller",
+      "created_at": "2026-07-31T16:09:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.77,
+      "category": "App/Website Bugs",
+      "topics": [
+        "password reset",
+        "500 error",
+        "auth"
+      ],
+      "severity": 3,
+      "summary": "App/Website Bugs feedback: password reset",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "5eb5bc96-eae6-425b-b98d-03a6d594d364"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Super fast delivery! Arrived in under 24 hours in secure, eco-friendly packaging.",
+      "cleaned_text": "Super fast delivery! Arrived in under 24 hours in secure, eco-friendly packaging.",
+      "source": "survey",
+      "rating": 5,
+      "customer": "Marcus Vance",
+      "created_at": "2026-07-31T15:51:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.53,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "fast delivery",
+        "eco packaging",
+        "quick shipping"
+      ],
+      "severity": 1,
+      "summary": "Delivery & Shipping feedback: fast delivery",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "a68a0f6d-473b-4893-ad68-f73da142fdba"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Password reset link threw a 500 internal server error the first time I clicked it.",
+      "cleaned_text": "Password reset link threw a 500 internal server error the first time I clicked it.",
+      "source": "support",
+      "rating": 2,
+      "customer": "Michael Chang",
+      "created_at": "2026-07-30T14:54:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.55,
+      "category": "App/Website Bugs",
+      "topics": [
+        "password reset",
+        "500 error",
+        "auth"
+      ],
+      "severity": 3,
+      "summary": "App/Website Bugs feedback: password reset",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "9ba44b9f-d174-458d-93a3-b43ffd55f20d"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Difficult to cancel subscription. Had to navigate 4 confirmation pages and call support.",
+      "cleaned_text": "Difficult to cancel subscription. Had to navigate 4 confirmation pages and call support.",
+      "source": "review",
+      "rating": 1,
+      "customer": "Devon Patel",
+      "created_at": "2026-07-30T09:10:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.61,
+      "category": "Pricing & Billing",
+      "topics": [
+        "difficult cancellation",
+        "dark pattern",
+        "subscription friction"
+      ],
+      "severity": 4,
+      "summary": "Pricing & Billing feedback: difficult cancellation",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "9553580a-256f-41fe-b817-83e282dc5744"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Dark mode toggle does not persist across browser sessions.",
+      "cleaned_text": "Dark mode toggle does not persist across browser sessions.",
+      "source": "survey",
+      "rating": 3,
+      "customer": "Chloe Dubois",
+      "created_at": "2026-07-30T07:48:00",
+      "sentiment": "neutral",
+      "sentiment_score": 0.14,
+      "category": "App/Website Bugs",
+      "topics": [
+        "dark mode",
+        "session persistence",
+        "UI bug"
+      ],
+      "severity": 1,
+      "summary": "App/Website Bugs feedback: dark mode",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "ef804aa9-bee0-4b88-8440-908a66509149"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Difficult to cancel subscription. Had to navigate 4 confirmation pages and call support.",
+      "cleaned_text": "Difficult to cancel subscription. Had to navigate 4 confirmation pages and call support.",
+      "source": "review",
+      "rating": 1,
+      "customer": "Jason Miller",
+      "created_at": "2026-07-29T16:46:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.75,
+      "category": "Pricing & Billing",
+      "topics": [
+        "difficult cancellation",
+        "dark pattern",
+        "subscription friction"
+      ],
+      "severity": 4,
+      "summary": "Pricing & Billing feedback: difficult cancellation",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "9a04d362-3063-49ab-a54f-f3468fdbdcbc"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Dark mode toggle does not persist across browser sessions.",
+      "cleaned_text": "Dark mode toggle does not persist across browser sessions.",
+      "source": "survey",
+      "rating": 3,
+      "customer": "Michael Chang",
+      "created_at": "2026-07-29T16:13:00",
+      "sentiment": "neutral",
+      "sentiment_score": 0.11,
+      "category": "App/Website Bugs",
+      "topics": [
+        "dark mode",
+        "session persistence",
+        "UI bug"
+      ],
+      "severity": 1,
+      "summary": "App/Website Bugs feedback: dark mode",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "aee63599-e9dc-454a-990b-d0132f4c144c"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Very reasonable pricing for the feature set provided. Great ROI for small teams.",
+      "cleaned_text": "Very reasonable pricing for the feature set provided. Great ROI for small teams.",
+      "source": "survey",
+      "rating": 5,
+      "customer": "Lucas Wright",
+      "created_at": "2026-07-29T09:07:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.76,
+      "category": "Pricing & Billing",
+      "topics": [
+        "fair pricing",
+        "great ROI",
+        "value for money"
+      ],
+      "severity": 1,
+      "summary": "Pricing & Billing feedback: fair pricing",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "c0bc059d-877b-4e4c-a531-ece5b604c0d7"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "International shipping was surprisingly smooth with customs cleared automatically.",
+      "cleaned_text": "International shipping was surprisingly smooth with customs cleared automatically.",
+      "source": "review",
+      "rating": 5,
+      "customer": "Daniel Martinez",
+      "created_at": "2026-07-28T14:36:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.72,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "international shipping",
+        "customs",
+        "smooth delivery"
+      ],
+      "severity": 1,
+      "summary": "Delivery & Shipping feedback: international shipping",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "af690c64-4ca4-44ba-9edc-56485ba8a44c"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Screen resolution is sharp and vivid. Great for outdoor readability.",
+      "cleaned_text": "Screen resolution is sharp and vivid. Great for outdoor readability.",
+      "source": "review",
+      "rating": 5,
+      "customer": "Liam O'Connor",
+      "created_at": "2026-07-27T23:15:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.77,
+      "category": "Product Quality",
+      "topics": [
+        "display quality",
+        "brightness",
+        "screen"
+      ],
+      "severity": 1,
+      "summary": "Product Quality feedback: display quality",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "f0ac9d56-d068-4b19-aee3-4dff9745d826"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Screen resolution is sharp and vivid. Great for outdoor readability.",
+      "cleaned_text": "Screen resolution is sharp and vivid. Great for outdoor readability.",
+      "source": "support",
+      "rating": 5,
+      "customer": "Rachel Green",
+      "created_at": "2026-07-27T21:00:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.84,
+      "category": "Product Quality",
+      "topics": [
+        "display quality",
+        "brightness",
+        "screen"
+      ],
+      "severity": 1,
+      "summary": "Product Quality feedback: display quality",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "865ffde3-a675-4d94-be85-c0665073c5d4"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Tracking number provided by email was invalid for 48 hours before working.",
+      "cleaned_text": "Tracking number provided by email was invalid for 48 hours before working.",
+      "source": "survey",
+      "rating": 2,
+      "customer": "Michael Chang",
+      "created_at": "2026-07-27T14:57:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.82,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "invalid tracking",
+        "email notification",
+        "shipping status"
+      ],
+      "severity": 3,
+      "summary": "Delivery & Shipping feedback: invalid tracking",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "cca953e0-a56f-407f-b2bd-320c1f91a832"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Image thumbnails fail to load on slow cellular connections.",
+      "cleaned_text": "Image thumbnails fail to load on slow cellular connections.",
+      "source": "support",
+      "rating": 3,
+      "customer": "Alex Rivera",
+      "created_at": "2026-07-26T22:52:00",
+      "sentiment": "neutral",
+      "sentiment_score": -0.04,
+      "category": "App/Website Bugs",
+      "topics": [
+        "image loading",
+        "thumbnails",
+        "network"
+      ],
+      "severity": 2,
+      "summary": "App/Website Bugs feedback: image loading",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "3c4313f3-4596-4ca5-8375-e182e3ee8ffe"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Search auto-complete occasionally hangs for 5 seconds before showing suggestions.",
+      "cleaned_text": "Search auto-complete occasionally hangs for 5 seconds before showing suggestions.",
+      "source": "review",
+      "rating": 3,
+      "customer": "Alex Rivera",
+      "created_at": "2026-07-26T12:40:00",
+      "sentiment": "neutral",
+      "sentiment_score": 0.03,
+      "category": "App/Website Bugs",
+      "topics": [
+        "search delay",
+        "autocomplete lag",
+        "website"
+      ],
+      "severity": 2,
+      "summary": "App/Website Bugs feedback: search delay",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "148bfd8a-f3ce-4cba-99e4-e712d77edc5f"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "The chatbot could not understand basic refund questions and kept looping.",
+      "cleaned_text": "The chatbot could not understand basic refund questions and kept looping.",
+      "source": "review",
+      "rating": 2,
+      "customer": "Brandon Cole",
+      "created_at": "2026-07-26T08:05:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.71,
+      "category": "Customer Support",
+      "topics": [
+        "bot loop",
+        "refund inquiry",
+        "automated support"
+      ],
+      "severity": 3,
+      "summary": "Customer Support feedback: bot loop",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "c3ee94b7-8723-45ed-9c75-6f9e9a25afb4"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Courier left the parcel on the driveway in the rain instead of on the covered porch.",
+      "cleaned_text": "Courier left the parcel on the driveway in the rain instead of on the covered porch.",
+      "source": "review",
+      "rating": 2,
+      "customer": "Hannah Becker",
+      "created_at": "2026-07-26T02:24:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.74,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "courier mishandling",
+        "rain damage",
+        "delivery instruction"
+      ],
+      "severity": 3,
+      "summary": "Delivery & Shipping feedback: courier mishandling",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "c9d899ec-71ed-416d-afe9-cf3c79402c54"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "International shipping was surprisingly smooth with customs cleared automatically.",
+      "cleaned_text": "International shipping was surprisingly smooth with customs cleared automatically.",
+      "source": "survey",
+      "rating": 5,
+      "customer": "Emma Watson",
+      "created_at": "2026-07-25T16:42:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.63,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "international shipping",
+        "customs",
+        "smooth delivery"
+      ],
+      "severity": 1,
+      "summary": "Delivery & Shipping feedback: international shipping",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "05ab1874-c291-4ac7-8dbd-39eb1eb431c3"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Took over a week to get a response to my support ticket regarding a warranty claim.",
+      "cleaned_text": "Took over a week to get a response to my support ticket regarding a warranty claim.",
+      "source": "social",
+      "rating": 2,
+      "customer": "Michael Chang",
+      "created_at": "2026-07-25T14:29:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.72,
+      "category": "Customer Support",
+      "topics": [
+        "slow ticket response",
+        "warranty claim",
+        "delayed reply"
+      ],
+      "severity": 3,
+      "summary": "Customer Support feedback: slow ticket response",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "40634e8b-8965-4c98-988e-5099603afea0"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Tracking number provided by email was invalid for 48 hours before working.",
+      "cleaned_text": "Tracking number provided by email was invalid for 48 hours before working.",
+      "source": "survey",
+      "rating": 2,
+      "customer": "Sarah Jenkins",
+      "created_at": "2026-07-25T03:25:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.53,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "invalid tracking",
+        "email notification",
+        "shipping status"
+      ],
+      "severity": 3,
+      "summary": "Delivery & Shipping feedback: invalid tracking",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "5831acaa-ecc6-4735-9c14-11ad2c33a3c2"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Courier left the parcel on the driveway in the rain instead of on the covered porch.",
+      "cleaned_text": "Courier left the parcel on the driveway in the rain instead of on the covered porch.",
+      "source": "support",
+      "rating": 2,
+      "customer": "Priya Sharma",
+      "created_at": "2026-07-25T02:58:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.78,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "courier mishandling",
+        "rain damage",
+        "delivery instruction"
+      ],
+      "severity": 3,
+      "summary": "Delivery & Shipping feedback: courier mishandling",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "b25e6d54-06c5-47a2-a464-07d77b0535c0"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Font size on mobile is slightly too small for comfortable reading in bright sunlight.",
+      "cleaned_text": "Font size on mobile is slightly too small for comfortable reading in bright sunlight.",
+      "source": "social",
+      "rating": 3,
+      "customer": "Kenji Sato",
+      "created_at": "2026-07-25T02:31:00",
+      "sentiment": "neutral",
+      "sentiment_score": -0.12,
+      "category": "Usability/UX",
+      "topics": [
+        "small font",
+        "mobile readability",
+        "contrast"
+      ],
+      "severity": 2,
+      "summary": "Usability/UX feedback: small font",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "53a0672d-895a-4f1e-876d-bf5dbf78961f"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Export to CSV button is buried under advanced settings instead of on the main table.",
+      "cleaned_text": "Export to CSV button is buried under advanced settings instead of on the main table.",
+      "source": "survey",
+      "rating": 3,
+      "customer": "Carlos Gomez",
+      "created_at": "2026-07-25T00:54:00",
+      "sentiment": "neutral",
+      "sentiment_score": -0.1,
+      "category": "Usability/UX",
+      "topics": [
+        "buried export button",
+        "data export",
+        "UI placement"
+      ],
+      "severity": 2,
+      "summary": "Usability/UX feedback: buried export button",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "3e91d9f8-d9a2-4534-8e3a-63d879064ce8"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Color was noticeably darker in person compared to product images on the website.",
+      "cleaned_text": "Color was noticeably darker in person compared to product images on the website.",
+      "source": "support",
+      "rating": 3,
+      "customer": "Alex Rivera",
+      "created_at": "2026-07-24T17:10:00",
+      "sentiment": "neutral",
+      "sentiment_score": 0.01,
+      "category": "Product Quality",
+      "topics": [
+        "color mismatch",
+        "product photos",
+        "accuracy"
+      ],
+      "severity": 2,
+      "summary": "Product Quality feedback: color mismatch",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "67a4e0fa-536d-4dea-993b-050132904e44"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Box was crushed on one side, but luckily the inner bubble wrap protected the item.",
+      "cleaned_text": "Box was crushed on one side, but luckily the inner bubble wrap protected the item.",
+      "source": "review",
+      "rating": 3,
+      "customer": "Priya Sharma",
+      "created_at": "2026-07-24T11:55:00",
+      "sentiment": "neutral",
+      "sentiment_score": 0.15,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "damaged box",
+        "packaging",
+        "carrier issue"
+      ],
+      "severity": 2,
+      "summary": "Delivery & Shipping feedback: damaged box",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "d79011ed-c664-47e8-aa53-7bcdaea86bc3"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Color was noticeably darker in person compared to product images on the website.",
+      "cleaned_text": "Color was noticeably darker in person compared to product images on the website.",
+      "source": "survey",
+      "rating": 3,
+      "customer": "Jason Miller",
+      "created_at": "2026-07-22T21:34:00",
+      "sentiment": "neutral",
+      "sentiment_score": 0.07,
+      "category": "Product Quality",
+      "topics": [
+        "color mismatch",
+        "product photos",
+        "accuracy"
+      ],
+      "severity": 2,
+      "summary": "Product Quality feedback: color mismatch",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "81ae7f2e-cdbb-408a-9b20-677da078fa42"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Search auto-complete occasionally hangs for 5 seconds before showing suggestions.",
+      "cleaned_text": "Search auto-complete occasionally hangs for 5 seconds before showing suggestions.",
+      "source": "support",
+      "rating": 3,
+      "customer": "Liam O'Connor",
+      "created_at": "2026-07-22T09:26:00",
+      "sentiment": "neutral",
+      "sentiment_score": -0.11,
+      "category": "App/Website Bugs",
+      "topics": [
+        "search delay",
+        "autocomplete lag",
+        "website"
+      ],
+      "severity": 2,
+      "summary": "App/Website Bugs feedback: search delay",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "bb2c0250-9e27-4354-a670-b98c584707f6"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Super fast delivery! Arrived in under 24 hours in secure, eco-friendly packaging.",
+      "cleaned_text": "Super fast delivery! Arrived in under 24 hours in secure, eco-friendly packaging.",
+      "source": "social",
+      "rating": 5,
+      "customer": "Brandon Cole",
+      "created_at": "2026-07-21T19:36:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.63,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "fast delivery",
+        "eco packaging",
+        "quick shipping"
+      ],
+      "severity": 1,
+      "summary": "Delivery & Shipping feedback: fast delivery",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "0b1593a7-4b1b-4e19-abaf-0eeb08d33ffa"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "The chatbot could not understand basic refund questions and kept looping.",
+      "cleaned_text": "The chatbot could not understand basic refund questions and kept looping.",
+      "source": "survey",
+      "rating": 2,
+      "customer": "Tara Murphy",
+      "created_at": "2026-07-21T14:12:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.75,
+      "category": "Customer Support",
+      "topics": [
+        "bot loop",
+        "refund inquiry",
+        "automated support"
+      ],
+      "severity": 3,
+      "summary": "Customer Support feedback: bot loop",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "348658c2-7553-432c-89eb-dbd9e1e6404d"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Seams on the carrying case began fraying after just two weeks of gentle use.",
+      "cleaned_text": "Seams on the carrying case began fraying after just two weeks of gentle use.",
+      "source": "support",
+      "rating": 2,
+      "customer": "Lucas Wright",
+      "created_at": "2026-07-21T08:16:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.84,
+      "category": "Product Quality",
+      "topics": [
+        "fraying seams",
+        "case durability",
+        "wear and tear"
+      ],
+      "severity": 3,
+      "summary": "Product Quality feedback: fraying seams",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "484b510e-8d14-4f31-b124-498d7efe0807"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Unexpected annual auto-renewal charge occurred without any reminder email beforehand.",
+      "cleaned_text": "Unexpected annual auto-renewal charge occurred without any reminder email beforehand.",
+      "source": "review",
+      "rating": 1,
+      "customer": "Brandon Cole",
+      "created_at": "2026-07-21T02:10:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.73,
+      "category": "Pricing & Billing",
+      "topics": [
+        "surprise auto renewal",
+        "no reminder",
+        "billing issue"
+      ],
+      "severity": 4,
+      "summary": "Pricing & Billing feedback: surprise auto renewal",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "3218cc64-8935-45c2-b0d7-80a6a3f81335"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Difficult to cancel subscription. Had to navigate 4 confirmation pages and call support.",
+      "cleaned_text": "Difficult to cancel subscription. Had to navigate 4 confirmation pages and call support.",
+      "source": "social",
+      "rating": 1,
+      "customer": "Priya Sharma",
+      "created_at": "2026-07-20T08:17:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.51,
+      "category": "Pricing & Billing",
+      "topics": [
+        "difficult cancellation",
+        "dark pattern",
+        "subscription friction"
+      ],
+      "severity": 4,
+      "summary": "Pricing & Billing feedback: difficult cancellation",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "c3e03d7e-f931-439d-a8d0-521687ca3264"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Clear, transparent tier pricing with no hidden charges. Exactly what was quoted.",
+      "cleaned_text": "Clear, transparent tier pricing with no hidden charges. Exactly what was quoted.",
+      "source": "survey",
+      "rating": 5,
+      "customer": "Daniel Martinez",
+      "created_at": "2026-07-19T11:57:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.94,
+      "category": "Pricing & Billing",
+      "topics": [
+        "transparent pricing",
+        "no hidden fees",
+        "billing accuracy"
+      ],
+      "severity": 1,
+      "summary": "Pricing & Billing feedback: transparent pricing",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "66a20160-cbe3-4b38-84ed-886172198ca0"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Courier left the parcel on the driveway in the rain instead of on the covered porch.",
+      "cleaned_text": "Courier left the parcel on the driveway in the rain instead of on the covered porch.",
+      "source": "social",
+      "rating": 2,
+      "customer": "Carlos Gomez",
+      "created_at": "2026-07-18T03:49:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.75,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "courier mishandling",
+        "rain damage",
+        "delivery instruction"
+      ],
+      "severity": 3,
+      "summary": "Delivery & Shipping feedback: courier mishandling",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "cc3408f2-d8e9-4345-a95e-89d83808a289"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Box was crushed on one side, but luckily the inner bubble wrap protected the item.",
+      "cleaned_text": "Box was crushed on one side, but luckily the inner bubble wrap protected the item.",
+      "source": "support",
+      "rating": 3,
+      "customer": "Jason Miller",
+      "created_at": "2026-07-17T09:28:00",
+      "sentiment": "neutral",
+      "sentiment_score": -0.15,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "damaged box",
+        "packaging",
+        "carrier issue"
+      ],
+      "severity": 2,
+      "summary": "Delivery & Shipping feedback: damaged box",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "34c1ae95-492e-438f-add5-c2856c43fcde"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Friendly phone agent walked me through the setup step by step with patience.",
+      "cleaned_text": "Friendly phone agent walked me through the setup step by step with patience.",
+      "source": "survey",
+      "rating": 5,
+      "customer": "Alex Rivera",
+      "created_at": "2026-07-17T07:29:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.73,
+      "category": "Customer Support",
+      "topics": [
+        "patient phone agent",
+        "guided setup",
+        "friendly support"
+      ],
+      "severity": 1,
+      "summary": "Customer Support feedback: patient phone agent",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "b61ee990-7ff8-4e7c-b8b9-67c7d4ea0cb5"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Color was noticeably darker in person compared to product images on the website.",
+      "cleaned_text": "Color was noticeably darker in person compared to product images on the website.",
+      "source": "support",
+      "rating": 3,
+      "customer": "Chloe Dubois",
+      "created_at": "2026-07-16T12:03:00",
+      "sentiment": "neutral",
+      "sentiment_score": 0.05,
+      "category": "Product Quality",
+      "topics": [
+        "color mismatch",
+        "product photos",
+        "accuracy"
+      ],
+      "severity": 2,
+      "summary": "Product Quality feedback: color mismatch",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "26deb60f-5b0c-49fa-9323-2f764c70880c"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Color was noticeably darker in person compared to product images on the website.",
+      "cleaned_text": "Color was noticeably darker in person compared to product images on the website.",
+      "source": "support",
+      "rating": 3,
+      "customer": "Brandon Cole",
+      "created_at": "2026-07-15T17:47:00",
+      "sentiment": "neutral",
+      "sentiment_score": 0.08,
+      "category": "Product Quality",
+      "topics": [
+        "color mismatch",
+        "product photos",
+        "accuracy"
+      ],
+      "severity": 2,
+      "summary": "Product Quality feedback: color mismatch",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "bc595ef6-7611-47e3-bdfd-79ced4ed7194"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Screen resolution is sharp and vivid. Great for outdoor readability.",
+      "cleaned_text": "Screen resolution is sharp and vivid. Great for outdoor readability.",
+      "source": "support",
+      "rating": 5,
+      "customer": "Jessica Taylor",
+      "created_at": "2026-07-15T14:13:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.68,
+      "category": "Product Quality",
+      "topics": [
+        "display quality",
+        "brightness",
+        "screen"
+      ],
+      "severity": 1,
+      "summary": "Product Quality feedback: display quality",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "31505209-26bc-4b56-801a-875d911afeb7"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Took over a week to get a response to my support ticket regarding a warranty claim.",
+      "cleaned_text": "Took over a week to get a response to my support ticket regarding a warranty claim.",
+      "source": "social",
+      "rating": 2,
+      "customer": "Jason Miller",
+      "created_at": "2026-07-14T23:40:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.85,
+      "category": "Customer Support",
+      "topics": [
+        "slow ticket response",
+        "warranty claim",
+        "delayed reply"
+      ],
+      "severity": 3,
+      "summary": "Customer Support feedback: slow ticket response",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "49479d82-2494-4a1b-a3fe-4ec9072bc947"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Box was crushed on one side, but luckily the inner bubble wrap protected the item.",
+      "cleaned_text": "Box was crushed on one side, but luckily the inner bubble wrap protected the item.",
+      "source": "survey",
+      "rating": 3,
+      "customer": "Lucas Wright",
+      "created_at": "2026-07-14T17:58:00",
+      "sentiment": "neutral",
+      "sentiment_score": -0.01,
+      "category": "Delivery & Shipping",
+      "topics": [
+        "damaged box",
+        "packaging",
+        "carrier issue"
+      ],
+      "severity": 2,
+      "summary": "Delivery & Shipping feedback: damaged box",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "d8949cb9-aaa1-4041-940b-36ea8343e195"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "Friendly phone agent walked me through the setup step by step with patience.",
+      "cleaned_text": "Friendly phone agent walked me through the setup step by step with patience.",
+      "source": "social",
+      "rating": 5,
+      "customer": "Hannah Becker",
+      "created_at": "2026-07-14T10:02:00",
+      "sentiment": "positive",
+      "sentiment_score": 0.87,
+      "category": "Customer Support",
+      "topics": [
+        "patient phone agent",
+        "guided setup",
+        "friendly support"
+      ],
+      "severity": 1,
+      "summary": "Customer Support feedback: patient phone agent",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "8427f686-57ac-4c4d-aff4-524e6b3fbe16"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "The chatbot could not understand basic refund questions and kept looping.",
+      "cleaned_text": "The chatbot could not understand basic refund questions and kept looping.",
+      "source": "review",
+      "rating": 2,
+      "customer": "Daniel Martinez",
+      "created_at": "2026-07-13T11:58:00",
+      "sentiment": "negative",
+      "sentiment_score": -0.62,
+      "category": "Customer Support",
+      "topics": [
+        "bot loop",
+        "refund inquiry",
+        "automated support"
+      ],
+      "severity": 3,
+      "summary": "Customer Support feedback: bot loop",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "6e0cf190-7a01-47eb-8d5f-49dab4e8bc55"
+    },
+    {
+      "import_job_id": "9581cc8e-9923-4a12-b669-a8645fe4a162",
+      "text": "",
+      "cleaned_text": "",
+      "source": "review",
+      "rating": null,
+      "customer": null,
+      "created_at": "2026-10-11T05:54:25.554Z",
+      "sentiment": "neutral",
+      "sentiment_score": 0,
+      "category": "Other",
+      "topics": [],
+      "severity": 1,
+      "summary": "",
+      "analyzed_at": "2026-10-11T05:54:25.554Z",
+      "id": "25c30bd6-99db-46ef-895b-8c8373ed023e"
+    }
+  ],
+  "issues": [
+    {
+      "title": "Deploy Emergency Hotfix for Checkout & Launch Crashes",
+      "category": "App/Website Bugs",
+      "status": "open",
+      "priority_score": 91,
+      "notes": "Tracked from Intelligent Recommendations. Suggested owner: Mobile Platform Lead.",
+      "snapshot": {
+        "category": "App/Website Bugs",
+        "priority_score": 91,
+        "negative_count": 41,
+        "total_feedback": 55,
+        "avg_severity": 4.4,
+        "trend_percent": 3700,
+        "top_quotes": [
+          "App force closes whenever I try to apply a promo code on the latest release.",
+          "Buggy latest version. The screen goes completely black then exits to home screen. Happening on iPhone 15 Pro.",
+          "The app keeps crashing immediately after opening on iOS since the v2.4 update. Cannot access my cart!"
+        ]
+      },
+      "id": "531e558f-5071-4182-b99e-f54a4d748263",
+      "created_at": "2026-10-11T05:55:47.042Z",
+      "updated_at": "2026-10-11T05:55:47.042Z"
+    },
+    {
+      "title": "Checkout & App Launch Crash on v2.4 Release",
+      "category": "App/Website Bugs",
+      "status": "in_progress",
+      "priority_score": 91,
+      "notes": "Assigned to Mobile platform team. Hotfix build 2.4.1 undergoing regression testing.",
+      "snapshot": {
+        "category": "App/Website Bugs",
+        "priority_score": 91,
+        "negative_count": 35,
+        "total_feedback": 55,
+        "avg_severity": 4.6,
+        "trend_percent": 180,
+        "top_quotes": [
+          "The app keeps crashing immediately after opening on iOS since the v2.4 update. Cannot access my cart!",
+          "Latest update completely broke checkout. It freezes on payment screen and restarts the app.",
+          "Cannot complete my transaction. App crashes during Apple Pay authorization."
+        ]
+      },
+      "id": "81f8506b-1843-431f-abbc-62a01cb063b2",
+      "created_at": "2026-10-11T05:54:25.711Z",
+      "updated_at": "2026-10-11T05:54:25.711Z"
+    }
+  ],
+  "reports": [
+    {
+      "share_token": "rep_07ef568bf478e84b",
+      "title": "Executive Feedback Report — Oct 11, 2026",
+      "payload": {
+        "title": "Executive Feedback Report — Oct 11, 2026",
+        "generated_at": "2026-10-11T05:56:47.334Z",
+        "kpis": {
+          "total_feedback": 201,
+          "positive_count": 61,
+          "neutral_count": 37,
+          "negative_count": 103,
+          "positive_pct": 30,
+          "neutral_pct": 18,
+          "negative_pct": 51,
+          "avg_rating": 2.9,
+          "avg_sentiment": -0.16,
+          "top_issue_category": "App/Website Bugs",
+          "top_issue_priority": 91,
+          "week_over_week_change": -28
+        },
+        "top_issues": [
+          {
+            "category": "App/Website Bugs",
+            "priority": 91,
+            "level": "Critical",
+            "components": {
+              "freq": 1,
+              "neg_share": 0.75,
+              "severity": 0.88,
+              "trend": 1
+            },
+            "metrics": {
+              "neg_count": 41,
+              "max_neg_count": 41,
+              "category_total": 55,
+              "avg_severity": 4.4,
+              "neg_this_period": 38,
+              "neg_prev_period": 1,
+              "trend_percent": 3700
+            },
+            "quotes": [
+              "App force closes whenever I try to apply a promo code on the latest release.",
+              "Buggy latest version. The screen goes completely black then exits to home screen. Happening on iPhone 15 Pro.",
+              "The app keeps crashing immediately after opening on iOS since the v2.4 update. Cannot access my cart!"
+            ],
+            "recommendation": {
+              "title": "Deploy Emergency Hotfix for Checkout & Launch Crashes",
+              "recommendation": "Isolate payment controller and session lifecycle memory leaks introduced in v2.4. Roll back checkout bundle or patch Apple Pay SDK crash immediately.",
+              "rationale": "Category priority scored 91/100 with 41 negative reports (+3700% recent surge) and a severe 4.4/5 severity rating.",
+              "expected_impact": "Reduce app crash rate by 85% and restore abandoned checkout revenue.",
+              "effort": "M",
+              "suggested_owner": "Mobile Platform Lead"
+            }
+          },
+          {
+            "category": "Pricing & Billing",
+            "priority": 49,
+            "level": "High",
+            "components": {
+              "freq": 0.34,
+              "neg_share": 0.7,
+              "severity": 0.74,
+              "trend": 0.25
+            },
+            "metrics": {
+              "neg_count": 14,
+              "max_neg_count": 41,
+              "category_total": 20,
+              "avg_severity": 3.7,
+              "neg_this_period": 5,
+              "neg_prev_period": 4,
+              "trend_percent": 25
+            },
+            "quotes": [
+              "Difficult to cancel subscription. Had to navigate 4 confirmation pages and call support.",
+              "Invoice lacked proper VAT breakdown required for business accounting.",
+              "Unexpected annual auto-renewal charge occurred without any reminder email beforehand."
+            ],
+            "recommendation": {
+              "title": "Add Transparent Renewal Reminders & One-Click Cancel",
+              "recommendation": "Send automatic 7-day email reminders prior to annual subscription renewals. Provide a clear self-serve cancellation flow in user account settings.",
+              "rationale": "Users report unexpected charges with a 3.7/5 severity score. Eliminating dark patterns reduces chargeback disputes.",
+              "expected_impact": "Cut disputed billing charges by 70% and rebuild user trust.",
+              "effort": "S",
+              "suggested_owner": "Billing & Monetization Team"
+            }
+          },
+          {
+            "category": "Customer Support",
+            "priority": 43,
+            "level": "High",
+            "components": {
+              "freq": 0.46,
+              "neg_share": 0.54,
+              "severity": 0.65,
+              "trend": 0
+            },
+            "metrics": {
+              "neg_count": 19,
+              "max_neg_count": 41,
+              "category_total": 35,
+              "avg_severity": 3.3,
+              "neg_this_period": 5,
+              "neg_prev_period": 8,
+              "trend_percent": -37
+            },
+            "quotes": [
+              "Took over a week to get a response to my support ticket regarding a warranty claim.",
+              "Waited 45 minutes on live chat only to be transferred and disconnected.",
+              "Waited 45 minutes on live chat only to be transferred and disconnected."
+            ],
+            "recommendation": {
+              "title": "Refactor Chatbot Escalation & Support Routing",
+              "recommendation": "Reduce chatbot loop threshold from 3 turns to 1 turn before human handoff. Add instant callback options during peak live-chat queues.",
+              "rationale": "Customer support accounts for 19 negative touchpoints with wait times and chat loops as top drivers.",
+              "expected_impact": "Reduce average queue handle time by 35% and boost resolution satisfaction.",
+              "effort": "S",
+              "suggested_owner": "Head of Customer Experience"
+            }
+          },
+          {
+            "category": "Delivery & Shipping",
+            "priority": 40,
+            "level": "High",
+            "components": {
+              "freq": 0.41,
+              "neg_share": 0.49,
+              "severity": 0.65,
+              "trend": 0
+            },
+            "metrics": {
+              "neg_count": 17,
+              "max_neg_count": 41,
+              "category_total": 35,
+              "avg_severity": 3.2,
+              "neg_this_period": 0,
+              "neg_prev_period": 5,
+              "trend_percent": -100
+            },
+            "quotes": [
+              "Package arrived 4 days later than promised with zero tracking updates in between.",
+              "Package arrived 4 days later than promised with zero tracking updates in between.",
+              "Courier left the parcel on the driveway in the rain instead of on the covered porch."
+            ],
+            "recommendation": {
+              "title": "Audit Carrier SLA & Automate Tracking Notifications",
+              "recommendation": "Implement webhook tracking updates for courier status shifts. Alert customers proactively on shipment milestones to deflect support inquiries.",
+              "rationale": "17 shipping complaints logged (49% of shipping feedback), predominantly driven by tracking latency.",
+              "expected_impact": "Deflect 40% of 'Where is my order?' support tickets and improve post-purchase CSAT.",
+              "effort": "S",
+              "suggested_owner": "Logistics & CX Operations"
+            }
+          },
+          {
+            "category": "Product Quality",
+            "priority": 30,
+            "level": "Medium",
+            "components": {
+              "freq": 0.29,
+              "neg_share": 0.3,
+              "severity": 0.6,
+              "trend": 0
+            },
+            "metrics": {
+              "neg_count": 12,
+              "max_neg_count": 41,
+              "category_total": 40,
+              "avg_severity": 3,
+              "neg_this_period": 0,
+              "neg_prev_period": 9,
+              "trend_percent": -100
+            },
+            "quotes": [
+              "Seams on the carrying case began fraying after just two weeks of gentle use.",
+              "Seams on the carrying case began fraying after just two weeks of gentle use.",
+              "Seams on the carrying case began fraying after just two weeks of gentle use."
+            ],
+            "recommendation": {
+              "title": "Address Core Friction in Product Quality",
+              "recommendation": "Conduct usability and QA audit on Product Quality. Review top 12 customer reports and prioritize recurring root causes in next sprint.",
+              "rationale": "Score of 30/100 driven by 12 negative items out of 40 total feedback entries.",
+              "expected_impact": "Expected 25-30% reduction in negative product quality mentions within 30 days.",
+              "effort": "S",
+              "suggested_owner": "Product Manager"
+            }
+          }
+        ],
+        "tracked_issues": [
+          {
+            "title": "Deploy Emergency Hotfix for Checkout & Launch Crashes",
+            "category": "App/Website Bugs",
+            "status": "open",
+            "priority_score": 91,
+            "notes": "Tracked from Intelligent Recommendations. Suggested owner: Mobile Platform Lead.",
+            "snapshot": {
+              "category": "App/Website Bugs",
+              "priority_score": 91,
+              "negative_count": 41,
+              "total_feedback": 55,
+              "avg_severity": 4.4,
+              "trend_percent": 3700,
+              "top_quotes": [
+                "App force closes whenever I try to apply a promo code on the latest release.",
+                "Buggy latest version. The screen goes completely black then exits to home screen. Happening on iPhone 15 Pro.",
+                "The app keeps crashing immediately after opening on iOS since the v2.4 update. Cannot access my cart!"
+              ]
+            },
+            "id": "531e558f-5071-4182-b99e-f54a4d748263",
+            "created_at": "2026-10-11T05:55:47.042Z",
+            "updated_at": "2026-10-11T05:55:47.042Z"
+          },
+          {
+            "title": "Checkout & App Launch Crash on v2.4 Release",
+            "category": "App/Website Bugs",
+            "status": "in_progress",
+            "priority_score": 91,
+            "notes": "Assigned to Mobile platform team. Hotfix build 2.4.1 undergoing regression testing.",
+            "snapshot": {
+              "category": "App/Website Bugs",
+              "priority_score": 91,
+              "negative_count": 35,
+              "total_feedback": 55,
+              "avg_severity": 4.6,
+              "trend_percent": 180,
+              "top_quotes": [
+                "The app keeps crashing immediately after opening on iOS since the v2.4 update. Cannot access my cart!",
+                "Latest update completely broke checkout. It freezes on payment screen and restarts the app.",
+                "Cannot complete my transaction. App crashes during Apple Pay authorization."
+              ]
+            },
+            "id": "81f8506b-1843-431f-abbc-62a01cb063b2",
+            "created_at": "2026-10-11T05:54:25.711Z",
+            "updated_at": "2026-10-11T05:54:25.711Z"
+          }
+        ],
+        "category_breakdown": [
+          {
+            "name": "App/Website Bugs",
+            "count": 55,
+            "negative_count": 41,
+            "positive_count": 0,
+            "avg_rating": 0
+          },
+          {
+            "name": "Customer Support",
+            "count": 35,
+            "negative_count": 19,
+            "positive_count": 16,
+            "avg_rating": 0
+          },
+          {
+            "name": "Delivery & Shipping",
+            "count": 35,
+            "negative_count": 17,
+            "positive_count": 11,
+            "avg_rating": 0
+          },
+          {
+            "name": "Pricing & Billing",
+            "count": 20,
+            "negative_count": 14,
+            "positive_count": 6,
+            "avg_rating": 0
+          },
+          {
+            "name": "Product Quality",
+            "count": 40,
+            "negative_count": 12,
+            "positive_count": 22,
+            "avg_rating": 0
+          },
+          {
+            "name": "Other",
+            "count": 1,
+            "negative_count": 0,
+            "positive_count": 0,
+            "avg_rating": 0
+          },
+          {
+            "name": "Usability/UX",
+            "count": 15,
+            "negative_count": 0,
+            "positive_count": 6,
+            "avg_rating": 0
+          }
+        ],
+        "executive_summary": "This report analyzes 201 customer touchpoints. The primary bottleneck is App/Website Bugs (Priority Score 91/100, 41 negative reports), with a recent +3700% escalation. Immediate intervention is advised to prevent customer churn and recover NPS."
+      },
+      "id": "46de11bf-a3fe-4bf5-ac80-e5730003506a",
+      "created_at": "2026-10-11T05:56:47.365Z"
+    },
+    {
+      "share_token": "rep_a2c5ffbd7c518e94",
+      "title": "Executive Feedback Report — Oct 11, 2026",
+      "payload": {
+        "title": "Executive Feedback Report — Oct 11, 2026",
+        "generated_at": "2026-10-11T05:56:47.246Z",
+        "kpis": {
+          "total_feedback": 201,
+          "positive_count": 61,
+          "neutral_count": 37,
+          "negative_count": 103,
+          "positive_pct": 30,
+          "neutral_pct": 18,
+          "negative_pct": 51,
+          "avg_rating": 2.9,
+          "avg_sentiment": -0.16,
+          "top_issue_category": "App/Website Bugs",
+          "top_issue_priority": 91,
+          "week_over_week_change": -28
+        },
+        "top_issues": [
+          {
+            "category": "App/Website Bugs",
+            "priority": 91,
+            "level": "Critical",
+            "components": {
+              "freq": 1,
+              "neg_share": 0.75,
+              "severity": 0.88,
+              "trend": 1
+            },
+            "metrics": {
+              "neg_count": 41,
+              "max_neg_count": 41,
+              "category_total": 55,
+              "avg_severity": 4.4,
+              "neg_this_period": 38,
+              "neg_prev_period": 1,
+              "trend_percent": 3700
+            },
+            "quotes": [
+              "App force closes whenever I try to apply a promo code on the latest release.",
+              "Buggy latest version. The screen goes completely black then exits to home screen. Happening on iPhone 15 Pro.",
+              "The app keeps crashing immediately after opening on iOS since the v2.4 update. Cannot access my cart!"
+            ],
+            "recommendation": {
+              "title": "Deploy Emergency Hotfix for Checkout & Launch Crashes",
+              "recommendation": "Isolate payment controller and session lifecycle memory leaks introduced in v2.4. Roll back checkout bundle or patch Apple Pay SDK crash immediately.",
+              "rationale": "Category priority scored 91/100 with 41 negative reports (+3700% recent surge) and a severe 4.4/5 severity rating.",
+              "expected_impact": "Reduce app crash rate by 85% and restore abandoned checkout revenue.",
+              "effort": "M",
+              "suggested_owner": "Mobile Platform Lead"
+            }
+          },
+          {
+            "category": "Pricing & Billing",
+            "priority": 49,
+            "level": "High",
+            "components": {
+              "freq": 0.34,
+              "neg_share": 0.7,
+              "severity": 0.74,
+              "trend": 0.25
+            },
+            "metrics": {
+              "neg_count": 14,
+              "max_neg_count": 41,
+              "category_total": 20,
+              "avg_severity": 3.7,
+              "neg_this_period": 5,
+              "neg_prev_period": 4,
+              "trend_percent": 25
+            },
+            "quotes": [
+              "Difficult to cancel subscription. Had to navigate 4 confirmation pages and call support.",
+              "Invoice lacked proper VAT breakdown required for business accounting.",
+              "Unexpected annual auto-renewal charge occurred without any reminder email beforehand."
+            ],
+            "recommendation": {
+              "title": "Add Transparent Renewal Reminders & One-Click Cancel",
+              "recommendation": "Send automatic 7-day email reminders prior to annual subscription renewals. Provide a clear self-serve cancellation flow in user account settings.",
+              "rationale": "Users report unexpected charges with a 3.7/5 severity score. Eliminating dark patterns reduces chargeback disputes.",
+              "expected_impact": "Cut disputed billing charges by 70% and rebuild user trust.",
+              "effort": "S",
+              "suggested_owner": "Billing & Monetization Team"
+            }
+          },
+          {
+            "category": "Customer Support",
+            "priority": 43,
+            "level": "High",
+            "components": {
+              "freq": 0.46,
+              "neg_share": 0.54,
+              "severity": 0.65,
+              "trend": 0
+            },
+            "metrics": {
+              "neg_count": 19,
+              "max_neg_count": 41,
+              "category_total": 35,
+              "avg_severity": 3.3,
+              "neg_this_period": 5,
+              "neg_prev_period": 8,
+              "trend_percent": -37
+            },
+            "quotes": [
+              "Took over a week to get a response to my support ticket regarding a warranty claim.",
+              "Waited 45 minutes on live chat only to be transferred and disconnected.",
+              "Waited 45 minutes on live chat only to be transferred and disconnected."
+            ],
+            "recommendation": {
+              "title": "Refactor Chatbot Escalation & Support Routing",
+              "recommendation": "Reduce chatbot loop threshold from 3 turns to 1 turn before human handoff. Add instant callback options during peak live-chat queues.",
+              "rationale": "Customer support accounts for 19 negative touchpoints with wait times and chat loops as top drivers.",
+              "expected_impact": "Reduce average queue handle time by 35% and boost resolution satisfaction.",
+              "effort": "S",
+              "suggested_owner": "Head of Customer Experience"
+            }
+          },
+          {
+            "category": "Delivery & Shipping",
+            "priority": 40,
+            "level": "High",
+            "components": {
+              "freq": 0.41,
+              "neg_share": 0.49,
+              "severity": 0.65,
+              "trend": 0
+            },
+            "metrics": {
+              "neg_count": 17,
+              "max_neg_count": 41,
+              "category_total": 35,
+              "avg_severity": 3.2,
+              "neg_this_period": 0,
+              "neg_prev_period": 5,
+              "trend_percent": -100
+            },
+            "quotes": [
+              "Package arrived 4 days later than promised with zero tracking updates in between.",
+              "Package arrived 4 days later than promised with zero tracking updates in between.",
+              "Courier left the parcel on the driveway in the rain instead of on the covered porch."
+            ],
+            "recommendation": {
+              "title": "Audit Carrier SLA & Automate Tracking Notifications",
+              "recommendation": "Implement webhook tracking updates for courier status shifts. Alert customers proactively on shipment milestones to deflect support inquiries.",
+              "rationale": "17 shipping complaints logged (49% of shipping feedback), predominantly driven by tracking latency.",
+              "expected_impact": "Deflect 40% of 'Where is my order?' support tickets and improve post-purchase CSAT.",
+              "effort": "S",
+              "suggested_owner": "Logistics & CX Operations"
+            }
+          },
+          {
+            "category": "Product Quality",
+            "priority": 30,
+            "level": "Medium",
+            "components": {
+              "freq": 0.29,
+              "neg_share": 0.3,
+              "severity": 0.6,
+              "trend": 0
+            },
+            "metrics": {
+              "neg_count": 12,
+              "max_neg_count": 41,
+              "category_total": 40,
+              "avg_severity": 3,
+              "neg_this_period": 0,
+              "neg_prev_period": 9,
+              "trend_percent": -100
+            },
+            "quotes": [
+              "Seams on the carrying case began fraying after just two weeks of gentle use.",
+              "Seams on the carrying case began fraying after just two weeks of gentle use.",
+              "Seams on the carrying case began fraying after just two weeks of gentle use."
+            ],
+            "recommendation": {
+              "title": "Address Core Friction in Product Quality",
+              "recommendation": "Conduct usability and QA audit on Product Quality. Review top 12 customer reports and prioritize recurring root causes in next sprint.",
+              "rationale": "Score of 30/100 driven by 12 negative items out of 40 total feedback entries.",
+              "expected_impact": "Expected 25-30% reduction in negative product quality mentions within 30 days.",
+              "effort": "S",
+              "suggested_owner": "Product Manager"
+            }
+          }
+        ],
+        "tracked_issues": [
+          {
+            "title": "Deploy Emergency Hotfix for Checkout & Launch Crashes",
+            "category": "App/Website Bugs",
+            "status": "open",
+            "priority_score": 91,
+            "notes": "Tracked from Intelligent Recommendations. Suggested owner: Mobile Platform Lead.",
+            "snapshot": {
+              "category": "App/Website Bugs",
+              "priority_score": 91,
+              "negative_count": 41,
+              "total_feedback": 55,
+              "avg_severity": 4.4,
+              "trend_percent": 3700,
+              "top_quotes": [
+                "App force closes whenever I try to apply a promo code on the latest release.",
+                "Buggy latest version. The screen goes completely black then exits to home screen. Happening on iPhone 15 Pro.",
+                "The app keeps crashing immediately after opening on iOS since the v2.4 update. Cannot access my cart!"
+              ]
+            },
+            "id": "531e558f-5071-4182-b99e-f54a4d748263",
+            "created_at": "2026-10-11T05:55:47.042Z",
+            "updated_at": "2026-10-11T05:55:47.042Z"
+          },
+          {
+            "title": "Checkout & App Launch Crash on v2.4 Release",
+            "category": "App/Website Bugs",
+            "status": "in_progress",
+            "priority_score": 91,
+            "notes": "Assigned to Mobile platform team. Hotfix build 2.4.1 undergoing regression testing.",
+            "snapshot": {
+              "category": "App/Website Bugs",
+              "priority_score": 91,
+              "negative_count": 35,
+              "total_feedback": 55,
+              "avg_severity": 4.6,
+              "trend_percent": 180,
+              "top_quotes": [
+                "The app keeps crashing immediately after opening on iOS since the v2.4 update. Cannot access my cart!",
+                "Latest update completely broke checkout. It freezes on payment screen and restarts the app.",
+                "Cannot complete my transaction. App crashes during Apple Pay authorization."
+              ]
+            },
+            "id": "81f8506b-1843-431f-abbc-62a01cb063b2",
+            "created_at": "2026-10-11T05:54:25.711Z",
+            "updated_at": "2026-10-11T05:54:25.711Z"
+          }
+        ],
+        "category_breakdown": [
+          {
+            "name": "App/Website Bugs",
+            "count": 55,
+            "negative_count": 41,
+            "positive_count": 0,
+            "avg_rating": 0
+          },
+          {
+            "name": "Customer Support",
+            "count": 35,
+            "negative_count": 19,
+            "positive_count": 16,
+            "avg_rating": 0
+          },
+          {
+            "name": "Delivery & Shipping",
+            "count": 35,
+            "negative_count": 17,
+            "positive_count": 11,
+            "avg_rating": 0
+          },
+          {
+            "name": "Pricing & Billing",
+            "count": 20,
+            "negative_count": 14,
+            "positive_count": 6,
+            "avg_rating": 0
+          },
+          {
+            "name": "Product Quality",
+            "count": 40,
+            "negative_count": 12,
+            "positive_count": 22,
+            "avg_rating": 0
+          },
+          {
+            "name": "Other",
+            "count": 1,
+            "negative_count": 0,
+            "positive_count": 0,
+            "avg_rating": 0
+          },
+          {
+            "name": "Usability/UX",
+            "count": 15,
+            "negative_count": 0,
+            "positive_count": 6,
+            "avg_rating": 0
+          }
+        ],
+        "executive_summary": "This report analyzes 201 customer touchpoints. The primary bottleneck is App/Website Bugs (Priority Score 91/100, 41 negative reports), with a recent +3700% escalation. Immediate intervention is advised to prevent customer churn and recover NPS."
+      },
+      "id": "fd229774-9101-43a5-b6ba-a45dc0b70027",
+      "created_at": "2026-10-11T05:56:47.250Z"
+    }
+  ]
+}
