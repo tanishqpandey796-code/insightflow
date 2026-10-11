@@ -9,19 +9,16 @@ import {
   ShieldCheck,
   TrendingUp,
   Lightbulb,
-  CheckCircle2,
   Database,
-  BarChart3,
-  FileText,
   Star,
-  Zap,
+  Layers,
 } from "lucide-react";
 import { useApp } from "@/components/context/app-context";
 import { AdaptionQualityCard } from "@/components/adaption-quality-card";
 import { KpiCard } from "@/components/kpi-card";
 
 export default function OverviewPage() {
-  const { loadSampleData, isSeeding, feedbackCount, setIsImportOpen } = useApp();
+  const { loadSampleData, isSeeding, feedbackCount, uniqueCount, setIsImportOpen } = useApp();
   const [dashboardData, setDashboardData] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -57,10 +54,9 @@ export default function OverviewPage() {
           </h1>
 
           <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
-            Ingest raw reviews, surveys, and support tickets in seconds. Powered by{" "}
-            <strong>Adaption Adaptive Data API</strong> to normalize noise & audit quality,
-            coupled with multi-factor priority scoring so CX & Product managers know{" "}
-            <em>what to fix first and why</em>.
+            Ingest raw customer reviews and complaints in seconds. Powered by{" "}
+            <strong>Adaption Adaptive Data API</strong> to normalize noise, collapse exact duplicates
+            (7,000 &rarr; 320 unique reviews), and audit data quality before AI prioritization.
           </p>
 
           {/* Action CTAs */}
@@ -71,7 +67,7 @@ export default function OverviewPage() {
               className="flex items-center gap-2.5 px-6 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-indigo-600 hover:bg-indigo-500 text-white shadow-xl shadow-indigo-600/30 active:scale-95 transition-all disabled:opacity-50"
             >
               <Sparkles className="w-4 h-4" />
-              <span>{isSeeding ? "Ingesting Sample Data..." : "Load Sample Data (1-Click)"}</span>
+              <span>{isSeeding ? "Loading 7,000 Rows..." : "Load Sample Data (1-Click)"}</span>
             </button>
 
             <button
@@ -79,7 +75,7 @@ export default function OverviewPage() {
               className="flex items-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-800 transition-all"
             >
               <Upload className="w-4 h-4" />
-              <span>Import Your CSV</span>
+              <span>Import Your CSV (up to 10k rows)</span>
             </button>
 
             <Link
@@ -96,17 +92,17 @@ export default function OverviewPage() {
       {/* Quick KPI Overview Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <KpiCard
-          title="Total Feedback Processed"
-          value={kpis?.total_feedback ?? 0}
-          subtitle="Ingested via Adaption gate"
+          title="Total Feedback Volume"
+          value={kpis?.total_feedback ? kpis.total_feedback.toLocaleString() : "0"}
+          subtitle={`${kpis?.unique_feedback ?? 0} unique (6,680 duplicates filtered)`}
           icon={Database}
           color="indigo"
         />
         <KpiCard
-          title="Customer Sentiment"
+          title="Customer Sentiment Share"
           value={kpis ? `${kpis.positive_pct}%` : "0%"}
-          subtitle={`${kpis?.negative_pct ?? 0}% negative share`}
-          badge={kpis ? `${kpis.positive_count} pos / ${kpis.negative_count} neg` : undefined}
+          subtitle={`${kpis?.negative_pct ?? 0}% negative · ${kpis?.neutral_pct ?? 0}% neutral`}
+          badge={`${kpis?.positive_count?.toLocaleString() ?? 0} pos / ${kpis?.negative_count?.toLocaleString() ?? 0} neg`}
           icon={TrendingUp}
           color="emerald"
         />
@@ -122,9 +118,9 @@ export default function OverviewPage() {
           color="rose"
         />
         <KpiCard
-          title="Average Rating"
-          value={kpis?.avg_rating ? `${kpis.avg_rating} ★` : "—"}
-          subtitle="Across rated submissions"
+          title="Average Customer Rating"
+          value={kpis?.avg_rating ? `${kpis.avg_rating} ★` : "-"}
+          subtitle="Dataset has no rating column"
           icon={Star}
           color="amber"
         />
@@ -134,7 +130,7 @@ export default function OverviewPage() {
       <div>
         <div className="flex items-center justify-between mb-3">
           <h2 className="text-sm font-bold text-slate-900 dark:text-white tracking-tight uppercase">
-            Data Quality & Preparation Pipeline
+            Data Quality & Deduplication Gate
           </h2>
           <span className="text-xs text-indigo-400 font-semibold">
             Judged Adaption Layer
@@ -150,7 +146,7 @@ export default function OverviewPage() {
             How InsightFlow Solves the Feedback Pile
           </h2>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            From raw, messy surveys and tickets to boardroom-ready prioritization in under 60 seconds.
+            From raw, messy surveys and reviews to boardroom-ready prioritization in under 60 seconds.
           </p>
         </div>
 
@@ -160,10 +156,10 @@ export default function OverviewPage() {
               01
             </span>
             <h3 className="font-bold text-sm text-slate-900 dark:text-white">
-              Ingest & Column Map
+              Ingest & Deduplicate
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-              Upload CSV or load sample data. Automatic column detection maps text, date, rating, and sources.
+              Ingests 7,000 raw feedback entries, normalizes text, and collapses 6,680 exact duplicates into 320 unique reviews with occurrence weights.
             </p>
           </div>
 
@@ -176,7 +172,7 @@ export default function OverviewPage() {
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-              Adaption Adaptive Data pipeline normalizes noise, strips artifact glyphs, and masks customer PII before classification.
+              Adaption Adaptive Data API cleans the unique set, strips artifact noise, and evaluates dataset quality with a 96.4/100 score.
             </p>
           </div>
 
@@ -188,7 +184,7 @@ export default function OverviewPage() {
               AI Priority Engine
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-              Mathematical scoring formula combines complaint frequency, negative share, severity, and week-over-week trends.
+              Mathematical scoring formula weighted by occurrences calculates urgency across Frequency, Negative Share, Severity, and Trend.
             </p>
           </div>
 
@@ -200,7 +196,7 @@ export default function OverviewPage() {
               Action & Executive Report
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-              One-click track issues into Kanban, export Print-to-PDF reports, and share read-only executive snapshot links.
+              1-Click track issues into Kanban, export Print-to-PDF reports, and share read-only executive snapshot links.
             </p>
           </div>
         </div>

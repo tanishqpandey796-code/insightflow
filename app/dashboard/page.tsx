@@ -4,13 +4,11 @@ import React, { useEffect, useState } from "react";
 import {
   LayoutDashboard,
   TrendingUp,
-  MessageSquare,
-  Star,
   AlertTriangle,
   Database,
-  ShieldCheck,
-  Calendar,
-  Sparkles,
+  Star,
+  Layers,
+  Clock,
 } from "lucide-react";
 import { KpiCard } from "@/components/kpi-card";
 import { FilterBar } from "@/components/filter-bar";
@@ -45,7 +43,7 @@ export default function DashboardPage() {
 
       if (timeRange !== "all") {
         const now = new Date();
-        const days = timeRange === "7d" ? 7 : timeRange === "30d" ? 30 : 60;
+        const days = timeRange === "14d" ? 14 : 45;
         const fromDate = new Date(now.getTime() - days * 24 * 60 * 60 * 1000);
         params.set("from", fromDate.toISOString());
       }
@@ -87,7 +85,7 @@ export default function DashboardPage() {
             <span>CX & Product Analytics Dashboard</span>
           </h1>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            Real-time trends, sentiment distribution, and emerging friction patterns.
+            Real-time analytics computed strictly from the 7,000-row customer dataset.
           </p>
         </div>
       </div>
@@ -104,6 +102,8 @@ export default function DashboardPage() {
         onSourceChange={setSource}
         timeRange={timeRange}
         onTimeRangeChange={setTimeRange}
+        hasRatings={kpis?.has_ratings}
+        hasSources={kpis?.has_sources}
         onReset={handleResetFilters}
       />
 
@@ -111,28 +111,28 @@ export default function DashboardPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <KpiCard
           title="Total Feedback Volume"
-          value={kpis?.total_feedback ?? 0}
-          trend={kpis?.week_over_week_change}
-          trendLabel="vs previous 7 days"
+          value={kpis?.total_feedback ? kpis.total_feedback.toLocaleString() : "0"}
+          subtitle={`${kpis?.unique_feedback ?? 0} unique reviews (6,680 duplicates removed)`}
           icon={Database}
           color="indigo"
         />
         <KpiCard
-          title="Net Positive Sentiment"
+          title="Customer Sentiment Share"
           value={kpis ? `${kpis.positive_pct}%` : "0%"}
-          subtitle={`${kpis?.neutral_pct ?? 0}% neutral · ${kpis?.negative_pct ?? 0}% negative`}
+          subtitle={`${kpis?.negative_pct ?? 0}% negative · ${kpis?.neutral_pct ?? 0}% neutral`}
+          badge={`${kpis?.positive_count?.toLocaleString() ?? 0} pos / ${kpis?.negative_count?.toLocaleString() ?? 0} neg`}
           icon={TrendingUp}
           color="emerald"
         />
         <KpiCard
           title="Average Customer Rating"
-          value={kpis?.avg_rating ? `${kpis.avg_rating} / 5.0` : "—"}
-          subtitle={`Average score: ${kpis?.avg_sentiment ?? 0} (-1 to 1)`}
+          value={kpis?.avg_rating ? `${kpis.avg_rating} ★` : "-"}
+          subtitle="Dataset has no rating column (showing -)"
           icon={Star}
           color="amber"
         />
         <KpiCard
-          title="Highest Escalation Category"
+          title="Top Friction Category"
           value={kpis?.top_issue_category || "None"}
           subtitle={
             kpis?.top_issue_priority
@@ -155,7 +155,7 @@ export default function DashboardPage() {
             <h3 className="font-bold text-xs uppercase tracking-wider text-slate-800 dark:text-slate-200">
               Sentiment Distribution
             </h3>
-            <span className="text-[11px] text-slate-400">Total {kpis?.total_feedback || 0}</span>
+            <span className="text-[11px] text-slate-400">Weighted: {kpis?.total_feedback?.toLocaleString() || 0}</span>
           </div>
           <SentimentDonut
             data={charts?.sentiment_distribution || []}
@@ -165,19 +165,19 @@ export default function DashboardPage() {
             <div>
               <span className="block text-[10px] text-emerald-500 font-bold">Positive</span>
               <span className="font-bold text-slate-800 dark:text-slate-200">
-                {kpis?.positive_count ?? 0}
+                {kpis?.positive_count?.toLocaleString() ?? 0}
               </span>
             </div>
             <div>
               <span className="block text-[10px] text-amber-500 font-bold">Neutral</span>
               <span className="font-bold text-slate-800 dark:text-slate-200">
-                {kpis?.neutral_count ?? 0}
+                {kpis?.neutral_count?.toLocaleString() ?? 0}
               </span>
             </div>
             <div>
               <span className="block text-[10px] text-rose-500 font-bold">Negative</span>
               <span className="font-bold text-slate-800 dark:text-slate-200">
-                {kpis?.negative_count ?? 0}
+                {kpis?.negative_count?.toLocaleString() ?? 0}
               </span>
             </div>
           </div>
@@ -186,10 +186,14 @@ export default function DashboardPage() {
         {/* Sentiment Over Time Line Chart */}
         <div className="lg:col-span-2 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-5 shadow-sm space-y-3">
           <div className="flex items-center justify-between">
-            <h3 className="font-bold text-xs uppercase tracking-wider text-slate-800 dark:text-slate-200">
-              Sentiment Trends Over Time
-            </h3>
-            <span className="text-[11px] text-slate-400">Daily trajectory</span>
+            <div>
+              <h3 className="font-bold text-xs uppercase tracking-wider text-slate-800 dark:text-slate-200">
+                Sentiment Trends Over Time
+              </h3>
+              <p className="text-[10px] text-indigo-400 font-medium mt-0.5">
+                Simulated timeline (dataset has no dates — 7,000 rows spread by sequence over 90 days)
+              </p>
+            </div>
           </div>
           <SentimentTimeline data={charts?.sentiment_over_time || []} />
         </div>
@@ -201,9 +205,9 @@ export default function DashboardPage() {
         <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-5 shadow-sm space-y-3">
           <div className="flex items-center justify-between">
             <h3 className="font-bold text-xs uppercase tracking-wider text-slate-800 dark:text-slate-200">
-              Category Friction vs Positive
+              Category Volume Breakdown (4 Official Categories)
             </h3>
-            <span className="text-[11px] text-slate-400">By feedback count</span>
+            <span className="text-[11px] text-slate-400">Total occurrences</span>
           </div>
           <CategoryBar data={charts?.top_categories || []} />
         </div>
@@ -212,9 +216,9 @@ export default function DashboardPage() {
         <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-5 shadow-sm space-y-3">
           <div className="flex items-center justify-between">
             <h3 className="font-bold text-xs uppercase tracking-wider text-slate-800 dark:text-slate-200">
-              Top Negative Complaint Keywords
+              Top Complaint Topics (Negative Frequency)
             </h3>
-            <span className="text-[11px] text-rose-400 font-semibold">Extracted topics</span>
+            <span className="text-[11px] text-rose-400 font-semibold">Weighted counts</span>
           </div>
           <ComplaintTopicsChart data={charts?.top_complaints || []} />
         </div>
@@ -223,10 +227,15 @@ export default function DashboardPage() {
       {/* Feedback Volume Area Timeline */}
       <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-5 shadow-sm space-y-3">
         <div className="flex items-center justify-between">
-          <h3 className="font-bold text-xs uppercase tracking-wider text-slate-800 dark:text-slate-200">
-            Ingestion Volume Timeline
-          </h3>
-          <span className="text-[11px] text-slate-400">Total historical density</span>
+          <div>
+            <h3 className="font-bold text-xs uppercase tracking-wider text-slate-800 dark:text-slate-200">
+              Ingestion Density Timeline
+            </h3>
+            <p className="text-[10px] text-indigo-400 font-medium mt-0.5">
+              Simulated timeline (dataset has no dates — 7,000 rows ordered over 90 days)
+            </p>
+          </div>
+          <span className="text-[11px] text-slate-400">7,000 rows</span>
         </div>
         <VolumeTimeline data={charts?.volume_over_time || []} />
       </div>

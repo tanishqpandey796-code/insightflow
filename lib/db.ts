@@ -95,6 +95,7 @@ export const db = {
       const dbData = readDb();
       const newItem: Feedback = {
         ...item,
+        occurrence_count: item.occurrence_count || 1,
         id: crypto.randomUUID(),
       };
       dbData.feedback.unshift(newItem);
@@ -105,9 +106,10 @@ export const db = {
       const dbData = readDb();
       const created: Feedback[] = items.map((item) => ({
         ...item,
+        occurrence_count: item.occurrence_count || 1,
         id: crypto.randomUUID(),
       }));
-      dbData.feedback.unshift(...created);
+      dbData.feedback = [...created, ...dbData.feedback];
       writeDb(dbData);
       return created;
     },
@@ -142,7 +144,7 @@ export const db = {
           const u = map.get(item.id)!;
           item.sentiment = u.sentiment;
           item.sentiment_score = u.sentiment_score;
-          item.category = u.category;
+          if (u.category) item.category = u.category;
           item.topics = u.topics;
           item.severity = u.severity;
           item.summary = u.summary;
@@ -159,7 +161,14 @@ export const db = {
         writeDb(dbData);
       }
     },
-    list(options: FilterOptions = {}): { items: Feedback[]; total: number; page: number; pageSize: number } {
+    list(options: FilterOptions = {}): {
+      items: Feedback[];
+      total: number;
+      totalWeighted: number;
+      uniqueCount: number;
+      page: number;
+      pageSize: number;
+    } {
       const dbData = readDb();
       let filtered = [...dbData.feedback];
 
@@ -169,20 +178,9 @@ export const db = {
         filtered = filtered.filter(
           (f) =>
             f.text.toLowerCase().includes(query) ||
-            (f.customer && f.customer.toLowerCase().includes(query)) ||
             (f.summary && f.summary.toLowerCase().includes(query)) ||
-            f.topics.some((t) => t.toLowerCase().includes(query))
+            (f.topics && f.topics.some((t) => t.toLowerCase().includes(query)))
         );
-      }
-
-      // Filter by source
-      if (options.source && options.source !== "all") {
-        filtered = filtered.filter((f) => f.source === options.source);
-      }
-
-      // Filter by sentiment
-      if (options.sentiment && options.sentiment !== "all") {
-        filtered = filtered.filter((f) => f.sentiment === options.sentiment);
       }
 
       // Filter by category
@@ -190,7 +188,17 @@ export const db = {
         filtered = filtered.filter((f) => f.category === options.category);
       }
 
-      // Filter by rating
+      // Filter by sentiment
+      if (options.sentiment && options.sentiment !== "all") {
+        filtered = filtered.filter((f) => f.sentiment === options.sentiment);
+      }
+
+      // Filter by source (if present)
+      if (options.source && options.source !== "all") {
+        filtered = filtered.filter((f) => f.source === options.source);
+      }
+
+      // Filter by rating (if present)
       if (options.rating && options.rating !== "all") {
         const r = parseInt(options.rating, 10);
         if (!isNaN(r)) {
@@ -212,10 +220,15 @@ export const db = {
         }
       }
 
-      // Sort by created_at desc
-      filtered.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+      // Sort by occurrence_count desc, then date desc
+      filtered.sort((a, b) => {
+        const countDiff = (b.occurrence_count || 1) - (a.occurrence_count || 1);
+        if (countDiff !== 0) return countDiff;
+        return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+      });
 
-      const total = filtered.length;
+      const uniqueCount = filtered.length;
+      const totalWeighted = filtered.reduce((acc, curr) => acc + (curr.occurrence_count || 1), 0);
       const page = options.page ? Math.max(1, options.page) : 1;
       const pageSize = options.pageSize ? Math.max(1, options.pageSize) : 20;
       const start = (page - 1) * pageSize;
@@ -223,7 +236,9 @@ export const db = {
 
       return {
         items: paginated,
-        total,
+        total: uniqueCount,
+        totalWeighted,
+        uniqueCount,
         page,
         pageSize,
       };
@@ -231,15 +246,20 @@ export const db = {
     getAll(options: Omit<FilterOptions, "page" | "pageSize"> = {}): Feedback[] {
       return db.feedback.list({ ...options, page: 1, pageSize: 100000 }).items;
     },
-    getUnanalyzed(limit = 50, importJobId?: string): Feedback[] {
+    getUnanalyzed(limit = 100, importJobId?: string): Feedback[] {
       const dbData = readDb();
       return dbData.feedback
         .filter((f) => !f.analyzed_at && (!importJobId || f.import_job_id === importJobId))
         .slice(0, limit);
     },
-    count(): number {
+    count(): { totalWeighted: number; uniqueCount: number } {
       const dbData = readDb();
-      return dbData.feedback.length;
+      const uniqueCount = dbData.feedback.length;
+      const totalWeighted = dbData.feedback.reduce(
+        (acc, curr) => acc + (curr.occurrence_count || 1),
+        0
+      );
+      return { totalWeighted, uniqueCount };
     },
     deleteAll(): void {
       const dbData = readDb();

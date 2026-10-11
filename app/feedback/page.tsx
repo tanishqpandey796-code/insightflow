@@ -6,7 +6,6 @@ import {
   Plus,
   Upload,
   RefreshCw,
-  Sparkles,
 } from "lucide-react";
 import { Feedback } from "@/types";
 import { FeedbackTable } from "@/components/feedback-table";
@@ -17,6 +16,7 @@ export default function FeedbackPage() {
   const { feedbackCount, setIsImportOpen, setIsAddFeedbackOpen, addToast } = useApp();
   const [items, setItems] = useState<Feedback[]>([]);
   const [total, setTotal] = useState(0);
+  const [totalWeighted, setTotalWeighted] = useState(0);
   const [page, setPage] = useState(1);
   const [pageSize] = useState(15);
   const [isLoading, setIsLoading] = useState(true);
@@ -44,7 +44,7 @@ export default function FeedbackPage() {
 
       if (timeRange !== "all") {
         const now = new Date();
-        const days = timeRange === "7d" ? 7 : timeRange === "30d" ? 30 : 60;
+        const days = timeRange === "14d" ? 14 : 45;
         const fromDate = new Date(now.getTime() - days * 24 * 60 * 60 * 1000);
         params.set("from", fromDate.toISOString());
       }
@@ -54,6 +54,7 @@ export default function FeedbackPage() {
         const data = await res.json();
         setItems(data.items || []);
         setTotal(data.total || 0);
+        setTotalWeighted(data.totalWeighted || data.total || 0);
       }
     } catch (err) {
       console.error(err);
@@ -105,7 +106,7 @@ export default function FeedbackPage() {
             <span>Customer Feedback Explorer</span>
           </h1>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            Browse, search, and filter adapted feedback with sentiment scores and topics.
+            Browse, search, and filter unique reviews with occurrence frequency and severity.
           </p>
         </div>
 
@@ -165,6 +166,8 @@ export default function FeedbackPage() {
           setTimeRange(val);
           setPage(1);
         }}
+        hasRatings={false}
+        hasSources={false}
         onReset={handleResetFilters}
       />
 
@@ -172,6 +175,7 @@ export default function FeedbackPage() {
       <FeedbackTable
         items={items}
         total={total}
+        totalWeighted={totalWeighted}
         page={page}
         pageSize={pageSize}
         onPageChange={(p) => setPage(p)}

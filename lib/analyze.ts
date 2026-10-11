@@ -32,7 +32,7 @@ export async function analyzeFeedbackRows(
     }> = [];
 
     // Check cache first
-    const uncached: Array<{ id: string; text: string; rating: number | null }> = [];
+    const uncached: Array<{ id: string; text: string; rating: number | null; category: CategoryType | null }> = [];
 
     for (const item of chunk) {
       const textToAnalyze = item.cleaned_text || item.text;
@@ -42,7 +42,7 @@ export async function analyzeFeedbackRows(
         const cached = memoryCache.get(hash);
         updates.push({ id: item.id, ...cached });
       } else {
-        uncached.push({ id: item.id, text: textToAnalyze, rating: item.rating });
+        uncached.push({ id: item.id, text: textToAnalyze, rating: item.rating, category: item.category });
       }
     }
 
@@ -70,7 +70,7 @@ export async function analyzeFeedbackRows(
         updates.push({ id: item.id, ...parsed });
       } else {
         // Fallback rule-based
-        const ruleRes = analyzeFeedbackRuleBased(textToAnalyze, item.rating);
+        const ruleRes = analyzeFeedbackRuleBased(textToAnalyze, item.category, item.rating);
         memoryCache.set(hash, ruleRes);
         updates.push({ id: item.id, ...ruleRes });
       }

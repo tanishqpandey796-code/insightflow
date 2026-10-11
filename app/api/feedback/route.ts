@@ -78,12 +78,13 @@ export async function POST(req: NextRequest) {
       }
 
       if (!analysis) {
-        analysis = analyzeFeedbackRuleBased(localCleaning.cleaned, rating || null);
+        analysis = analyzeFeedbackRuleBased(localCleaning.cleaned, undefined, rating || null);
       }
     }
 
     const newItem = db.feedback.create({
       import_job_id: null,
+      occurrence_count: 1,
       text,
       cleaned_text: localCleaning.cleaned,
       source: source as any,

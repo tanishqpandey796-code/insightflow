@@ -1,4 +1,4 @@
-import { CategoryType, Feedback, SentimentType } from "@/types";
+import { CategoryType, SentimentType } from "@/types";
 
 interface RuleAnalysisResult {
   sentiment: SentimentType;
@@ -9,132 +9,126 @@ interface RuleAnalysisResult {
   summary: string;
 }
 
-const CATEGORY_KEYWORDS: Record<CategoryType, string[]> = {
-  "App/Website Bugs": [
-    "crash", "crashes", "crashing", "freeze", "freezes", "bug", "bugs", "glitch",
-    "error", "500", "hangs", "force close", "black screen", "v2.4", "update",
-    "hotfix", "regression", "quit", "restarts", "apple pay", "bluetooth"
-  ],
-  "Product Quality": [
-    "quality", "finish", "aluminum", "durability", "fraying", "cheap", "plasticky",
-    "battery", "sound", "noise cancellation", "headphones", "resolution", "display",
-    "screen", "hinge", "material", "materials", "build"
-  ],
-  "Delivery & Shipping": [
-    "delivery", "shipping", "courier", "package", "parcel", "box", "tracking",
-    "delayed", "arrived", "customs", "carrier", "porch", "driveway"
-  ],
-  "Customer Support": [
-    "support", "agent", "representative", "maya", "chat", "chatbot", "ticket",
-    "phone", "help desk", "refund", "warranty", "disconnected", "service"
-  ],
-  "Pricing & Billing": [
-    "price", "pricing", "billing", "renewal", "auto-renewal", "subscription",
-    "invoice", "vat", "charge", "charged", "expensive", "cancel", "cancellation", "roi"
-  ],
-  "Usability/UX": [
-    "navigation", "menu", "filter", "filters", "ux", "ui", "interface", "export",
-    "dark mode", "font", "cognitive", "intuitive", "confusing"
-  ],
-  "Other": [],
-};
+export function analyzeFeedbackRuleBased(
+  text: string,
+  existingCategory?: string | null,
+  rating?: number | null
+): RuleAnalysisResult {
+  const lower = text.toLowerCase().trim();
 
-const POSITIVE_WORDS = [
-  "exceptional", "outstanding", "excellent", "super", "great", "love", "loved",
-  "amazing", "best", "fast", "smooth", "helpful", "proactive", "patient", "intuitive",
-  "fair", "transparent", "top-tier", "impressed", "solid", "vivid", "sharp"
-];
-
-const NEGATIVE_WORDS = [
-  "crash", "crashes", "crashing", "freeze", "freezes", "broken", "unusable",
-  "disaster", "horrible", "terrible", "worst", "hate", "delayed", "disconnect",
-  "disconnected", "frustrating", "cheat", "cheap", "poor", "dark pattern",
-  "invalid", "error", "crushed", "surprise", "force close"
-];
-
-export function analyzeFeedbackRuleBased(text: string, rating?: number | null): RuleAnalysisResult {
-  const lower = text.toLowerCase();
-
-  // 1. Determine Category
-  let matchedCategory: CategoryType = "Other";
-  let maxCatMatches = 0;
-  for (const [cat, keywords] of Object.entries(CATEGORY_KEYWORDS) as [CategoryType, string[]][]) {
-    let count = 0;
-    for (const kw of keywords) {
-      if (lower.includes(kw)) count++;
+  // 1. Category: Always preserve existingCategory if given!
+  let category: CategoryType = "Other";
+  if (existingCategory) {
+    const cleanCat = existingCategory.trim();
+    if (
+      cleanCat === "Fraud and Scam" ||
+      cleanCat === "Customer Service" ||
+      cleanCat === "Operational Issues" ||
+      cleanCat === "Product Feedback"
+    ) {
+      category = cleanCat as CategoryType;
+    } else {
+      category = (cleanCat as any) || "Other";
     }
-    if (count > maxCatMatches) {
-      maxCatMatches = count;
-      matchedCategory = cat;
+  } else {
+    // Heuristic category if missing
+    if (lower.includes("scam") || lower.includes("fraud") || lower.includes("counterfeit") || lower.includes("charge")) {
+      category = "Fraud and Scam";
+    } else if (lower.includes("service") || lower.includes("support") || lower.includes("agent") || lower.includes("representative")) {
+      category = "Customer Service";
+    } else if (lower.includes("delivery") || lower.includes("shipping") || lower.includes("website") || lower.includes("glitch") || lower.includes("order")) {
+      category = "Operational Issues";
+    } else {
+      category = "Product Feedback";
     }
   }
 
-  // 2. Extract Topics / Keywords
-  const foundKeywords: string[] = [];
-  const words = lower.split(/[^a-zA-Z0-9_\-.]+/);
-  for (const kw of CATEGORY_KEYWORDS[matchedCategory]) {
-    if (lower.includes(kw) && !foundKeywords.includes(kw)) {
-      foundKeywords.push(kw);
-      if (foundKeywords.length >= 3) break;
+  // 2. Sentiment Determination with negation handling
+  // Crucial: check for positive statements about fraud like "No fraudulent activity detected", "I was not a victim of fraud"
+  const isFalseAlarmFraud =
+    lower.includes("no signs of fraudulent activity") ||
+    lower.includes("no fraudulent activity") ||
+    lower.includes("was not a victim of fraud") ||
+    lower.includes("not a victim of fraud");
+
+  const strongNegatives = [
+    "scammed", "victim of fraud", "counterfeit", "unresponsive", "disappointed",
+    "never sent", "never received", "stopped working", "not helpful", "remains unresolved",
+    "defects", "delayed by two weeks", "delayed by a week", "charged multiple times",
+    "additional payment", "glitches", "kept crashing", "crashing", "damaged", "missing",
+    "terrible", "frustrating", "inconvenient", "wrong items", "took my money"
+  ];
+
+  const strongPositives = [
+    "greatly improved", "helpful and resolved", "exceeded my expectations",
+    "knowledgeable and provided", "perfect condition", "quick resolution",
+    "met all my expectations", "on time and", "outstanding", "great experience",
+    "friendly and efficient", "very professional", "durable and well-made",
+    "great value for money", "innovative and very useful", "highly recommended"
+  ];
+
+  let hasNeg = false;
+  if (!isFalseAlarmFraud) {
+    for (const phrase of strongNegatives) {
+      if (lower.includes(phrase)) {
+        hasNeg = true;
+        break;
+      }
     }
   }
-  if (foundKeywords.length === 0) {
-    foundKeywords.push(matchedCategory.toLowerCase());
+
+  let hasPos = false;
+  for (const phrase of strongPositives) {
+    if (lower.includes(phrase)) {
+      hasPos = true;
+      break;
+    }
   }
 
-  // 3. Sentiment & Score
-  let posMatches = 0;
-  let negMatches = 0;
-  for (const w of POSITIVE_WORDS) {
-    if (lower.includes(w)) posMatches++;
-  }
-  for (const w of NEGATIVE_WORDS) {
-    if (lower.includes(w)) negMatches++;
+  if (isFalseAlarmFraud) {
+    hasPos = true;
   }
 
   let sentiment: SentimentType = "neutral";
   let score = 0;
 
-  if (rating !== null && rating !== undefined) {
-    if (rating >= 4) {
+  if (hasNeg && !hasPos) {
+    sentiment = "negative";
+    score = -0.75;
+  } else if (hasPos && !hasNeg) {
+    sentiment = "positive";
+    score = 0.8;
+  } else if (hasNeg && hasPos) {
+    // Mixed e.g. "minor issue but seller resolved"
+    if (lower.includes("resolved") || lower.includes("provided a replacement") || lower.includes("was quick")) {
       sentiment = "positive";
-      score = 0.5 + Math.min(0.45, posMatches * 0.15);
-    } else if (rating === 3) {
-      sentiment = "neutral";
-      score = (posMatches - negMatches) * 0.1;
+      score = 0.45;
     } else {
       sentiment = "negative";
-      score = -0.5 - Math.min(0.45, negMatches * 0.15);
+      score = -0.55;
     }
   } else {
-    if (negMatches > posMatches) {
-      sentiment = "negative";
-      score = -Math.min(0.95, 0.4 + negMatches * 0.2);
-    } else if (posMatches > negMatches) {
-      sentiment = "positive";
-      score = Math.min(0.95, 0.4 + posMatches * 0.2);
-    } else {
-      sentiment = "neutral";
-      score = 0;
-    }
+    sentiment = "neutral";
+    score = 0.05;
   }
 
-  // 4. Severity (1 - 5)
+  // 3. Severity (1 - 5)
   let severity = 1;
   if (sentiment === "negative") {
     if (
-      lower.includes("crash") ||
-      lower.includes("unusable") ||
-      lower.includes("apple pay") ||
-      lower.includes("payment") ||
-      lower.includes("freeze")
+      lower.includes("took my money") ||
+      lower.includes("victim of fraud") ||
+      lower.includes("charged multiple times") ||
+      lower.includes("scammed") ||
+      lower.includes("counterfeit")
     ) {
       severity = 5;
     } else if (
-      lower.includes("disconnect") ||
-      lower.includes("auto-renewal") ||
-      lower.includes("week") ||
-      lower.includes("delayed")
+      lower.includes("never received") ||
+      lower.includes("stopped working") ||
+      lower.includes("kept crashing") ||
+      lower.includes("delayed by two weeks") ||
+      lower.includes("unresponsive")
     ) {
       severity = 4;
     } else {
@@ -146,14 +140,34 @@ export function analyzeFeedbackRuleBased(text: string, rating?: number | null): 
     severity = 1;
   }
 
-  // 5. One-line Summary
-  const summary = `${matchedCategory}: ${foundKeywords.join(", ")} issue/observation`;
+  // 4. Topic Extraction
+  const topics: string[] = [];
+  if (lower.includes("scam") || lower.includes("fraud")) topics.push("seller fraud");
+  if (lower.includes("counterfeit")) topics.push("counterfeit item");
+  if (lower.includes("additional payment")) topics.push("extortion/extra fee");
+  if (lower.includes("charged multiple times")) topics.push("duplicate charges");
+  if (lower.includes("delivery") || lower.includes("delayed")) topics.push("delayed shipping");
+  if (lower.includes("damaged") || lower.includes("packaging")) topics.push("damaged packaging");
+  if (lower.includes("missing")) topics.push("missing items");
+  if (lower.includes("glitch") || lower.includes("crashing")) topics.push("website crash");
+  if (lower.includes("unresponsive") || lower.includes("not helpful")) topics.push("unresponsive support");
+  if (lower.includes("stopped working") || lower.includes("defects")) topics.push("product defects");
+  if (lower.includes("durable") || lower.includes("quality")) topics.push("build quality");
+  if (lower.includes("innovative") || lower.includes("features")) topics.push("product features");
+  if (lower.includes("value for money")) topics.push("pricing value");
+
+  if (topics.length === 0) {
+    topics.push(category.toLowerCase());
+  }
+
+  // 5. Summary
+  const summary = `${category}: ${topics.slice(0, 2).join(", ")} (${sentiment})`;
 
   return {
     sentiment,
-    sentiment_score: Math.round(score * 100) / 100,
-    category: matchedCategory,
-    topics: foundKeywords,
+    sentiment_score: score,
+    category,
+    topics: topics.slice(0, 3),
     severity,
     summary,
   };

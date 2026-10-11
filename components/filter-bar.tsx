@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Search, Filter, RotateCcw } from "lucide-react";
+import { Search, RotateCcw } from "lucide-react";
 import { CATEGORIES } from "@/types";
 
 interface FilterBarProps {
@@ -11,10 +11,12 @@ interface FilterBarProps {
   onCategoryChange: (val: string) => void;
   sentiment: string;
   onSentimentChange: (val: string) => void;
-  source: string;
-  onSourceChange: (val: string) => void;
+  source?: string;
+  onSourceChange?: (val: string) => void;
   timeRange: string;
   onTimeRangeChange: (val: string) => void;
+  hasRatings?: boolean;
+  hasSources?: boolean;
   onReset: () => void;
 }
 
@@ -29,13 +31,15 @@ export function FilterBar({
   onSourceChange,
   timeRange,
   onTimeRangeChange,
+  hasRatings = false,
+  hasSources = false,
   onReset,
 }: FilterBarProps) {
   const hasActiveFilters =
     search ||
     category !== "all" ||
     sentiment !== "all" ||
-    source !== "all" ||
+    (source && source !== "all") ||
     timeRange !== "all";
 
   return (
@@ -47,7 +51,7 @@ export function FilterBar({
           type="text"
           value={search}
           onChange={(e) => onSearchChange(e.target.value)}
-          placeholder="Search keywords, customer name, summary..."
+          placeholder="Search reviews, keywords, topics..."
           className="w-full pl-10 pr-4 py-2 rounded-xl text-xs bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
       </div>
@@ -60,8 +64,8 @@ export function FilterBar({
           onChange={(e) => onCategoryChange(e.target.value)}
           className="text-xs rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 py-2 px-3 text-slate-700 dark:text-slate-300 focus:ring-2 focus:ring-indigo-500"
         >
-          <option value="all">All Categories</option>
-          {CATEGORIES.map((c) => (
+          <option value="all">All Categories (4)</option>
+          {CATEGORIES.filter((c) => c !== "Other").map((c) => (
             <option key={c} value={c}>
               {c}
             </option>
@@ -80,29 +84,30 @@ export function FilterBar({
           <option value="negative">Negative</option>
         </select>
 
-        {/* Source */}
-        <select
-          value={source}
-          onChange={(e) => onSourceChange(e.target.value)}
-          className="text-xs rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 py-2 px-3 text-slate-700 dark:text-slate-300 focus:ring-2 focus:ring-indigo-500"
-        >
-          <option value="all">All Sources</option>
-          <option value="review">Reviews</option>
-          <option value="survey">Surveys</option>
-          <option value="support">Support</option>
-          <option value="social">Social Media</option>
-        </select>
+        {/* Source Filter (Only shown if sources exist in data) */}
+        {hasSources && onSourceChange && (
+          <select
+            value={source || "all"}
+            onChange={(e) => onSourceChange(e.target.value)}
+            className="text-xs rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 py-2 px-3 text-slate-700 dark:text-slate-300 focus:ring-2 focus:ring-indigo-500"
+          >
+            <option value="all">All Sources</option>
+            <option value="review">Reviews</option>
+            <option value="survey">Surveys</option>
+            <option value="support">Support</option>
+          </select>
+        )}
 
-        {/* Time Range */}
+        {/* Time Range - Clearly labeled simulated timeline */}
         <select
           value={timeRange}
           onChange={(e) => onTimeRangeChange(e.target.value)}
-          className="text-xs rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 py-2 px-3 text-slate-700 dark:text-slate-300 focus:ring-2 focus:ring-indigo-500"
+          className="text-xs rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 py-2 px-3 text-slate-700 dark:text-slate-300 focus:ring-2 focus:ring-indigo-500 font-medium"
+          title="Dataset has no native timestamps; timeline is simulated over 90 days"
         >
-          <option value="all">All Time (90 Days)</option>
-          <option value="7d">Last 7 Days</option>
-          <option value="30d">Last 30 Days</option>
-          <option value="60d">Last 60 Days</option>
+          <option value="all">Simulated timeline (all 90 days)</option>
+          <option value="45d">Recent 45 days</option>
+          <option value="14d">Recent 14 days</option>
         </select>
 
         {/* Reset button */}

@@ -16,6 +16,7 @@ const issueCreateSchema = z.object({
       total_feedback: z.number(),
       avg_severity: z.number(),
       trend_percent: z.number(),
+      trend_label: z.string().optional(),
       top_quotes: z.array(z.string()),
     })
     .nullable()

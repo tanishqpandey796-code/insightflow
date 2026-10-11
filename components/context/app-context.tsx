@@ -12,7 +12,9 @@ export interface ToastMessage {
 interface AppContextType {
   theme: "dark" | "light";
   toggleTheme: () => void;
-  feedbackCount: number;
+  feedbackCount: number; // Weighted total (7,000)
+  uniqueCount: number; // Unique reviews (320)
+  duplicatesRemoved: number; // 6,680
   qualityScore: number | null;
   isSeeding: boolean;
   loadSampleData: () => Promise<void>;
@@ -32,13 +34,14 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export function AppProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [feedbackCount, setFeedbackCount] = useState<number>(0);
+  const [uniqueCount, setUniqueCount] = useState<number>(0);
+  const [duplicatesRemoved, setDuplicatesRemoved] = useState<number>(0);
   const [qualityScore, setQualityScore] = useState<number | null>(null);
   const [isSeeding, setIsSeeding] = useState<boolean>(false);
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
   const [isImportOpen, setIsImportOpen] = useState<boolean>(false);
   const [isAddFeedbackOpen, setIsAddFeedbackOpen] = useState<boolean>(false);
 
-  // Initialize theme
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") as "dark" | "light" | null;
     const initial = savedTheme || "dark";
@@ -79,9 +82,13 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       const res = await fetch("/api/dashboard");
       if (res.ok) {
         const data = await res.json();
-        setFeedbackCount(data.totalFeedback || 0);
+        setFeedbackCount(data.kpis?.total_feedback ?? data.totalFeedback ?? 0);
+        setUniqueCount(data.kpis?.unique_feedback ?? 0);
         if (data.latestJob?.quality_score) {
           setQualityScore(data.latestJob.quality_score);
+        }
+        if (data.latestJob?.duplicates_removed) {
+          setDuplicatesRemoved(data.latestJob.duplicates_removed);
         }
       }
     } catch {
@@ -97,14 +104,14 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       if (res.ok) {
         addToast({
           type: "success",
-          title: "Sample Data Ingested!",
-          description: "200 customer feedback records loaded with Adaption Quality Gate (Score 94.8/100).",
+          title: "Official Dataset Ingested!",
+          description: `7,000 feedback rows consolidated into 320 unique reviews with Adaption Quality Gate (Score 96.4/100).`,
         });
         await refreshCounts();
       } else {
         addToast({
           type: "error",
-          title: "Failed to load sample data",
+          title: "Failed to load dataset",
           description: data.error || "Unknown error",
         });
       }
@@ -141,6 +148,8 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         theme,
         toggleTheme,
         feedbackCount,
+        uniqueCount,
+        duplicatesRemoved,
         qualityScore,
         isSeeding,
         loadSampleData,

@@ -5,12 +5,10 @@ export type AdaptionStatus = "pending" | "running" | "done" | "failed" | "skippe
 export type PriorityLevel = "Critical" | "High" | "Medium";
 
 export const CATEGORIES = [
-  "App/Website Bugs",
-  "Product Quality",
-  "Usability/UX",
-  "Delivery & Shipping",
-  "Pricing & Billing",
-  "Customer Support",
+  "Fraud and Scam",
+  "Operational Issues",
+  "Customer Service",
+  "Product Feedback",
   "Other",
 ] as const;
 
@@ -20,15 +18,19 @@ export interface ImportJob {
   id: string;
   filename: string;
   row_count: number;
+  unique_count?: number;
+  duplicates_removed?: number;
   adaption_dataset_id: string | null;
   adaption_status: AdaptionStatus;
   quality_score: number | null;
   quality_report: {
-    clean_rate?: number;
+    rows_in?: number;
     rows_cleaned?: number;
     rows_dropped?: number;
-    noise_reduced_percent?: number;
     duplicates_removed?: number;
+    unique_kept?: number;
+    clean_rate?: number;
+    noise_reduced_percent?: number;
     pii_masked?: number;
     summary?: string;
   } | null;
@@ -40,7 +42,7 @@ export interface Feedback {
   import_job_id: string | null;
   text: string;
   cleaned_text: string | null;
-  source: SourceType;
+  source: SourceType | null;
   rating: number | null;
   customer: string | null;
   created_at: string;
@@ -51,6 +53,8 @@ export interface Feedback {
   severity: number | null; // 1 to 5
   summary: string | null;
   analyzed_at: string | null;
+  occurrence_count: number; // Defaults to 1; for grouped unique reviews this holds row count
+  original_row_index?: number;
 }
 
 export interface IssueSnapshot {
@@ -60,6 +64,7 @@ export interface IssueSnapshot {
   total_feedback: number;
   avg_severity: number;
   trend_percent: number;
+  trend_label?: string;
   top_quotes: string[];
 }
 
@@ -82,8 +87,15 @@ export interface ReportSnapshot {
   kpis: DashboardKPIs;
   top_issues: PriorityItem[];
   tracked_issues: Issue[];
-  category_breakdown: Array<{ name: string; count: number; negative_count: number; positive_count: number; avg_rating: number }>;
+  category_breakdown: Array<{ name: string; count: number; negative_count: number; positive_count: number; avg_rating: number | null }>;
   executive_summary: string;
+  adaption_summary?: {
+    rows_in: number;
+    duplicates_removed: number;
+    unique_kept: number;
+    quality_score: number;
+    status: string;
+  };
 }
 
 export interface Report {
@@ -123,6 +135,7 @@ export interface PriorityItem {
     neg_this_period: number;
     neg_prev_period: number;
     trend_percent: number;
+    trend_display: string; // e.g. "+42%", ">500%", "New spike", "Stable"
   };
   quotes: string[];
   recommendation: AIRecommendation;
@@ -130,17 +143,22 @@ export interface PriorityItem {
 
 export interface DashboardKPIs {
   total_feedback: number;
+  unique_feedback: number;
   positive_count: number;
   neutral_count: number;
   negative_count: number;
   positive_pct: number;
   neutral_pct: number;
   negative_pct: number;
-  avg_rating: number;
+  avg_rating: number | null; // null if no ratings exist
   avg_sentiment: number;
   top_issue_category: string | null;
   top_issue_priority: number;
-  week_over_week_change: number; // percentage change in volume or negative volume
+  week_over_week_change: number;
+  week_over_week_label: string;
+  has_real_dates: boolean;
+  has_ratings: boolean;
+  has_sources: boolean;
 }
 
 export interface ChartSeries {

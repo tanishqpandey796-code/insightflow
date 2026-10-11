@@ -25,7 +25,7 @@ export function parseCSVString(csvContent: string): CSVParseResult {
   }
 
   const headers = result.meta.fields || [];
-  const rows = (result.data as Record<string, any>[]).slice(0, 2000); // 2000 row safety limit
+  const rows = (result.data as Record<string, any>[]).slice(0, 10000); // 10,000 row safety limit
 
   return {
     headers,
@@ -36,6 +36,7 @@ export function parseCSVString(csvContent: string): CSVParseResult {
 
 export function autoDetectColumnMapping(headers: string[]): {
   textField: string;
+  categoryField: string;
   dateField: string;
   ratingField: string;
   sourceField: string;
@@ -52,7 +53,8 @@ export function autoDetectColumnMapping(headers: string[]): {
   };
 
   return {
-    textField: findHeader(["text", "feedback", "comment", "review", "message", "content", "body"]) || headers[0] || "",
+    textField: findHeader(["review", "text", "feedback", "comment", "message", "content", "body"]) || headers[0] || "",
+    categoryField: findHeader(["category", "theme", "topic", "tag", "type"]) || "",
     dateField: findHeader(["date", "created_at", "timestamp", "time", "created"]) || "",
     ratingField: findHeader(["rating", "score", "stars", "star"]) || "",
     sourceField: findHeader(["source", "channel", "platform", "origin"]) || "",
@@ -61,9 +63,8 @@ export function autoDetectColumnMapping(headers: string[]): {
 }
 
 export function sanitizeCsvCell(value: any): string {
-  if (value === null || value === undefined) return "";
+  if (value === null || value === undefined) return "-";
   let str = String(value);
-  // Protect against CSV Injection (formula injection)
   if (/^[=+\-@\t\r]/.test(str)) {
     str = `'${str}`;
   }
@@ -72,18 +73,17 @@ export function sanitizeCsvCell(value: any): string {
 
 export function exportFeedbackToCSV(items: Feedback[]): string {
   const data = items.map((f) => ({
-    ID: f.id,
-    Text: sanitizeCsvCell(f.text),
-    CleanedText: sanitizeCsvCell(f.cleaned_text || ""),
-    Sentiment: f.sentiment || "",
-    Score: f.sentiment_score ?? "",
-    Category: f.category || "",
-    Topics: f.topics.join("; "),
-    Rating: f.rating ?? "",
-    Severity: f.severity ?? "",
-    Source: f.source || "",
-    Customer: sanitizeCsvCell(f.customer || ""),
-    Date: f.created_at || "",
+    Review: sanitizeCsvCell(f.text),
+    Category: f.category || "-",
+    Occurrences: f.occurrence_count || 1,
+    Sentiment: f.sentiment || "-",
+    SentimentScore: f.sentiment_score ?? "-",
+    Severity: f.severity ?? "-",
+    Topics: f.topics.join("; ") || "-",
+    Rating: f.rating ? `${f.rating} ★` : "-",
+    Source: f.source || "-",
+    Customer: f.customer || "-",
+    Date: f.created_at || "-",
   }));
 
   return Papa.unparse(data);

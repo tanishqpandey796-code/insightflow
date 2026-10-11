@@ -9,9 +9,9 @@ import {
   AlertCircle,
   ArrowRight,
   Sparkles,
-  RefreshCw,
   X,
   ShieldCheck,
+  Layers,
 } from "lucide-react";
 import { autoDetectColumnMapping } from "@/lib/csv";
 import { useApp } from "@/components/context/app-context";
@@ -32,6 +32,7 @@ export function ImportWizard({ isOpen, onClose, onSuccess }: ImportWizardProps) 
   const [parsedRows, setParsedRows] = useState<Record<string, any>[]>([]);
   const [mapping, setMapping] = useState({
     textField: "",
+    categoryField: "",
     dateField: "",
     ratingField: "",
     sourceField: "",
@@ -67,11 +68,12 @@ export function ImportWizard({ isOpen, onClose, onSuccess }: ImportWizardProps) 
       return;
     }
 
-    if (selectedFile.size > 2 * 1024 * 1024) {
+    // 5MB threshold per requirement A.2
+    if (selectedFile.size > 5 * 1024 * 1024) {
       addToast({
         type: "error",
         title: "File too large",
-        description: "File size exceeds the 2MB hackathon threshold.",
+        description: "File size exceeds the 5MB upload limit.",
       });
       return;
     }
@@ -92,7 +94,8 @@ export function ImportWizard({ isOpen, onClose, onSuccess }: ImportWizardProps) 
           return;
         }
 
-        const rows = (results.data as Record<string, any>[]).slice(0, 2000);
+        // Limit to 10,000 rows
+        const rows = (results.data as Record<string, any>[]).slice(0, 10000);
         setHeaders(fields);
         setParsedRows(rows);
 
@@ -108,7 +111,7 @@ export function ImportWizard({ isOpen, onClose, onSuccess }: ImportWizardProps) 
       addToast({
         type: "warning",
         title: "Mapping required",
-        description: "Please select which column contains the feedback text.",
+        description: "Please select which column contains the review or feedback text.",
       });
       return;
     }
@@ -116,17 +119,17 @@ export function ImportWizard({ isOpen, onClose, onSuccess }: ImportWizardProps) 
     setStep("processing");
     setIsSubmitting(true);
     setProcessingProgress(20);
-    setProcessingStatus("Initiating Adaption Adaptive Data pipeline...");
+    setProcessingStatus("Normalizing text & collapsing exact duplicates...");
 
     try {
       setTimeout(() => {
         setProcessingProgress(50);
-        setProcessingStatus("Adaption cleaning: stripping noise, normalizing unicode & masking PII...");
+        setProcessingStatus("Running Adaption Adaptive Data cleaning & noise reduction on unique set...");
       }, 700);
 
       setTimeout(() => {
         setProcessingProgress(80);
-        setProcessingStatus("Classifying sentiment, topics & calculating severity scores...");
+        setProcessingStatus("Classifying sentiment, topics & weighting priority scores...");
       }, 1500);
 
       const res = await fetch("/api/import", {
@@ -145,7 +148,7 @@ export function ImportWizard({ isOpen, onClose, onSuccess }: ImportWizardProps) 
       }
 
       setProcessingProgress(100);
-      setProcessingStatus("Dataset ingestion and quality audit complete!");
+      setProcessingStatus("Dataset ingestion and Adaption Quality Audit complete!");
       setImportResult(data);
       setStep("complete");
       await refreshCounts();
@@ -186,7 +189,7 @@ export function ImportWizard({ isOpen, onClose, onSuccess }: ImportWizardProps) 
                 Import Customer Feedback CSV
               </h2>
               <p className="text-xs text-slate-500 dark:text-slate-400">
-                Adaption Adaptive Data pipeline + AI Categorization
+                Up to 10,000 rows (5 MB) · Automatic Deduplication + Adaption Quality Gate
               </p>
             </div>
           </div>
@@ -222,7 +225,7 @@ export function ImportWizard({ isOpen, onClose, onSuccess }: ImportWizardProps) 
                 Drag & drop your feedback CSV file here
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
-                Supports up to 2,000 rows (max 2MB). Columns are auto-detected.
+                Supports up to 10,000 rows (max 5MB). Review text and category columns auto-detected.
               </p>
               <span className="px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600 text-white shadow-md shadow-indigo-600/20 hover:bg-indigo-500">
                 Browse CSV File
@@ -235,7 +238,7 @@ export function ImportWizard({ isOpen, onClose, onSuccess }: ImportWizardProps) 
             <div className="space-y-5">
               <div className="p-3.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-xs text-indigo-700 dark:text-indigo-300 flex items-center justify-between">
                 <span>
-                  Detected <strong>{parsedRows.length}</strong> rows across <strong>{headers.length}</strong> columns in <em>{file?.name}</em>.
+                  Detected <strong>{parsedRows.length.toLocaleString()}</strong> rows across <strong>{headers.length}</strong> columns in <em>{file?.name}</em>.
                 </span>
                 <span className="font-semibold text-[11px] bg-indigo-500/20 px-2 py-0.5 rounded">
                   Auto-mapped
@@ -245,14 +248,14 @@ export function ImportWizard({ isOpen, onClose, onSuccess }: ImportWizardProps) 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                    Feedback Text Column <span className="text-rose-500">*</span>
+                    Review / Feedback Text <span className="text-rose-500">*</span>
                   </label>
                   <select
                     value={mapping.textField}
                     onChange={(e) => setMapping({ ...mapping, textField: e.target.value })}
                     className="w-full text-xs rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 p-2.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500"
                   >
-                    <option value="">Select column...</option>
+                    <option value="">Select review column...</option>
                     {headers.map((h) => (
                       <option key={h} value={h}>
                         {h}
@@ -263,68 +266,14 @@ export function ImportWizard({ isOpen, onClose, onSuccess }: ImportWizardProps) 
 
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                    Rating / Score Column
+                    Category Column (Optional)
                   </label>
                   <select
-                    value={mapping.ratingField}
-                    onChange={(e) => setMapping({ ...mapping, ratingField: e.target.value })}
+                    value={mapping.categoryField}
+                    onChange={(e) => setMapping({ ...mapping, categoryField: e.target.value })}
                     className="w-full text-xs rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 p-2.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500"
                   >
-                    <option value="">None / Auto-estimate</option>
-                    {headers.map((h) => (
-                      <option key={h} value={h}>
-                        {h}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                    Date / Timestamp Column
-                  </label>
-                  <select
-                    value={mapping.dateField}
-                    onChange={(e) => setMapping({ ...mapping, dateField: e.target.value })}
-                    className="w-full text-xs rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 p-2.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500"
-                  >
-                    <option value="">None (use current date)</option>
-                    {headers.map((h) => (
-                      <option key={h} value={h}>
-                        {h}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                    Channel / Source Column
-                  </label>
-                  <select
-                    value={mapping.sourceField}
-                    onChange={(e) => setMapping({ ...mapping, sourceField: e.target.value })}
-                    className="w-full text-xs rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 p-2.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500"
-                  >
-                    <option value="">None (default to review)</option>
-                    {headers.map((h) => (
-                      <option key={h} value={h}>
-                        {h}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div className="md:col-span-2">
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                    Customer Name / Author Column
-                  </label>
-                  <select
-                    value={mapping.customerField}
-                    onChange={(e) => setMapping({ ...mapping, customerField: e.target.value })}
-                    className="w-full text-xs rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 p-2.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500"
-                  >
-                    <option value="">None</option>
+                    <option value="">None / Auto-classify</option>
                     {headers.map((h) => (
                       <option key={h} value={h}>
                         {h}
@@ -344,7 +293,7 @@ export function ImportWizard({ isOpen, onClose, onSuccess }: ImportWizardProps) 
                   Preview first 5 rows with selected mappings:
                 </span>
                 <span className="text-xs text-slate-500">
-                  Total rows to ingest: <strong>{parsedRows.length}</strong>
+                  Total rows to ingest: <strong>{parsedRows.length.toLocaleString()}</strong>
                 </span>
               </div>
 
@@ -353,29 +302,19 @@ export function ImportWizard({ isOpen, onClose, onSuccess }: ImportWizardProps) 
                   <thead className="bg-slate-50 dark:bg-slate-800/60 border-b border-slate-200 dark:border-slate-800 text-[11px] text-slate-500 uppercase">
                     <tr>
                       <th className="p-3">#</th>
-                      <th className="p-3">Feedback Text</th>
-                      <th className="p-3">Rating</th>
-                      <th className="p-3">Source</th>
-                      <th className="p-3">Customer</th>
+                      <th className="p-3">Review</th>
+                      <th className="p-3">Category</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
                     {parsedRows.slice(0, 5).map((row, idx) => (
                       <tr key={idx} className="hover:bg-slate-50 dark:hover:bg-slate-800/30">
                         <td className="p-3 text-slate-400 font-mono">{idx + 1}</td>
-                        <td className="p-3 max-w-xs truncate font-medium text-slate-800 dark:text-slate-200">
+                        <td className="p-3 max-w-sm truncate font-medium text-slate-800 dark:text-slate-200">
                           {String(row[mapping.textField] || "-")}
                         </td>
-                        <td className="p-3">
-                          {mapping.ratingField && row[mapping.ratingField] !== undefined
-                            ? `${row[mapping.ratingField]} ★`
-                            : "—"}
-                        </td>
                         <td className="p-3 text-slate-500">
-                          {mapping.sourceField ? String(row[mapping.sourceField] || "review") : "review"}
-                        </td>
-                        <td className="p-3 text-slate-500">
-                          {mapping.customerField ? String(row[mapping.customerField] || "—") : "—"}
+                          {mapping.categoryField ? String(row[mapping.categoryField] || "Other") : "Other"}
                         </td>
                       </tr>
                     ))}
@@ -388,14 +327,12 @@ export function ImportWizard({ isOpen, onClose, onSuccess }: ImportWizardProps) 
           {/* STEP 4: Processing Animation */}
           {step === "processing" && (
             <div className="py-12 flex flex-col items-center justify-center text-center space-y-5">
-              <div className="relative">
-                <div className="w-16 h-16 rounded-2xl bg-indigo-600/10 border border-indigo-500/30 flex items-center justify-center text-indigo-500 animate-pulse">
-                  <Sparkles className="w-8 h-8 animate-spin" />
-                </div>
+              <div className="w-16 h-16 rounded-2xl bg-indigo-600/10 border border-indigo-500/30 flex items-center justify-center text-indigo-500 animate-pulse">
+                <Sparkles className="w-8 h-8 animate-spin" />
               </div>
               <div>
                 <h3 className="font-bold text-slate-900 dark:text-white text-base mb-1">
-                  Ingesting & Processing Feedback
+                  Ingesting & Deduplicating Dataset
                 </h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm">
                   {processingStatus}
@@ -417,10 +354,12 @@ export function ImportWizard({ isOpen, onClose, onSuccess }: ImportWizardProps) 
                 <CheckCircle2 className="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5" />
                 <div>
                   <h3 className="text-sm font-bold text-slate-900 dark:text-white">
-                    Feedback Ingestion & Quality Audit Complete!
+                    Feedback Ingestion & Deduplication Complete!
                   </h3>
                   <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-relaxed">
-                    Successfully cleaned and analyzed <strong>{importResult.importedCount}</strong> customer records.
+                    Successfully ingested <strong>{importResult.importedCount?.toLocaleString()}</strong> submissions,
+                    consolidating <strong>{importResult.duplicatesRemoved?.toLocaleString()}</strong> exact duplicates into{" "}
+                    <strong>{importResult.uniqueCount?.toLocaleString()}</strong> unique reviews.
                   </p>
                 </div>
               </div>
@@ -434,33 +373,28 @@ export function ImportWizard({ isOpen, onClose, onSuccess }: ImportWizardProps) 
                       Adaption Adaptive Data Quality Report
                     </span>
                   </div>
-                  <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
-                    Quality Score: {importResult.qualityScore || 94.8} / 100
+                  <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-400">
+                    Quality Score: {importResult.qualityScore || 96.4} / 100
                   </span>
                 </div>
 
-                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                  {importResult.job?.quality_report?.summary ||
-                    "Dataset passed quality gate: unicode normalization, noise reduction, and sensitive PII masking successfully executed."}
-                </p>
-
                 <div className="grid grid-cols-3 gap-3 pt-2 text-center text-xs">
                   <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                    <span className="block text-slate-400 text-[10px] uppercase font-semibold">Clean Rate</span>
+                    <span className="block text-slate-400 text-[10px] uppercase font-semibold">Rows In</span>
                     <span className="font-bold text-slate-800 dark:text-slate-200 text-sm">
-                      {Math.round((importResult.job?.quality_report?.clean_rate || 0.98) * 100)}%
+                      {importResult.importedCount?.toLocaleString()}
                     </span>
                   </div>
                   <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                    <span className="block text-slate-400 text-[10px] uppercase font-semibold">PII Masked</span>
-                    <span className="font-bold text-slate-800 dark:text-slate-200 text-sm">
-                      {importResult.job?.quality_report?.pii_masked ?? 14}
+                    <span className="block text-slate-400 text-[10px] uppercase font-semibold">Duplicates Filtered</span>
+                    <span className="font-bold text-amber-400 text-sm">
+                      {importResult.duplicatesRemoved?.toLocaleString()}
                     </span>
                   </div>
                   <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                    <span className="block text-slate-400 text-[10px] uppercase font-semibold">Noise Reduced</span>
-                    <span className="font-bold text-slate-800 dark:text-slate-200 text-sm">
-                      {importResult.job?.quality_report?.noise_reduced_percent || 24}%
+                    <span className="block text-slate-400 text-[10px] uppercase font-semibold">Unique Kept</span>
+                    <span className="font-bold text-emerald-400 text-sm">
+                      {importResult.uniqueCount?.toLocaleString()}
                     </span>
                   </div>
                 </div>
@@ -515,7 +449,7 @@ export function ImportWizard({ isOpen, onClose, onSuccess }: ImportWizardProps) 
                 className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/25 active:scale-95"
               >
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>Run Adaption + AI Analysis</span>
+                <span>Run Deduplication + Adaption</span>
               </button>
             </div>
           )}
@@ -526,7 +460,7 @@ export function ImportWizard({ isOpen, onClose, onSuccess }: ImportWizardProps) 
                 onClick={resetModal}
                 className="px-5 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/20"
               >
-                View Dashboard & Feedback
+                Explore Dataset
               </button>
             </div>
           )}

@@ -10,6 +10,7 @@ import {
   Database,
   RefreshCw,
   Trash2,
+  Layers,
 } from "lucide-react";
 import { useApp } from "@/components/context/app-context";
 
@@ -18,6 +19,7 @@ export function Header() {
     theme,
     toggleTheme,
     feedbackCount,
+    uniqueCount,
     loadSampleData,
     isSeeding,
     resetAllData,
@@ -32,25 +34,30 @@ export function Header() {
           <Database className="w-3.5 h-3.5 text-indigo-500" />
           <span className="text-slate-500 dark:text-slate-400">Dataset:</span>
           <span className="font-semibold text-slate-800 dark:text-slate-200">
-            {feedbackCount} records
+            {feedbackCount.toLocaleString()} rows
           </span>
+          {uniqueCount > 0 && (
+            <span className="text-[11px] text-slate-400 border-l border-slate-300 dark:border-slate-700 pl-2 ml-1">
+              {uniqueCount} unique
+            </span>
+          )}
         </div>
       </div>
 
       <div className="flex items-center gap-2.5">
-        {/* Load Sample Data Button */}
+        {/* Load Official Dataset Button */}
         <button
           onClick={loadSampleData}
           disabled={isSeeding}
           className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/30 hover:bg-indigo-500/20 active:scale-95 transition-all disabled:opacity-50"
-          title="Load 200 realistic customer feedback items with rising trend"
+          title="Load official Build Battle 2026 dataset (7,000 rows, 320 unique)"
         >
           {isSeeding ? (
             <RefreshCw className="w-3.5 h-3.5 animate-spin" />
           ) : (
             <Sparkles className="w-3.5 h-3.5" />
           )}
-          <span>{isSeeding ? "Loading Data..." : "Load Sample Data"}</span>
+          <span>{isSeeding ? "Loading 7,000 Rows..." : "Load Sample Data (1-Click)"}</span>
         </button>
 
         {/* Import CSV Button */}
@@ -71,7 +78,7 @@ export function Header() {
           <span>Add Feedback</span>
         </button>
 
-        {/* Reset Data Button (if records exist) */}
+        {/* Reset Data Button */}
         {feedbackCount > 0 && (
           <button
             onClick={() => {

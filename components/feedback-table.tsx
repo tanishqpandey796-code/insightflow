@@ -14,6 +14,7 @@ import {
   User,
   X,
   FileSpreadsheet,
+  Layers,
 } from "lucide-react";
 import { Feedback } from "@/types";
 import { formatDate } from "@/lib/utils";
@@ -23,6 +24,7 @@ import { useApp } from "@/components/context/app-context";
 interface FeedbackTableProps {
   items: Feedback[];
   total: number;
+  totalWeighted?: number;
   page: number;
   pageSize: number;
   onPageChange: (newPage: number) => void;
@@ -32,12 +34,13 @@ interface FeedbackTableProps {
 export function FeedbackTable({
   items,
   total,
+  totalWeighted,
   page,
   pageSize,
   onPageChange,
   isLoading,
 }: FeedbackTableProps) {
-  const { loadSampleData, isSeeding, setIsImportOpen, setIsAddFeedbackOpen } = useApp();
+  const { loadSampleData, isSeeding, setIsImportOpen } = useApp();
   const [selectedItem, setSelectedItem] = useState<Feedback | null>(null);
 
   const totalPages = Math.ceil(total / pageSize) || 1;
@@ -49,7 +52,7 @@ export function FeedbackTable({
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.setAttribute("download", `feedback_export_${Date.now()}.csv`);
+    link.setAttribute("download", `insightflow_feedback_export_${Date.now()}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -58,11 +61,11 @@ export function FeedbackTable({
   const getSentimentBadge = (sentiment: string | null) => {
     switch (sentiment) {
       case "positive":
-        return "bg-emerald-500/15 text-emerald-500 border-emerald-500/30";
+        return "bg-emerald-500/15 text-emerald-400 border-emerald-500/30";
       case "negative":
-        return "bg-rose-500/15 text-rose-500 border-rose-500/30";
+        return "bg-rose-500/15 text-rose-400 border-rose-500/30";
       default:
-        return "bg-amber-500/15 text-amber-500 border-amber-500/30";
+        return "bg-amber-500/15 text-amber-400 border-amber-500/30";
     }
   };
 
@@ -71,7 +74,8 @@ export function FeedbackTable({
       {/* Table Toolbar */}
       <div className="flex items-center justify-between">
         <span className="text-xs text-slate-500 dark:text-slate-400">
-          Showing <strong>{items.length}</strong> of <strong>{total}</strong> entries
+          Showing <strong>{items.length}</strong> unique reviews (
+          <strong>{totalWeighted ?? total}</strong> total weighted submissions)
         </span>
         <button
           onClick={handleExport}
@@ -89,13 +93,13 @@ export function FeedbackTable({
           <table className="w-full text-left text-xs">
             <thead className="bg-slate-50/70 dark:bg-slate-950/60 border-b border-slate-200 dark:border-slate-800 text-[11px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
               <tr>
-                <th className="py-3.5 px-4">Feedback</th>
+                <th className="py-3.5 px-4">Review Content</th>
+                <th className="py-3.5 px-4 text-center">Occurrences</th>
                 <th className="py-3.5 px-4">Sentiment</th>
                 <th className="py-3.5 px-4">Category</th>
                 <th className="py-3.5 px-4">Rating</th>
                 <th className="py-3.5 px-4">Source</th>
                 <th className="py-3.5 px-4">Customer</th>
-                <th className="py-3.5 px-4">Date</th>
                 <th className="py-3.5 px-4 text-right">Action</th>
               </tr>
             </thead>
@@ -117,10 +121,10 @@ export function FeedbackTable({
                         <FileSpreadsheet className="w-7 h-7" />
                       </div>
                       <h4 className="font-bold text-slate-900 dark:text-white text-sm mb-1">
-                        No feedback records found
+                        No feedback records loaded
                       </h4>
                       <p className="text-xs text-slate-500 dark:text-slate-400 mb-5">
-                        Get started by loading the 200-row realistic sample dataset or importing your CSV file.
+                        Load the official Build Battle 2026 dataset (7,000 rows, 320 unique reviews) to explore live insights.
                       </p>
                       <div className="flex items-center gap-3">
                         <button
@@ -128,7 +132,7 @@ export function FeedbackTable({
                           disabled={isSeeding}
                           className="px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/25 active:scale-95 disabled:opacity-50"
                         >
-                          {isSeeding ? "Ingesting Sample Data..." : "Load Sample Data (200 Rows)"}
+                          {isSeeding ? "Loading Dataset..." : "Load Dataset (7,000 Rows)"}
                         </button>
                         <button
                           onClick={() => setIsImportOpen(true)}
@@ -147,7 +151,7 @@ export function FeedbackTable({
                     className="hover:bg-slate-50/50 dark:hover:bg-slate-800/40 transition-colors cursor-pointer group"
                     onClick={() => setSelectedItem(item)}
                   >
-                    <td className="py-3 px-4 max-w-xs">
+                    <td className="py-3 px-4 max-w-sm">
                       <p className="font-medium text-slate-900 dark:text-slate-100 truncate">
                         {item.cleaned_text || item.text}
                       </p>
@@ -156,6 +160,12 @@ export function FeedbackTable({
                           {item.summary}
                         </p>
                       )}
+                    </td>
+
+                    <td className="py-3 px-4 text-center whitespace-nowrap">
+                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                        {item.occurrence_count || 1}×
+                      </span>
                     </td>
 
                     <td className="py-3 px-4 whitespace-nowrap">
@@ -169,32 +179,21 @@ export function FeedbackTable({
                     </td>
 
                     <td className="py-3 px-4 whitespace-nowrap">
-                      <span className="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                      <span className="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
                         {item.category || "Unclassified"}
                       </span>
                     </td>
 
-                    <td className="py-3 px-4 whitespace-nowrap">
-                      {item.rating ? (
-                        <div className="flex items-center gap-1 text-amber-400 font-semibold">
-                          <span>{item.rating}</span>
-                          <Star className="w-3.5 h-3.5 fill-amber-400" />
-                        </div>
-                      ) : (
-                        <span className="text-slate-400">—</span>
-                      )}
+                    <td className="py-3 px-4 whitespace-nowrap text-slate-400">
+                      {item.rating ? `${item.rating} ★` : "-"}
                     </td>
 
-                    <td className="py-3 px-4 whitespace-nowrap capitalize text-slate-600 dark:text-slate-400">
-                      {item.source}
+                    <td className="py-3 px-4 whitespace-nowrap text-slate-400 capitalize">
+                      {item.source || "-"}
                     </td>
 
-                    <td className="py-3 px-4 whitespace-nowrap text-slate-600 dark:text-slate-400">
-                      {item.customer || "Anonymous"}
-                    </td>
-
-                    <td className="py-3 px-4 whitespace-nowrap text-slate-500 font-mono text-[11px]">
-                      {formatDate(item.created_at)}
+                    <td className="py-3 px-4 whitespace-nowrap text-slate-400">
+                      {item.customer || "-"}
                     </td>
 
                     <td className="py-3 px-4 text-right whitespace-nowrap">
@@ -220,7 +219,7 @@ export function FeedbackTable({
         {total > pageSize && (
           <div className="p-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs">
             <span className="text-slate-500">
-              Page {page} of {totalPages}
+              Page {page} of {totalPages} ({total} unique reviews)
             </span>
             <div className="flex items-center gap-1.5">
               <button
@@ -247,7 +246,6 @@ export function FeedbackTable({
         <div className="fixed inset-0 z-50 flex items-center justify-end bg-black/60 backdrop-blur-sm animate-fade-in">
           <div className="w-full max-w-md h-full bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 p-6 overflow-y-auto flex flex-col justify-between shadow-2xl">
             <div className="space-y-6">
-              {/* Header */}
               <div className="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800">
                 <div className="flex items-center gap-2">
                   <span
@@ -260,6 +258,9 @@ export function FeedbackTable({
                   <span className="text-xs px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 font-semibold text-slate-700 dark:text-slate-300">
                     {selectedItem.category || "Unclassified"}
                   </span>
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 font-bold">
+                    {selectedItem.occurrence_count || 1} occurrences
+                  </span>
                 </div>
                 <button
                   onClick={() => setSelectedItem(null)}
@@ -269,34 +270,19 @@ export function FeedbackTable({
                 </button>
               </div>
 
-              {/* Feedback Text */}
               <div>
                 <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
-                  Customer Feedback
+                  Customer Review
                 </h4>
                 <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 text-sm text-slate-900 dark:text-slate-100 leading-relaxed font-sans">
                   "{selectedItem.cleaned_text || selectedItem.text}"
                 </div>
               </div>
 
-              {/* Raw vs Cleaned if different */}
-              {selectedItem.cleaned_text && selectedItem.cleaned_text !== selectedItem.text && (
-                <div>
-                  <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                    <ShieldCheck className="w-3.5 h-3.5 text-indigo-400" />
-                    <span>Original Raw Input (Before Adaption)</span>
-                  </h4>
-                  <div className="p-3 rounded-xl bg-rose-950/20 border border-rose-900/30 text-xs text-slate-300 font-mono">
-                    {selectedItem.text}
-                  </div>
-                </div>
-              )}
-
-              {/* Summary */}
               {selectedItem.summary && (
                 <div>
                   <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
-                    AI Summary
+                    AI Summary & Analysis
                   </h4>
                   <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed bg-slate-50 dark:bg-slate-800/40 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
                     {selectedItem.summary}
@@ -304,7 +290,6 @@ export function FeedbackTable({
                 </div>
               )}
 
-              {/* Topics / Keywords */}
               {selectedItem.topics && selectedItem.topics.length > 0 && (
                 <div>
                   <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
@@ -324,36 +309,30 @@ export function FeedbackTable({
                 </div>
               )}
 
-              {/* Metadata Attributes */}
               <div className="space-y-3 pt-2 border-t border-slate-200 dark:border-slate-800 text-xs">
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-500 flex items-center gap-1.5">
-                    <Star className="w-3.5 h-3.5 text-amber-400" />
-                    <span>Severity Rating:</span>
+                  <span className="text-slate-500">Occurrences in Dataset:</span>
+                  <span className="font-bold text-indigo-400">
+                    {selectedItem.occurrence_count || 1} rows
                   </span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-500">Severity Rating:</span>
                   <span className="font-bold text-slate-900 dark:text-white">
                     {selectedItem.severity || 1} / 5
                   </span>
                 </div>
-
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-500 flex items-center gap-1.5">
-                    <User className="w-3.5 h-3.5 text-slate-400" />
-                    <span>Customer:</span>
-                  </span>
-                  <span className="font-medium text-slate-900 dark:text-white">
-                    {selectedItem.customer || "Anonymous"}
-                  </span>
+                  <span className="text-slate-500">Rating:</span>
+                  <span className="text-slate-400">-</span>
                 </div>
-
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-500 flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5 text-slate-400" />
-                    <span>Feedback Date:</span>
-                  </span>
-                  <span className="font-mono text-slate-700 dark:text-slate-300">
-                    {formatDate(selectedItem.created_at)}
-                  </span>
+                  <span className="text-slate-500">Source:</span>
+                  <span className="text-slate-400">-</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-500">Customer:</span>
+                  <span className="text-slate-400">-</span>
                 </div>
               </div>
             </div>

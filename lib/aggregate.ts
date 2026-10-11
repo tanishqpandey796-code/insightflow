@@ -5,23 +5,32 @@ export async function aggregateDashboardData(
   feedbackList: Feedback[],
   options: FilterOptions = {}
 ): Promise<{ kpis: DashboardKPIs; charts: ChartSeries }> {
-  const total = feedbackList.length;
+  const uniqueCount = feedbackList.length;
+  const totalWeighted = feedbackList.reduce(
+    (acc, curr) => acc + (curr.occurrence_count || 1),
+    0
+  );
 
-  if (total === 0) {
+  if (uniqueCount === 0) {
     return {
       kpis: {
         total_feedback: 0,
+        unique_feedback: 0,
         positive_count: 0,
         neutral_count: 0,
         negative_count: 0,
         positive_pct: 0,
         neutral_pct: 0,
         negative_pct: 0,
-        avg_rating: 0,
+        avg_rating: null,
         avg_sentiment: 0,
         top_issue_category: null,
         top_issue_priority: 0,
         week_over_week_change: 0,
+        week_over_week_label: "No data",
+        has_real_dates: false,
+        has_ratings: false,
+        has_sources: false,
       },
       charts: {
         sentiment_distribution: [
@@ -43,58 +52,73 @@ export async function aggregateDashboardData(
   let negCount = 0;
   let totalRating = 0;
   let ratedCount = 0;
-  let totalSentimentScore = 0;
+  let weightedSentimentSum = 0;
+  let hasRatings = false;
+  let hasSources = false;
 
   const now = new Date();
-  const sevenDaysMs = 7 * 24 * 60 * 60 * 1000;
-  const thisWeekStart = now.getTime() - sevenDaysMs;
-  const prevWeekStart = now.getTime() - 2 * sevenDaysMs;
+  const fourteenDaysMs = 14 * 24 * 60 * 60 * 1000;
+  const thisPeriodStart = now.getTime() - fourteenDaysMs;
+  const prevPeriodStart = now.getTime() - 2 * fourteenDaysMs;
 
-  let thisWeekCount = 0;
-  let prevWeekCount = 0;
+  let thisPeriodNegCount = 0;
+  let prevPeriodNegCount = 0;
 
-  const datesMap: Record<string, { positive: number; neutral: number; negative: number; scores: number[] }> = {};
+  const datesMap: Record<
+    string,
+    { positive: number; neutral: number; negative: number; weightedScores: number[]; totalWeight: number }
+  > = {};
   const categoriesMap: Record<string, { total: number; negative: number; positive: number }> = {};
   const topicsMap: Record<string, { count: number; category: string }> = {};
   const sourceMap: Record<string, number> = {};
 
   for (const f of feedbackList) {
-    const isPos = f.sentiment === "positive" || (f.rating !== null && f.rating >= 4);
-    const isNeg = f.sentiment === "negative" || (f.rating !== null && f.rating <= 2);
+    const weight = f.occurrence_count || 1;
+    const isPos = f.sentiment === "positive" || (f.sentiment_score !== null && f.sentiment_score > 0.1);
+    const isNeg = f.sentiment === "negative" || (f.sentiment_score !== null && f.sentiment_score < 0);
 
-    if (isPos) posCount++;
-    else if (isNeg) negCount++;
-    else neuCount++;
+    if (isPos) posCount += weight;
+    else if (isNeg) negCount += weight;
+    else neuCount += weight;
 
     if (f.rating !== null && f.rating !== undefined) {
-      totalRating += f.rating;
-      ratedCount++;
+      hasRatings = true;
+      totalRating += f.rating * weight;
+      ratedCount += weight;
     }
 
-    if (f.sentiment_score !== null && f.sentiment_score !== undefined) {
-      totalSentimentScore += f.sentiment_score;
+    if (f.source && f.source !== "other") {
+      hasSources = true;
+      sourceMap[f.source] = (sourceMap[f.source] || 0) + weight;
     }
+
+    const sScore = f.sentiment_score ?? 0;
+    weightedSentimentSum += sScore * weight;
 
     const t = new Date(f.created_at).getTime();
-    if (t >= thisWeekStart) thisWeekCount++;
-    else if (t >= prevWeekStart && t < thisWeekStart) prevWeekCount++;
+    if (isNeg) {
+      if (t >= thisPeriodStart) thisPeriodNegCount += weight;
+      else if (t >= prevPeriodStart && t < thisPeriodStart) prevPeriodNegCount += weight;
+    }
 
-    // Timeline grouping (by week / date YYYY-MM-DD)
+    // Timeline grouping by YYYY-MM-DD
     const dateKey = f.created_at.slice(0, 10);
     if (!datesMap[dateKey]) {
-      datesMap[dateKey] = { positive: 0, neutral: 0, negative: 0, scores: [] };
+      datesMap[dateKey] = { positive: 0, neutral: 0, negative: 0, weightedScores: [], totalWeight: 0 };
     }
-    if (isPos) datesMap[dateKey].positive++;
-    else if (isNeg) datesMap[dateKey].negative++;
-    else datesMap[dateKey].neutral++;
-    if (f.sentiment_score !== null) datesMap[dateKey].scores.push(f.sentiment_score);
+    const dObj = datesMap[dateKey];
+    dObj.totalWeight += weight;
+    if (isPos) dObj.positive += weight;
+    else if (isNeg) dObj.negative += weight;
+    else dObj.neutral += weight;
+    dObj.weightedScores.push(sScore * weight);
 
     // Categories
     const cat = f.category || "Other";
     if (!categoriesMap[cat]) categoriesMap[cat] = { total: 0, negative: 0, positive: 0 };
-    categoriesMap[cat].total++;
-    if (isNeg) categoriesMap[cat].negative++;
-    if (isPos) categoriesMap[cat].positive++;
+    categoriesMap[cat].total += weight;
+    if (isNeg) categoriesMap[cat].negative += weight;
+    if (isPos) categoriesMap[cat].positive += weight;
 
     // Negative topics
     if (isNeg && f.topics && Array.isArray(f.topics)) {
@@ -102,55 +126,60 @@ export async function aggregateDashboardData(
         if (!topic) continue;
         const cleanTopic = topic.trim();
         if (!topicsMap[cleanTopic]) topicsMap[cleanTopic] = { count: 0, category: cat };
-        topicsMap[cleanTopic].count++;
+        topicsMap[cleanTopic].count += weight;
       }
     }
-
-    // Source
-    const src = f.source || "other";
-    sourceMap[src] = (sourceMap[src] || 0) + 1;
   }
 
-  // Calculate Priorities to get top issue
+  // Calculate Priorities
   const priorities = await calculateCategoryPriorities(feedbackList);
   const topPriority = priorities[0] || null;
 
-  const wowChange =
-    prevWeekCount > 0
-      ? Math.round(((thisWeekCount - prevWeekCount) / prevWeekCount) * 100)
-      : thisWeekCount > 0
-      ? 100
-      : 0;
+  // Trend % capped display
+  let wowChange = 0;
+  let wowLabel = "Stable";
+  if (prevPeriodNegCount > 0) {
+    wowChange = Math.round(((thisPeriodNegCount - prevPeriodNegCount) / prevPeriodNegCount) * 100);
+    if (wowChange > 500) wowLabel = ">500% vs prior";
+    else if (wowChange > 0) wowLabel = `+${wowChange}% vs prior`;
+    else wowLabel = `${wowChange}% vs prior`;
+  } else if (thisPeriodNegCount > 0) {
+    wowChange = 100;
+    wowLabel = "New spike";
+  }
 
   const kpis: DashboardKPIs = {
-    total_feedback: total,
+    total_feedback: totalWeighted,
+    unique_feedback: uniqueCount,
     positive_count: posCount,
     neutral_count: neuCount,
     negative_count: negCount,
-    positive_pct: Math.round((posCount / total) * 100),
-    neutral_pct: Math.round((neuCount / total) * 100),
-    negative_pct: Math.round((negCount / total) * 100),
-    avg_rating: ratedCount > 0 ? Math.round((totalRating / ratedCount) * 10) / 10 : 0,
-    avg_sentiment: Math.round((totalSentimentScore / total) * 100) / 100,
+    positive_pct: Math.round((posCount / totalWeighted) * 100),
+    neutral_pct: Math.round((neuCount / totalWeighted) * 100),
+    negative_pct: Math.round((negCount / totalWeighted) * 100),
+    avg_rating: hasRatings && ratedCount > 0 ? Math.round((totalRating / ratedCount) * 10) / 10 : null,
+    avg_sentiment: Math.round((weightedSentimentSum / totalWeighted) * 100) / 100,
     top_issue_category: topPriority ? topPriority.category : null,
     top_issue_priority: topPriority ? topPriority.priority : 0,
     week_over_week_change: wowChange,
+    week_over_week_label: wowLabel,
+    has_real_dates: false,
+    has_ratings: hasRatings,
+    has_sources: hasSources,
   };
 
-  // Build chart structures
   const sentiment_distribution = [
     { name: "Positive", value: posCount, color: "#10b981" },
     { name: "Neutral", value: neuCount, color: "#f59e0b" },
     { name: "Negative", value: negCount, color: "#f43f5e" },
   ];
 
-  // Timeline sorted by date asc
   const sortedDateKeys = Object.keys(datesMap).sort();
   const sentiment_over_time = sortedDateKeys.map((date) => {
     const d = datesMap[date];
-    const avg = d.scores.length > 0 ? d.scores.reduce((a, b) => a + b, 0) / d.scores.length : 0;
+    const avg = d.totalWeight > 0 ? d.weightedScores.reduce((a, b) => a + b, 0) / d.totalWeight : 0;
     return {
-      date: date.slice(5), // MM-DD
+      date: date.slice(5),
       positive: d.positive,
       neutral: d.neutral,
       negative: d.negative,
@@ -174,7 +203,7 @@ export async function aggregateDashboardData(
       positive: data.positive,
       percent_neg: data.total > 0 ? Math.round((data.negative / data.total) * 100) : 0,
     }))
-    .sort((a, b) => b.negative - a.negative);
+    .sort((a, b) => b.total - a.total);
 
   const top_complaints = Object.entries(topicsMap)
     .map(([topic, data]) => ({

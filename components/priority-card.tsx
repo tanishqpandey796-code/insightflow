@@ -11,9 +11,6 @@ import {
   Quote,
   CheckCircle2,
   Sparkles,
-  ArrowRight,
-  User,
-  Zap,
 } from "lucide-react";
 import { PriorityItem } from "@/types";
 import { useApp } from "@/components/context/app-context";
@@ -32,9 +29,9 @@ export function PriorityCard({ item, rank, onTrackIssue }: PriorityCardProps) {
   const getLevelBadge = (level: string) => {
     switch (level) {
       case "Critical":
-        return "bg-rose-500/15 text-rose-500 border-rose-500/30";
+        return "bg-rose-500/15 text-rose-400 border-rose-500/30";
       case "High":
-        return "bg-amber-500/15 text-amber-500 border-amber-500/30";
+        return "bg-amber-500/15 text-amber-400 border-amber-500/30";
       default:
         return "bg-indigo-500/15 text-indigo-400 border-indigo-500/30";
     }
@@ -50,7 +47,7 @@ export function PriorityCard({ item, rank, onTrackIssue }: PriorityCardProps) {
           category: item.category,
           status: "open",
           priority_score: item.priority,
-          notes: `Tracked from Intelligent Recommendations. Suggested owner: ${item.recommendation.suggested_owner}.`,
+          notes: `Tracked from Decision Engine. Suggested owner: ${item.recommendation.suggested_owner}.`,
           snapshot: {
             category: item.category,
             priority_score: item.priority,
@@ -58,6 +55,7 @@ export function PriorityCard({ item, rank, onTrackIssue }: PriorityCardProps) {
             total_feedback: item.metrics.category_total,
             avg_severity: item.metrics.avg_severity,
             trend_percent: item.metrics.trend_percent,
+            trend_label: item.metrics.trend_display,
             top_quotes: item.quotes,
           },
         }),
@@ -90,7 +88,6 @@ export function PriorityCard({ item, rank, onTrackIssue }: PriorityCardProps) {
           : "border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 shadow-sm"
       }`}
     >
-      {/* Header bar */}
       <div className="p-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
           <div className="flex items-center gap-3">
@@ -111,13 +108,12 @@ export function PriorityCard({ item, rank, onTrackIssue }: PriorityCardProps) {
                 </span>
               </div>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                {item.metrics.neg_count} negative complaints ({Math.round(item.components.neg_share * 100)}% of category feedback)
+                {item.metrics.neg_count.toLocaleString()} negative complaints ({Math.round(item.components.neg_share * 100)}% of category feedback)
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-3">
-            {/* Priority Score Gauge */}
             <div className="flex items-baseline gap-1 px-4 py-2 rounded-xl bg-slate-900 border border-slate-800">
               <span className="text-[10px] font-semibold text-slate-400 uppercase">
                 Score
@@ -136,7 +132,6 @@ export function PriorityCard({ item, rank, onTrackIssue }: PriorityCardProps) {
               <span className="text-xs text-slate-500">/100</span>
             </div>
 
-            {/* Track Issue Button */}
             <button
               onClick={handleTrack}
               disabled={isTracked}
@@ -177,23 +172,18 @@ export function PriorityCard({ item, rank, onTrackIssue }: PriorityCardProps) {
 
           <div className="pt-1 flex items-center justify-between text-[11px] text-indigo-700 dark:text-indigo-300 font-medium">
             <span>Expected impact: {item.recommendation.expected_impact}</span>
-            {item.metrics.trend_percent !== 0 && (
-              <span className="flex items-center gap-1 text-rose-400 font-bold">
-                <TrendingUp className="w-3.5 h-3.5" />
-                <span>
-                  {item.metrics.trend_percent > 0 ? "+" : ""}
-                  {item.metrics.trend_percent}% recent trend
-                </span>
-              </span>
-            )}
+            <span className="flex items-center gap-1 text-slate-400 font-semibold">
+              <TrendingUp className="w-3.5 h-3.5" />
+              <span>Trend: {item.metrics.trend_display}</span>
+            </span>
           </div>
         </div>
 
-        {/* Sample Customer Quotes */}
+        {/* Real Customer Quotes from Dataset */}
         {item.quotes && item.quotes.length > 0 && (
           <div className="space-y-2 mb-3">
             <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">
-              Representative Customer Quotes
+              Representative Customer Reviews (from Dataset)
             </span>
             <div className="grid grid-cols-1 gap-2">
               {item.quotes.map((q, idx) => (
@@ -209,7 +199,7 @@ export function PriorityCard({ item, rank, onTrackIssue }: PriorityCardProps) {
           </div>
         )}
 
-        {/* Expandable 'Why this matters' panel */}
+        {/* Expandable 'Why this matters' panel with exact score components */}
         <div className="pt-2">
           <button
             onClick={() => setIsWhyOpen(!isWhyOpen)}
@@ -242,7 +232,7 @@ export function PriorityCard({ item, rank, onTrackIssue }: PriorityCardProps) {
                     {item.components.freq}
                   </span>
                   <span className="block text-[10px] text-slate-500">
-                    {item.metrics.neg_count}/{item.metrics.max_neg_count} max
+                    {item.metrics.neg_count.toLocaleString()}/{item.metrics.max_neg_count.toLocaleString()} max
                   </span>
                 </div>
 
@@ -278,7 +268,7 @@ export function PriorityCard({ item, rank, onTrackIssue }: PriorityCardProps) {
                     {item.components.trend}
                   </span>
                   <span className="block text-[10px] text-slate-500">
-                    {item.metrics.neg_this_period} vs {item.metrics.neg_prev_period} prior
+                    {item.metrics.trend_display}
                   </span>
                 </div>
               </div>
